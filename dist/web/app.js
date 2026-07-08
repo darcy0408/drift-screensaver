@@ -869,6 +869,16 @@ map.on("load", () => {
     state.labelsOn = true;
     map.setLayoutProperty("labels", "visibility", "visible");
   }
+  // Esri credit must stay available, but after a good look it can tuck
+  // itself down to the ⓘ icon (click to expand again).
+  setTimeout(() => {
+    const attrib = document.querySelector("details.maplibregl-ctrl-attrib");
+    if (attrib) {
+      attrib.removeAttribute("open");
+      attrib.classList.remove("maplibregl-compact-show");
+    }
+  }, 10000);
+
   rebuildPlaylist();
   const at = PARAMS.get("at"); // deep-link: ?at=<place id> starts the tour there
   if (at) {

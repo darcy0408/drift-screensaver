@@ -8,6 +8,29 @@
   inset: 0;
 }
 
+/* Required Esri imagery credit — keep it, but let it wear the theme.
+   Unlayered so it out-cascades MapLibre's own (later in source order). */
+.maplibregl-ctrl-attrib {
+  background-color: oklch(0.16 0.01 260 / 0.55);
+  backdrop-filter: blur(8px);
+  border-radius: 100px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.62rem;
+  color: oklch(0.62 0.02 90);
+}
+
+.maplibregl-ctrl-attrib a {
+  color: oklch(0.62 0.02 90);
+}
+
+.maplibregl-ctrl-attrib.maplibregl-compact-show {
+  padding: 2px 26px 2px 10px;
+}
+
+.maplibregl-ctrl-attrib-button {
+  filter: invert(0.8);
+}
+
 @layer base {
   :root {
     color-scheme: dark;
