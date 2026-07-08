@@ -75,6 +75,8 @@ const map = new maplibregl.Map({
   },
   center: [0, 20],
   zoom: 2,
+  minZoom: 1,
+  maxZoom: 18.5,
   keyboard: false,
   attributionControl: { compact: true },
 });
@@ -748,8 +750,9 @@ document.addEventListener("keydown", e => {
     case "f": case "F":
       document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
       break;
-    case "+": case "=": map.zoomTo(map.getZoom() + 1, { duration: 600 }); break;
-    case "-": map.zoomTo(map.getZoom() - 1, { duration: 600 }); break;
+    case "+": case "=": glideZoom(1); break;
+    case "-": glideZoom(-1); break;
+    case "o": case "O": toggleWorldView(); break;
     case "Escape":
       if (HOSTED) window.chrome.webview.postMessage("exit");
       else { closeIntel(); closePassport(); }
@@ -842,18 +845,46 @@ function isNotchyMouseWheel(e) {
   return Math.abs(e.deltaY) >= 80 && Math.abs(e.deltaY) % 20 === 0; // 100/120-per-notch drivers
 }
 
+// Zooming accumulates against a target, not the live zoom — otherwise rapid
+// pinch/wheel events keep restarting a barely-progressed animation and the
+// map crawls no matter how hard you gesture.
+let zoomTarget = null;
+map.on("zoomend", () => { zoomTarget = null; });
+
+function glideZoom(delta, screenPoint) {
+  const base = zoomTarget !== null && map.isZooming() ? zoomTarget : map.getZoom();
+  zoomTarget = Math.max(map.getMinZoom(), Math.min(map.getMaxZoom(), base + delta));
+  const opts = { zoom: zoomTarget, duration: 140, easing: t => t };
+  if (screenPoint) opts.around = map.unproject(screenPoint);
+  map.easeTo(opts);
+}
+
 map.getCanvasContainer().addEventListener("wheel", e => {
   e.preventDefault();
   if (state.playing && !state.transitioning) setPlaying(false);
   if (e.ctrlKey || isNotchyMouseWheel(e)) {
     const rect = map.getContainer().getBoundingClientRect();
-    const point = [e.clientX - rect.left, e.clientY - rect.top];
-    const step = e.ctrlKey ? -e.deltaY * 0.012 : (e.deltaY < 0 ? 0.4 : -0.4);
-    map.easeTo({ zoom: map.getZoom() + step, around: map.unproject(point), duration: 90 });
+    const delta = e.ctrlKey ? -e.deltaY * 0.025 : (e.deltaY < 0 ? 0.8 : -0.8);
+    glideZoom(delta, [e.clientX - rect.left, e.clientY - rect.top]);
   } else {
     map.panBy([e.deltaX, e.deltaY], { duration: 0 });
   }
 }, { passive: false });
+
+// O swoops out to see the whole planet, then back to where you were.
+let savedCamera = null;
+
+function toggleWorldView() {
+  if (state.playing && !state.transitioning) setPlaying(false);
+  if (map.getZoom() > 4) {
+    savedCamera = { center: map.getCenter(), zoom: map.getZoom() };
+    map.flyTo({ zoom: 1.5, duration: 2500 });
+    toast("WORLD VIEW — O TO RETURN");
+  } else if (savedCamera) {
+    map.flyTo({ center: savedCamera.center, zoom: savedCamera.zoom, duration: 2500 });
+    savedCamera = null;
+  }
+}
 
 /* ---------------- Boot ---------------- */
 

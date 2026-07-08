@@ -22,6 +22,8 @@ CONTROLS (while running)
   Pinch / Ctrl+scroll zoom (mouse wheel alone also zooms)
   Arrow keys / WASD   pan around
   + / -               zoom in / out
+  O                   world view - swoop out to the whole planet, O again
+                      to return where you were
   Mouse drag          pan (auto-pauses the tour)
   Space               pause / resume the tour
   I                   area intel (Wikipedia summary + what's nearby)
