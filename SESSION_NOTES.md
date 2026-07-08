@@ -21,9 +21,9 @@
 **Next:**
 1. User should install: right-click `dist\DriftSaver.scr` → Install (instructions in `dist\README.txt`).
 2. Candidate features, in rough priority: guess-the-country mode (GeoGuessr-lite, was offered and deferred), Reddit "what people are saying" fetched host-side in the wrapper (browser CORS blocks it), more mystery case files, Mapillary street-level views, per-monitor mode settings.
-3. Consider a GitHub remote if the user wants off-machine backup — nothing is pushed anywhere yet.
+3. Repo is on GitHub: https://github.com/darcy0408/drift-screensaver (private; default branch `main`). Flip public with `gh repo edit darcy0408/drift-screensaver --visibility public` if the user wants to share it.
 
-**Blocked on user:** installing the screensaver and choosing idle timeout (Windows dialog); deciding whether to create a remote repository.
+**Blocked on user:** installing the screensaver and choosing idle timeout (Windows dialog).
 
 **Risks/unverified:**
 - Multi-monitor per-screen tours are coded but never tested on real hardware (single-display session).
