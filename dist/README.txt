@@ -33,8 +33,14 @@ CONTROLS (while running)
   P                   pin place to your passport
   ESC                 exit the screensaver
 
-  Location cards show live local weather and today's daylight window
-  (via Open-Meteo).
+  Location cards show live local weather (°C and °F) and today's daylight
+  window (via Open-Meteo).
+
+  CLICK anywhere on the map to find out what's there: a marker drops, the
+  card identifies the spot, and the MORE INTEL button (or I) opens the full
+  brief — Wikipedia summary, country statistics (population, capital, area,
+  languages, currency), a country profile, current conditions, and what
+  else is on record nearby.
 
   Unlike a normal screensaver, keys and mouse do NOT exit — only ESC does.
 

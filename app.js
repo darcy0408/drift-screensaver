@@ -207,12 +207,16 @@ async function fetchWeather(place) {
   if (hit && Date.now() - hit.at < 30 * 60 * 1000) return hit.data;
   const url = "https://api.open-meteo.com/v1/forecast"
     + `?latitude=${place.lat.toFixed(4)}&longitude=${place.lng.toFixed(4)}`
-    + "&current=temperature_2m,weather_code&daily=sunrise,sunset&forecast_days=1&timezone=auto";
+    + "&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code"
+    + "&daily=sunrise,sunset&forecast_days=1&timezone=auto";
   const res = await fetch(url);
   if (!res.ok) throw new Error("weather " + res.status);
   const d = await res.json();
   const data = {
     temp: Math.round(d.current.temperature_2m),
+    feels: Math.round(d.current.apparent_temperature),
+    humidity: Math.round(d.current.relative_humidity_2m),
+    wind: Math.round(d.current.wind_speed_10m),
     desc: WMO[d.current.weather_code] || "",
     sunrise: (d.daily.sunrise[0] || "").slice(11, 16),
     sunset: (d.daily.sunset[0] || "").slice(11, 16),
@@ -221,12 +225,14 @@ async function fetchWeather(place) {
   return data;
 }
 
+const cToF = c => Math.round(c * 9 / 5 + 32);
+
 function renderWeather(place, attempt = 0) {
   const els = [$("place-weather"), $("dossier-weather")];
   if (attempt === 0) for (const el of els) el.textContent = "";
   fetchWeather(place).then(w => {
     if (state.current !== place) return; // tour moved on while we fetched
-    const line = `${w.temp}°C · ${w.desc} · ☀ ${w.sunrise} – ${w.sunset}`;
+    const line = `${w.temp}°C / ${cToF(w.temp)}°F · ${w.desc} · ☀ ${w.sunrise} – ${w.sunset}`;
     for (const el of els) el.textContent = line;
   }).catch(() => {
     if (attempt < 2 && state.current === place) setTimeout(() => renderWeather(place, attempt + 1), 3000);
@@ -313,6 +319,7 @@ async function presentPlace(place, gen) {
 
   fadeIn();
   console.log("[drift] presenting:", place.name);
+  clearMarker();
   updateHUD(place);
   renderWeather(place);
   closeIntel();
@@ -385,12 +392,82 @@ function closeIntel() {
   $("intel-panel").classList.remove("open");
 }
 
+// Country flag emoji from an ISO alpha-2 code — pure Unicode, no API.
+const flagEmoji = code =>
+  String.fromCodePoint(...[...code.toUpperCase()].map(c => 0x1F1E6 + c.charCodeAt(0) - 65));
+
+// Resolve the country under a place (lazily, cached on the place object),
+// then pull national statistics from Wikidata — free, keyless, and it knows
+// the form of government, which most country APIs don't.
+async function countryFacts(place) {
+  if (place.countryCode === undefined) {
+    try {
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${place.lat.toFixed(4)}&lon=${place.lng.toFixed(4)}&zoom=3&accept-language=en`
+      );
+      const geo = res.ok ? await res.json() : null;
+      place.countryCode = (geo && geo.address && geo.address.country_code) || null;
+      place.country = (geo && geo.address && geo.address.country) || null;
+    } catch { return null; }
+  }
+  if (!place.countryCode) return null; // international waters
+
+  const query = `SELECT ?countryLabel (MAX(?population) AS ?pop) (MAX(?area) AS ?areaKm2)
+  (GROUP_CONCAT(DISTINCT ?capitalLabel; separator=", ") AS ?capitals)
+  (GROUP_CONCAT(DISTINCT ?govLabel; separator=", ") AS ?gov)
+  (GROUP_CONCAT(DISTINCT ?langLabel; separator=", ") AS ?langs)
+  (GROUP_CONCAT(DISTINCT ?currLabel; separator=", ") AS ?currs)
+WHERE {
+  ?country wdt:P297 "${place.countryCode.toUpperCase()}" .
+  ?country rdfs:label ?countryLabel . FILTER(LANG(?countryLabel) = "en")
+  OPTIONAL { ?country wdt:P1082 ?population . }
+  OPTIONAL { ?country wdt:P2046 ?area . }
+  OPTIONAL { ?country wdt:P36 ?capital . ?capital rdfs:label ?capitalLabel . FILTER(LANG(?capitalLabel) = "en") }
+  OPTIONAL { ?country wdt:P122 ?govForm . ?govForm rdfs:label ?govLabel . FILTER(LANG(?govLabel) = "en") }
+  OPTIONAL { ?country wdt:P37 ?lang . ?lang rdfs:label ?langLabel . FILTER(LANG(?langLabel) = "en") }
+  OPTIONAL { ?country wdt:P38 ?curr . ?curr rdfs:label ?currLabel . FILTER(LANG(?currLabel) = "en") }
+}
+GROUP BY ?countryLabel`;
+
+  const res = await fetch("https://query.wikidata.org/sparql?format=json&query=" + encodeURIComponent(query));
+  if (!res.ok) return null;
+  const data = await res.json();
+  const b = data.results && data.results.bindings && data.results.bindings[0];
+  if (!b || !b.countryLabel) return null;
+  const val = k => (b[k] && b[k].value) || null;
+  return {
+    name: val("countryLabel"),
+    gov: val("gov"),
+    capital: val("capitals"),
+    population: val("pop") ? Number(val("pop")).toLocaleString("en") : null,
+    area: val("areaKm2") ? `${Math.round(Number(val("areaKm2"))).toLocaleString("en")} km²` : null,
+    languages: val("langs"),
+    currency: val("currs"),
+  };
+}
+
 async function loadIntel(place) {
   if (state.intelCache.has(place.id)) return state.intelCache.get(place.id);
 
   const frag = document.createDocumentFragment();
   const addH3 = txt => { const h = document.createElement("h3"); h.textContent = txt; frag.appendChild(h); };
   const addP = txt => { const p = document.createElement("p"); p.textContent = txt; frag.appendChild(p); };
+  const addFacts = rows => {
+    const ul = document.createElement("ul");
+    for (const [label, value] of rows) {
+      if (!value) continue;
+      const li = document.createElement("li");
+      const l = document.createElement("span");
+      l.className = "fact-label";
+      l.textContent = label;
+      const v = document.createElement("span");
+      v.className = "fact-value";
+      v.textContent = value;
+      li.append(l, v);
+      ul.appendChild(li);
+    }
+    frag.appendChild(ul);
+  };
 
   if (place.wiki) {
     try {
@@ -402,6 +479,47 @@ async function loadIntel(place) {
       }
     } catch { addP("Archive unreachable."); }
   }
+
+  // National statistics + a one-paragraph country profile.
+  try {
+    const facts = await countryFacts(place);
+    if (facts) {
+      addH3("Country file");
+      addFacts([
+        ["Country", `${flagEmoji(place.countryCode)} ${facts.name || place.country}`.trim()],
+        ["Government", facts.gov],
+        ["Capital", facts.capital],
+        ["Population", facts.population],
+        ["Area", facts.area],
+        ["Languages", facts.languages],
+        ["Currency", facts.currency],
+      ]);
+      const countryName = facts.name || place.country;
+      if (countryName && countryName !== place.name) {
+        try {
+          const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(countryName)}`);
+          if (res.ok) {
+            const data = await res.json();
+            if (data.extract) addP(data.extract);
+          }
+        } catch { }
+      }
+    }
+  } catch { /* stateless places exist — oceans, phantom islands */ }
+
+  // Full current conditions (the card only shows the short version).
+  try {
+    const w = await fetchWeather(place);
+    addH3("Conditions now");
+    addFacts([
+      ["Temperature", `${w.temp}°C / ${cToF(w.temp)}°F`],
+      ["Feels like", `${w.feels}°C / ${cToF(w.feels)}°F`],
+      ["Sky", w.desc],
+      ["Humidity", `${w.humidity}%`],
+      ["Wind", `${w.wind} km/h`],
+      ["Daylight", `${w.sunrise} – ${w.sunset}`],
+    ]);
+  } catch { }
 
   try {
     const url = `https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gscoord=${place.lat}%7C${place.lng}&gsradius=10000&gslimit=8&format=json&origin=*`;
@@ -641,11 +759,76 @@ document.addEventListener("keydown", e => {
 
 $("intel-close").addEventListener("click", closeIntel);
 $("passport-close").addEventListener("click", closePassport);
+$("place-intel").addEventListener("click", toggleIntel);
+$("dossier-intel").addEventListener("click", toggleIntel);
 
 // Manual exploration pauses the tour.
 for (const ev of ["dragstart", "dblclick", "touchstart"]) {
   map.on(ev, () => { if (state.playing && !state.transitioning) setPlaying(false); });
 }
+
+/* ---------------- Click to identify ---------------- */
+
+let clickMarker = null;
+
+function dropMarker(lngLat) {
+  if (clickMarker) clickMarker.remove();
+  const el = document.createElement("div");
+  el.className = "click-marker";
+  clickMarker = new maplibregl.Marker({ element: el }).setLngLat(lngLat).addTo(map);
+}
+
+function clearMarker() {
+  if (clickMarker) { clickMarker.remove(); clickMarker = null; }
+}
+
+let identifySeq = 0;
+
+async function identifyClick(lngLat) {
+  const seq = ++identifySeq;
+  const lat = lngLat.lat, lng = lngLat.lng;
+  const offset = Math.round(lng / 15);
+  const place = {
+    id: `click-${lat.toFixed(4)}-${lng.toFixed(4)}`,
+    name: "Somewhere", region: "Coordinates only", lat, lng,
+    zoom: map.getZoom(),
+    tz: `Etc/GMT${offset <= 0 ? "+" + (-offset) : "-" + offset}`,
+    wiki: null, category: "click", blurb: "",
+  };
+  try {
+    // finer-grained reverse geocode the deeper you're zoomed
+    const z = map.getZoom() >= 13 ? 16 : map.getZoom() >= 9 ? 12 : 8;
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat.toFixed(5)}&lon=${lng.toFixed(5)}&zoom=${z}&accept-language=en`
+    );
+    if (res.ok) {
+      const geo = await res.json();
+      const a = geo.address || {};
+      place.name = geo.name || a.suburb || a.village || a.town || a.city || a.county || a.state || "Open Water";
+      place.region = [
+        a.city && a.city !== place.name ? a.city : null,
+        a.state && a.state !== place.name ? a.state : null,
+        a.country,
+      ].filter(Boolean).join(", ") || "The World Ocean";
+      place.country = a.country || null;
+      place.countryCode = a.country_code || null;
+      place.blurb = (geo.display_name || "").split(", ").slice(0, 5).join(", ");
+    }
+  } catch { /* offline — coordinates still stand */ }
+  if (seq !== identifySeq) return; // user clicked somewhere else meanwhile
+  state.current = place;
+  updateClock();
+  updateHUD(place);
+  renderWeather(place);
+}
+
+map.on("click", e => {
+  if (state.transitioning) return;
+  if (state.playing) setPlaying(false);
+  closeIntel();
+  dropMarker(e.lngLat);
+  identifyClick(e.lngLat);
+});
 
 // Touchpad-aware wheel handling (replaces MapLibre's zoom-only default):
 //   pinch / ctrl+scroll  -> zoom around the cursor

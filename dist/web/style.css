@@ -73,6 +73,23 @@
 
   /* !important needed to beat MapLibre's inline grab-cursor on the canvas */
   body.no-cursor, body.no-cursor * { cursor: none !important; }
+
+  .click-marker {
+    inline-size: 14px;
+    block-size: 14px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 oklch(from var(--accent) l c h / 0.5);
+    animation: marker-pulse 1.6s ease-out infinite;
+  }
+
+  @keyframes marker-pulse {
+    to { box-shadow: 0 0 0 14px transparent; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .click-marker { animation: none; }
+  }
 }
 
 @layer hud {
@@ -182,6 +199,27 @@
   }
 
   .weather:empty { display: none; }
+
+  .intel-btn {
+    margin-block-start: 0.7em;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    padding: 0.5em 1em;
+    background: none;
+    border: 1px solid var(--surface-edge);
+    border-radius: 100px;
+    color: var(--accent);
+    cursor: pointer;
+    min-block-size: 24px;
+  }
+
+  .intel-btn:hover { border-color: var(--accent); }
+
+  .intel-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 
   /* ---- Dossier: the classified variant ---- */
   #dossier {
@@ -380,6 +418,19 @@
     font-size: 0.72rem;
     color: var(--ink-faint);
     white-space: nowrap;
+  }
+
+  #intel-content .fact-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  #intel-content .fact-value {
+    text-align: end;
+    color: var(--ink);
   }
 
   .intel-loading {

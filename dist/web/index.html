@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
   <!-- bump ?v= when style.css/app.js/locations.js change, or caches serve stale copies -->
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
   <div id="map"></div>
@@ -28,6 +28,7 @@
     <p id="place-blurb"></p>
     <p class="weather" id="place-weather"></p>
     <p class="coords" id="place-coords"></p>
+    <button class="intel-btn" id="place-intel">MORE INTEL →</button>
   </section>
 
   <section id="dossier" class="hud-card" hidden>
@@ -47,6 +48,7 @@
     </dl>
     <p class="weather" id="dossier-weather"></p>
     <p class="coords" id="dossier-coords"></p>
+    <button class="intel-btn" id="dossier-intel">MORE INTEL →</button>
   </section>
 
   <aside id="passport" hidden>
@@ -72,6 +74,7 @@
     <span><kbd>B</kbd> back</span>
     <span>scroll / <kbd>←↑↓→</kbd> pan</span>
     <span>pinch / <kbd>+</kbd><kbd>−</kbd> zoom</span>
+    <span>click · what's there?</span>
     <span><kbd>space</kbd> pause</span>
     <span><kbd>I</kbd> intel</span>
     <span><kbd>V</kbd> passport</span>
@@ -87,7 +90,7 @@
   <div id="toast" role="status" hidden></div>
 
   <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
-  <script src="locations.js?v=3"></script>
-  <script src="app.js?v=3"></script>
+  <script src="locations.js?v=4"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>
