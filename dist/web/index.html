@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DRIFT — an ambient atlas</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
+  <!-- bump ?v= when style.css/app.js/locations.js change, or caches serve stale copies -->
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+  <div id="map"></div>
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="fader" aria-hidden="true"></div>
+
+  <header id="topbar">
+    <div id="mode-chip">WORLD TOUR</div>
+    <div id="clock">
+      <span id="clock-local">--:--</span>
+      <span id="clock-label">LOCAL TIME</span>
+    </div>
+  </header>
+
+  <section id="place-card" class="hud-card" hidden>
+    <p class="eyebrow" id="place-region"></p>
+    <h1 id="place-name"></h1>
+    <p id="place-blurb"></p>
+    <p class="weather" id="place-weather"></p>
+    <p class="coords" id="place-coords"></p>
+  </section>
+
+  <section id="dossier" class="hud-card" hidden>
+    <div class="dossier-head">
+      <span id="dossier-file">CASE FILE</span>
+      <span class="stamp">UNVERIFIED</span>
+    </div>
+    <p class="eyebrow" id="dossier-region"></p>
+    <h1 id="dossier-name"></h1>
+    <dl class="dossier-body">
+      <dt>The claim</dt>
+      <dd id="dossier-claim"></dd>
+      <dt>The lore</dt>
+      <dd id="dossier-lore"></dd>
+      <dt>The record</dt>
+      <dd id="dossier-truth"></dd>
+    </dl>
+    <p class="weather" id="dossier-weather"></p>
+    <p class="coords" id="dossier-coords"></p>
+  </section>
+
+  <aside id="passport" hidden>
+    <header>
+      <h2>PASSPORT</h2>
+      <button id="passport-close" aria-label="Close passport">×</button>
+    </header>
+    <div id="passport-content"></div>
+  </aside>
+
+  <aside id="intel-panel" hidden>
+    <header>
+      <h2>AREA INTEL</h2>
+      <button id="intel-close" aria-label="Close intel panel">×</button>
+    </header>
+    <div id="intel-content">
+      <p class="intel-loading">Querying archives…</p>
+    </div>
+  </aside>
+
+  <footer id="controls-hint">
+    <span><kbd>N</kbd> next</span>
+    <span><kbd>B</kbd> back</span>
+    <span>scroll / <kbd>←↑↓→</kbd> pan</span>
+    <span>pinch / <kbd>+</kbd><kbd>−</kbd> zoom</span>
+    <span><kbd>space</kbd> pause</span>
+    <span><kbd>I</kbd> intel</span>
+    <span><kbd>V</kbd> passport</span>
+    <span><kbd>M</kbd> mystery</span>
+    <span><kbd>R</kbd> random</span>
+    <span><kbd>G</kbd> golden hour</span>
+    <span><kbd>L</kbd> labels</span>
+    <span><kbd>P</kbd> pin</span>
+    <span><kbd>F</kbd> fullscreen</span>
+  </footer>
+
+  <div id="progress"><div id="progress-fill"></div></div>
+  <div id="toast" role="status" hidden></div>
+
+  <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+  <script src="locations.js?v=3"></script>
+  <script src="app.js?v=3"></script>
+</body>
+</html>

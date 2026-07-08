@@ -1,0 +1,4 @@
+# debug artifacts the screensaver writes next to itself
+dist/debug.flag
+dist/drift-log.txt
+node_modules/
