@@ -750,8 +750,10 @@ document.addEventListener("keydown", e => {
     case "f": case "F":
       document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
       break;
-    case "+": case "=": glideZoom(1); break;
-    case "-": glideZoom(-1); break;
+    // tap = one level; holding the key glides continuously.
+    // "_" is what Shift+minus types, so zooming out works with Shift held.
+    case "+": case "=": glideZoom(e.repeat ? 0.4 : 1); break;
+    case "-": case "_": glideZoom(e.repeat ? -0.4 : -1); break;
     case "o": case "O": toggleWorldView(); break;
     case "Escape":
       if (HOSTED) window.chrome.webview.postMessage("exit");
@@ -847,14 +849,17 @@ function isNotchyMouseWheel(e) {
 
 // Zooming accumulates against a target, not the live zoom — otherwise rapid
 // pinch/wheel events keep restarting a barely-progressed animation and the
-// map crawls no matter how hard you gesture.
+// map crawls no matter how hard you gesture. Time-based: any zoom input
+// within 400ms of the last one stacks onto the same running target.
 let zoomTarget = null;
-map.on("zoomend", () => { zoomTarget = null; });
+let zoomTargetAt = 0;
 
 function glideZoom(delta, screenPoint) {
-  const base = zoomTarget !== null && map.isZooming() ? zoomTarget : map.getZoom();
+  const now = performance.now();
+  const base = zoomTarget !== null && now - zoomTargetAt < 400 ? zoomTarget : map.getZoom();
   zoomTarget = Math.max(map.getMinZoom(), Math.min(map.getMaxZoom(), base + delta));
-  const opts = { zoom: zoomTarget, duration: 140, easing: t => t };
+  zoomTargetAt = now;
+  const opts = { zoom: zoomTarget, duration: 160, easing: t => t };
   if (screenPoint) opts.around = map.unproject(screenPoint);
   map.easeTo(opts);
 }
