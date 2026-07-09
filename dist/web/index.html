@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
   <!-- bump ?v= when style.css/app.js/locations.js change, or caches serve stale copies -->
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
   <div id="map"></div>
@@ -26,11 +26,13 @@
   </header>
 
   <div id="search" hidden>
+    <button id="search-close" aria-label="Close search">×</button>
     <input id="search-input" type="search" placeholder="Search an address, city, place, or country…" autocomplete="off" spellcheck="false">
     <ul id="search-results"></ul>
   </div>
 
   <section id="place-card" class="hud-card" hidden>
+    <button class="card-close" id="place-close" aria-label="Hide card">×</button>
     <p class="eyebrow" id="place-region"></p>
     <h1 id="place-name"></h1>
     <p id="place-blurb"></p>
@@ -41,6 +43,7 @@
   </section>
 
   <section id="dossier" class="hud-card" hidden>
+    <button class="card-close" id="dossier-close" aria-label="Hide card">×</button>
     <div class="dossier-head">
       <span id="dossier-file">CASE FILE</span>
       <span class="stamp">UNVERIFIED</span>
@@ -86,6 +89,7 @@
     <span>pinch / <kbd>+</kbd><kbd>−</kbd> zoom</span>
     <span><kbd>O</kbd> world view</span>
     <span><kbd>/</kbd> search</span>
+    <span><kbd>H</kbd> hide interface</span>
     <span>click · what's there?</span>
     <span><kbd>space</kbd> pause</span>
     <span><kbd>I</kbd> intel</span>
@@ -102,7 +106,7 @@
   <div id="toast" role="status" hidden></div>
 
   <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
-  <script src="locations.js?v=9"></script>
-  <script src="app.js?v=9"></script>
+  <script src="locations.js?v=10"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>

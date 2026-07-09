@@ -25,7 +25,10 @@ CONTROLS (while running)
   O                   world view - swoop out to the whole planet, O again
                       to return where you were
   /                   search - type any address, city, place, or country
-                      and fly there (or click the SEARCH chip, top left)
+                      and fly there (or click the SEARCH chip, top left);
+                      press / again, click elsewhere, or hit the X to close
+  H                   hide the whole interface for a clean view of the
+                      map; H again brings it back (cards also have an X)
   Mouse drag          pan (auto-pauses the tour)
   Space               pause / resume the tour
   I                   area intel (Wikipedia summary + what's nearby)

@@ -788,7 +788,8 @@ document.addEventListener("keydown", e => {
   if (e.target instanceof HTMLInputElement) return; // typing in search, not steering
   scheduleHintFade();
   switch (e.key) {
-    case "/": e.preventDefault(); openSearch(); break;
+    case "/": e.preventDefault(); toggleSearch(); break;
+    case "h": case "H": document.body.classList.toggle("clean"); break;
     case "ArrowRight": case "d": case "D": e.preventDefault(); panMap(PAN_STEP, 0); break;
     case "ArrowLeft": case "a": case "A": e.preventDefault(); panMap(-PAN_STEP, 0); break;
     case "ArrowUp": case "w": case "W": e.preventDefault(); panMap(0, -PAN_STEP); break;
@@ -893,6 +894,7 @@ map.on("click", e => {
   if (state.transitioning) return;
   if (state.playing) setPlaying(false);
   closeIntel();
+  closeSearch();
   dropMarker(e.lngLat);
   identifyClick(e.lngLat);
 });
@@ -911,6 +913,16 @@ function closeSearch() {
   $("search").hidden = true;
   $("search-input").blur();
 }
+
+function toggleSearch() {
+  $("search").hidden ? openSearch() : closeSearch();
+}
+
+// Light dismiss: clicking anywhere outside the search panel closes it.
+document.addEventListener("mousedown", e => {
+  if ($("search").hidden) return;
+  if (!$("search").contains(e.target) && e.target.id !== "search-chip") closeSearch();
+});
 
 function goToSearchResult(r) {
   closeSearch();
@@ -998,7 +1010,10 @@ $("search-input").addEventListener("keydown", e => {
   }
 });
 
-$("search-chip").addEventListener("click", openSearch);
+$("search-chip").addEventListener("click", toggleSearch);
+$("search-close").addEventListener("click", closeSearch);
+$("place-close").addEventListener("click", () => hideCard($("place-card")));
+$("dossier-close").addEventListener("click", () => hideCard($("dossier")));
 
 // Touchpad-aware wheel handling (replaces MapLibre's zoom-only default):
 //   pinch / ctrl+scroll  -> zoom around the cursor
