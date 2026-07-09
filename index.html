@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
   <!-- bump ?v= when style.css/app.js/locations.js change, or caches serve stale copies -->
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
   <div id="map"></div>
@@ -15,12 +15,20 @@
   <div id="fader" aria-hidden="true"></div>
 
   <header id="topbar">
-    <div id="mode-chip">WORLD TOUR</div>
+    <div id="topbar-left">
+      <div id="mode-chip">WORLD TOUR</div>
+      <button id="search-chip">⌕ SEARCH</button>
+    </div>
     <div id="clock">
       <span id="clock-local">--:--</span>
       <span id="clock-label">LOCAL TIME</span>
     </div>
   </header>
+
+  <div id="search" hidden>
+    <input id="search-input" type="search" placeholder="Search an address, city, place, or country…" autocomplete="off" spellcheck="false">
+    <ul id="search-results"></ul>
+  </div>
 
   <section id="place-card" class="hud-card" hidden>
     <p class="eyebrow" id="place-region"></p>
@@ -75,6 +83,7 @@
     <span>scroll / <kbd>←↑↓→</kbd> pan</span>
     <span>pinch / <kbd>+</kbd><kbd>−</kbd> zoom</span>
     <span><kbd>O</kbd> world view</span>
+    <span><kbd>/</kbd> search</span>
     <span>click · what's there?</span>
     <span><kbd>space</kbd> pause</span>
     <span><kbd>I</kbd> intel</span>
@@ -91,7 +100,7 @@
   <div id="toast" role="status" hidden></div>
 
   <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
-  <script src="locations.js?v=7"></script>
-  <script src="app.js?v=7"></script>
+  <script src="locations.js?v=8"></script>
+  <script src="app.js?v=8"></script>
 </body>
 </html>

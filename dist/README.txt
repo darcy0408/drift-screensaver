@@ -24,6 +24,8 @@ CONTROLS (while running)
   + / -               zoom in / out
   O                   world view - swoop out to the whole planet, O again
                       to return where you were
+  /                   search - type any address, city, place, or country
+                      and fly there (or click the SEARCH chip, top left)
   Mouse drag          pan (auto-pauses the tour)
   Space               pause / resume the tour
   I                   area intel (Wikipedia summary + what's nearby)

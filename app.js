@@ -726,8 +726,10 @@ function panMap(dx, dy) {
 const PAN_STEP = 120;
 
 document.addEventListener("keydown", e => {
+  if (e.target instanceof HTMLInputElement) return; // typing in search, not steering
   scheduleHintFade();
   switch (e.key) {
+    case "/": e.preventDefault(); openSearch(); break;
     case "ArrowRight": case "d": case "D": e.preventDefault(); panMap(PAN_STEP, 0); break;
     case "ArrowLeft": case "a": case "A": e.preventDefault(); panMap(-PAN_STEP, 0); break;
     case "ArrowUp": case "w": case "W": e.preventDefault(); panMap(0, -PAN_STEP); break;
@@ -757,7 +759,7 @@ document.addEventListener("keydown", e => {
     case "o": case "O": toggleWorldView(); break;
     case "Escape":
       if (HOSTED) window.chrome.webview.postMessage("exit");
-      else { closeIntel(); closePassport(); }
+      else { closeIntel(); closePassport(); closeSearch(); }
       break;
   }
 });
@@ -834,6 +836,108 @@ map.on("click", e => {
   dropMarker(e.lngLat);
   identifyClick(e.lngLat);
 });
+
+/* ---------------- Search ---------------- */
+
+function openSearch() {
+  const panel = $("search");
+  panel.hidden = false;
+  $("search-input").value = "";
+  $("search-results").innerHTML = "";
+  $("search-input").focus();
+}
+
+function closeSearch() {
+  $("search").hidden = true;
+  $("search-input").blur();
+}
+
+function goToSearchResult(r) {
+  closeSearch();
+  if (state.playing) setPlaying(false);
+  const lat = Number(r.lat), lng = Number(r.lon);
+  const offset = Math.round(lng / 15);
+  const a = r.address || {};
+  const name = r.name || (r.display_name || "").split(",")[0] || "Found it";
+  const place = {
+    id: `search-${r.place_id}`,
+    name,
+    region: (r.display_name || "").split(", ").slice(1, 4).join(", "),
+    lat, lng,
+    zoom: map.getZoom(),
+    tz: `Etc/GMT${offset <= 0 ? "+" + (-offset) : "-" + offset}`,
+    wiki: null, category: "search",
+    blurb: r.display_name || "",
+    country: a.country || null,
+    countryCode: a.country_code || null,
+  };
+  dropMarker({ lng, lat });
+  // the bounding box sizes the flight: a country fills the screen, a house fills the block
+  const [s, n, w, e] = r.boundingbox.map(Number);
+  map.fitBounds([[w, s], [e, n]], { duration: 3200, padding: 80, maxZoom: 17 });
+  state.current = place;
+  state.history.push(place);
+  state.histPos = state.history.length - 1;
+  updateClock();
+  updateHUD(place);
+  renderWeather(place);
+}
+
+async function runSearch() {
+  const q = $("search-input").value.trim();
+  if (!q) return;
+  const list = $("search-results");
+  list.innerHTML = "<li><span class='result-detail'>Searching…</span></li>";
+  try {
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=jsonv2&q=${encodeURIComponent(q)}&limit=5&addressdetails=1&accept-language=en`
+    );
+    const results = res.ok ? await res.json() : [];
+    if (!results.length) {
+      list.innerHTML = "<li><span class='result-detail'>Nothing found — try adding a city or country.</span></li>";
+      return;
+    }
+    if (results.length === 1) return goToSearchResult(results[0]);
+    list.innerHTML = "";
+    for (const r of results) {
+      const li = document.createElement("li");
+      const nm = document.createElement("span");
+      nm.className = "result-name";
+      nm.textContent = r.name || (r.display_name || "").split(",")[0];
+      const detail = document.createElement("span");
+      detail.className = "result-detail";
+      detail.textContent = r.display_name;
+      li.append(nm, detail);
+      li.addEventListener("click", () => goToSearchResult(r));
+      list.appendChild(li);
+    }
+    list.firstChild.classList.add("first");
+    list._results = results;
+  } catch {
+    list.innerHTML = "<li><span class='result-detail'>Search unreachable — check the connection.</span></li>";
+  }
+}
+
+let searchArmed = false; // first Enter searches, second Enter takes the top result
+
+$("search-input").addEventListener("keydown", e => {
+  e.stopPropagation();
+  if (e.key === "Escape") { closeSearch(); return; }
+  if (e.key === "Enter") {
+    const results = $("search-results")._results;
+    if (searchArmed && results && results.length) {
+      goToSearchResult(results[0]);
+    } else {
+      searchArmed = true;
+      runSearch();
+    }
+  } else {
+    searchArmed = false;
+    $("search-results")._results = null;
+  }
+});
+
+$("search-chip").addEventListener("click", openSearch);
 
 // Touchpad-aware wheel handling (replaces MapLibre's zoom-only default):
 //   pinch / ctrl+scroll  -> zoom around the cursor
