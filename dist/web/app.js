@@ -380,6 +380,7 @@ async function presentPlace(place, gen) {
   fadeIn();
   console.log("[drift] presenting:", place.name);
   clearMarker();
+  closeWayback(); // new stop, back to the present
   updateHUD(place);
   renderWeather(place);
   renderImagery(place);
@@ -817,9 +818,10 @@ document.addEventListener("keydown", e => {
     case "+": case "=": glideZoom(e.repeat ? 0.4 : 1); break;
     case "-": case "_": glideZoom(e.repeat ? -0.4 : -1); break;
     case "o": case "O": toggleWorldView(); break;
+    case "t": case "T": toggleWayback(); break;
     case "Escape":
-      if (HOSTED) window.chrome.webview.postMessage("exit");
-      else { closeIntel(); closePassport(); closeSearch(); }
+      // hosted: the .scr wrapper drives Esc via __driftEsc, don't double-fire
+      if (!HOSTED) window.__driftEsc();
       break;
   }
 });
@@ -898,6 +900,84 @@ map.on("click", e => {
   dropMarker(e.lngLat);
   identifyClick(e.lngLat);
 });
+
+/* ---------------- Time machine (Esri Wayback) ---------------- */
+
+const WB = window.WAYBACK || []; // releases, oldest first; slider max = "today"
+let waybackIdx = null;           // null = present-day imagery
+
+const waybackUrl = n =>
+  `https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/${n}/{z}/{y}/{x}`;
+
+const fmtWaybackDate = d =>
+  new Date(d + "T00:00:00").toLocaleDateString("en-US", { month: "short", year: "numeric" }).toUpperCase();
+
+function setWayback(idx) {
+  const src = map.getSource("esri");
+  if (!src) return;
+  if (idx === null || idx >= WB.length) {
+    waybackIdx = null;
+    src.setTiles([ESRI_TILES]);
+    $("wayback-label").textContent = "TODAY";
+  } else {
+    waybackIdx = idx;
+    src.setTiles([waybackUrl(WB[idx].n)]);
+    $("wayback-label").textContent = fmtWaybackDate(WB[idx].d);
+  }
+}
+
+function openWayback() {
+  if (!WB.length) { toast("TIME MACHINE UNAVAILABLE"); return; }
+  closeSearch();
+  closeIntel();
+  closePassport();
+  if (state.playing && !state.transitioning) setPlaying(false);
+  const slider = $("wayback-slider");
+  slider.max = String(WB.length);
+  slider.value = waybackIdx === null ? String(WB.length) : String(waybackIdx);
+  $("wayback").hidden = false;
+  toast("TIME MACHINE — DRAG BACK THROUGH THE YEARS");
+}
+
+function closeWayback() {
+  $("wayback").hidden = true;
+  if (waybackIdx !== null) setWayback(null); // always come home to the present
+}
+
+function toggleWayback() {
+  $("wayback").hidden ? openWayback() : closeWayback();
+}
+
+let waybackTimer;
+$("wayback-slider").addEventListener("input", e => {
+  const idx = +e.target.value;
+  $("wayback-label").textContent = idx >= WB.length ? "TODAY" : fmtWaybackDate(WB[idx].d);
+  clearTimeout(waybackTimer); // don't reload tiles for every pixel of drag
+  waybackTimer = setTimeout(() => setWayback(idx >= WB.length ? null : idx), 150);
+});
+
+$("wayback-close").addEventListener("click", closeWayback);
+
+/* ---------------- Escape, one place ----------------
+   The .scr host forwards Esc here; panels close first, a second Esc
+   (or Esc with nothing open) exits the screensaver. */
+
+function anyPanelOpen() {
+  return !$("search").hidden || !$("wayback").hidden
+    || $("intel-panel").classList.contains("open")
+    || $("passport").classList.contains("open");
+}
+
+window.__driftEsc = () => {
+  if (anyPanelOpen()) {
+    closeSearch();
+    closeIntel();
+    closePassport();
+    closeWayback();
+  } else if (HOSTED) {
+    window.chrome.webview.postMessage("exit");
+  }
+};
 
 /* ---------------- Search ---------------- */
 

@@ -29,6 +29,12 @@ CONTROLS (while running)
                       press / again, click elsewhere, or hit the X to close
   H                   hide the whole interface for a clean view of the
                       map; H again brings it back (cards also have an X)
+  T                   time machine - drag the slider to see this exact
+                      view as it looked in any year back to 2014
+                      (imagery courtesy of Esri World Imagery Wayback)
+
+  ESC closes whatever panel is open first; press ESC again (or with
+  nothing open) to exit the screensaver.
   Mouse drag          pan (auto-pauses the tour)
   Space               pause / resume the tour
   I                   area intel (Wikipedia summary + what's nearby)

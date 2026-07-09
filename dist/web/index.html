@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
   <!-- bump ?v= when style.css/app.js/locations.js change, or caches serve stale copies -->
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
   <div id="map"></div>
@@ -90,6 +90,7 @@
     <span><kbd>O</kbd> world view</span>
     <span><kbd>/</kbd> search</span>
     <span><kbd>H</kbd> hide interface</span>
+    <span><kbd>T</kbd> time machine</span>
     <span>click · what's there?</span>
     <span><kbd>space</kbd> pause</span>
     <span><kbd>I</kbd> intel</span>
@@ -102,11 +103,18 @@
     <span><kbd>F</kbd> fullscreen</span>
   </footer>
 
+  <div id="wayback" hidden>
+    <span id="wayback-label">TODAY</span>
+    <input type="range" id="wayback-slider" min="0" max="195" value="195" step="1" aria-label="Imagery date">
+    <button id="wayback-close" aria-label="Exit time machine">×</button>
+  </div>
+
   <div id="progress"><div id="progress-fill"></div></div>
   <div id="toast" role="status" hidden></div>
 
   <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
-  <script src="locations.js?v=10"></script>
-  <script src="app.js?v=10"></script>
+  <script src="locations.js?v=11"></script>
+  <script src="wayback-releases.js?v=11"></script>
+  <script src="app.js?v=11"></script>
 </body>
 </html>

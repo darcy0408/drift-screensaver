@@ -219,12 +219,61 @@
     outline-offset: 2px;
   }
 
+  /* ---- Time machine ---- */
+  #wayback {
+    position: absolute;
+    inset-block-end: clamp(2.2rem, 5vh, 3.5rem);
+    inset-inline-start: 50%;
+    translate: -50% 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    inline-size: min(36rem, 80vw);
+    padding: 0.65rem 1.1rem;
+    border: 1px solid var(--surface-edge);
+    border-radius: 100px;
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+  }
+
+  #wayback-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    min-inline-size: 6.5em;
+    text-align: center;
+  }
+
+  #wayback-slider {
+    flex: 1;
+    accent-color: var(--accent);
+    min-block-size: 24px;
+  }
+
+  #wayback-close {
+    background: none;
+    border: none;
+    color: var(--ink-faint);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.15em 0.4em;
+  }
+
+  #wayback-close:hover { color: var(--ink); }
+
+  #wayback-close:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
   /* ---- Clean view: H hides everything but the planet ---- */
   #topbar, #controls-hint, #progress, #toast {
     transition: opacity 500ms ease;
   }
 
-  body.clean :is(#topbar, .hud-card, #controls-hint, #progress, #toast) {
+  body.clean :is(#topbar, .hud-card, #controls-hint, #progress, #toast, #wayback) {
     opacity: 0;
     pointer-events: none;
   }

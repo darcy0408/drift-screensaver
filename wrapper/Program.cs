@@ -243,7 +243,12 @@ namespace DriftSaver
                 web.KeyDown += OnWebKeyDown; // accelerator keys are forwarded as WinForms KeyDown
 
                 Settings.Load();
-                web.CoreWebView2.Navigate("https://drift.app/index.html?" + Settings.QueryString());
+                // cache-buster: WebView2 heuristically caches index.html for a
+                // same-URL navigation, which once served users a stale app
+                string build = "0";
+                try { build = File.GetLastWriteTimeUtc(Path.Combine(webDir, "index.html")).Ticks.ToString(); }
+                catch { }
+                web.CoreWebView2.Navigate("https://drift.app/index.html?" + Settings.QueryString() + "&build=" + build);
             }
             catch (Exception ex)
             {
@@ -262,9 +267,23 @@ namespace DriftSaver
             if (msg == "exit") Application.Exit();
         }
 
+        DateTime lastEsc = DateTime.MinValue;
+
+        // First Esc lets the page close whatever panel is open (search, time
+        // machine, intel); Esc with nothing open exits via the page's
+        // postMessage. A second Esc within 1.5s force-exits regardless, so
+        // there is always a way out even if the page is wedged.
         void OnWebKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape) Application.Exit();
+            if (e.KeyCode != Keys.Escape) return;
+            if ((DateTime.Now - lastEsc).TotalMilliseconds < 1500) { Application.Exit(); return; }
+            lastEsc = DateTime.Now;
+            try
+            {
+                web.CoreWebView2.ExecuteScriptAsync(
+                    "window.__driftEsc ? window.__driftEsc() : window.chrome.webview.postMessage('exit')");
+            }
+            catch { Application.Exit(); }
         }
     }
 
