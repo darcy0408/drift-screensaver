@@ -1,5 +1,34 @@
 # Session notes
 
+## 2026-07-09 — Published DRIFT publicly, added search / time machine / imagery vintage, fixed screensaver caching and dismissal bugs
+**Done:** (all web features verified by puppeteer-core end-to-end tests driving installed Chrome; wrapper changes verified by live .scr runs and user testing)
+- Published: repo is public at https://github.com/darcy0408/drift-screensaver with GitHub Pages serving the app live at https://darcy0408.github.io/drift-screensaver/ — every push to `main` auto-updates the site. Desktop shortcut "DRIFT" on the user's desktop launches `dist\DriftSaver.scr /s` with a custom amber-globe icon (`dist\drift.ico`).
+- Search (`/` key or SEARCH chip): Nominatim geocoding, results list, flight sized by result bounding box. Explicit-submit only (Nominatim policy).
+- Imagery vintage line on every card ("IMAGE Sep 16, 2025 · 10 months old · WorldView-2 · 0.5 m/px") via identify-query on Esri World Imagery. IMPORTANT: use the `geometry=lng,lat` comma shorthand — the JSON-object geometry form returns HTTP 400 from browsers.
+- Time machine (`T`): slider over 195 Esri Wayback releases back to Feb 2014, swaps the raster source via `setTiles`. Release list is baked into `wayback-releases.js` because the wayback config JSON (S3) has no CORS header; tiles themselves are CORS-open. Regeneration command is in the file header.
+- Zoom overhaul for the touchpad user: time-based accumulation target (`glideZoom`) so rapid pinch/wheel events stack; `Shift+minus` (types "_") mapped to zoom out; `O` toggles world view and back; map bounded zoom 1–18.5.
+- Dismissal/UX: click-to-identify with pulsing marker; MORE INTEL button opens enriched panel (Wikidata SPARQL country stats incl. government form — REST Countries free API was deprecated in 2026, do not use); `H` clean view hides ALL chrome and closes transient panels; search closes via ×, click-outside, `/` toggle, Esc; cards have ×.
+- Screensaver (.scr) root-cause fixes: wrapper appends web build timestamp to the navigation URL (WebView2 heuristically cached index.html and served users a stale app — this caused two separate "can't close search" reports); Esc is now forwarded to the page (`window.__driftEsc`) to close panels first, exits when nothing is open, double-Esc within 1.5s force-exits even if the page is wedged.
+- Bug fixed after user report with screenshots: the `H` clean-view CSS hide-list omitted `#search`, so H hid everything EXCEPT search. H now closes all transient panels before hiding chrome.
+
+**Decisions:**
+- GitHub Pages over any hosting setup — free, zero-config, auto-deploys from `main`, and the static app needs no backend.
+- Wikidata SPARQL replaced REST Countries for national statistics (deprecated API + Wikidata has form-of-government, which the user explicitly wanted).
+- Esc protocol: the page owns Esc semantics via `window.__driftEsc`; the WinForms host only forwards and provides the double-press force-exit. Page keydown ignores Esc when hosted to avoid double-firing.
+- Cache-busting is two-layer by design: `?v=N` on asset links (bump on EVERY web change) + build-timestamp param from the wrapper for index.html itself.
+
+**Next:**
+1. "Launch package" if the user wants to promote it (discussed, not built): shareable deep links (`?ll=lat,lng,zoom` + copy-link button), root README.md with screenshots/GIF for the repo, Open Graph preview tags, and a viral-safe geocoder (Nominatim's policy forbids heavy traffic — Photon/komoot or graceful degradation) before any Show HN / Reddit post.
+- 2. Smaller ideas parked: guess-the-country mode, Reddit chatter via wrapper-side fetch, Mapillary street-level, per-monitor modes, passport export.
+
+**Blocked on user:** whether to pursue the public launch; testing multi-monitor .scr behavior (single display here).
+
+**Risks/unverified:**
+- The `.scr` `/p` preview pane and multi-monitor per-screen tours remain untested on real hardware.
+- Esri Wayback tile URL pattern and the baked release list could drift; regenerate `wayback-releases.js` from the S3 config if the time machine 404s.
+- One unreproduced anomaly: a single test screenshot on 2026-07-09 showed the search panel open without an obvious trigger; two exact replays were clean. If search ever opens by itself, that's the thread to pull.
+- `dist\web\` is a manual copy of the root web files — every root edit must be re-copied or the .scr lags the browser version.
+
 ## 2026-07-07 — Built DRIFT map screensaver from scratch: web app, Windows .scr package, and three feature additions
 
 **Done:**
