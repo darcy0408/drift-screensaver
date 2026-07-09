@@ -873,16 +873,26 @@ async function identifyClick(lngLat) {
     tz: `Etc/GMT${offset <= 0 ? "+" + (-offset) : "-" + offset}`,
     wiki: null, category: "click", blurb: "",
   };
+  // Wikipedia geosearch runs alongside the reverse geocode: the nearest
+  // article is usually the landmark a human means — the beach, the stadium,
+  // the park — while Nominatim names the nearest small object (a footpath,
+  // a bench) and its address chain omits enclosing features entirely.
+  const wikiNearby = fetch(
+    `https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gscoord=${lat.toFixed(5)}%7C${lng.toFixed(5)}&gsradius=300&gslimit=3&format=json&origin=*`
+  ).then(r => (r.ok ? r.json() : null)).catch(() => null);
+
   try {
-    // finer-grained reverse geocode the deeper you're zoomed
-    const z = map.getZoom() >= 13 ? 16 : map.getZoom() >= 9 ? 12 : 8;
+    // finer-grained reverse geocode the deeper you're zoomed; 18 = building/POI level
+    const mz = map.getZoom();
+    const z = mz >= 14 ? 18 : mz >= 11 ? 16 : mz >= 9 ? 12 : 8;
     const res = await fetch(
       `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat.toFixed(5)}&lon=${lng.toFixed(5)}&zoom=${z}&accept-language=en`
     );
+    let geo = null;
     if (res.ok) {
-      const geo = await res.json();
+      geo = await res.json();
       const a = geo.address || {};
-      place.name = geo.name || a.suburb || a.village || a.town || a.city || a.county || a.state || "Open Water";
+      place.name = geo.name || a.road || a.neighbourhood || a.suburb || a.village || a.town || a.city || a.county || a.state || "Open Water";
       place.region = [
         a.city && a.city !== place.name ? a.city : null,
         a.state && a.state !== place.name ? a.state : null,
@@ -891,6 +901,28 @@ async function identifyClick(lngLat) {
       place.country = a.country || null;
       place.countryCode = a.country_code || null;
       place.blurb = (geo.display_name || "").split(", ").slice(0, 5).join(", ");
+    }
+
+    // Prefer the landmark when the click is on/near one: always when the
+    // geocoder only found something minor, or when the article is very close.
+    const MINOR_AMENITIES = new Set(["bench", "waste_basket", "bicycle_parking", "toilets", "shelter", "drinking_water", "parking", "parking_space", "vending_machine"]);
+    const minor = !geo || !geo.name
+      || geo.category === "highway"
+      || (geo.category === "amenity" && MINOR_AMENITIES.has(geo.type))
+      || (geo.category === "historic" && geo.type === "memorial");
+    const wiki = await wikiNearby;
+    const hit = wiki && wiki.query && wiki.query.geosearch && wiki.query.geosearch[0];
+    if (hit && (minor || hit.dist < 120)) {
+      place.name = hit.title;
+      place.wiki = encodeURIComponent(hit.title); // intel panel gets the article too
+      place.region = `Landmark · ${place.region}`;
+    } else if (geo && geo.name && geo.type) {
+      // otherwise lead with what kind of thing this is ("Stadium · Inglewood…")
+      const POI_CATS = new Set(["leisure", "amenity", "tourism", "natural", "historic", "aeroway", "man_made", "shop", "railway", "building", "waterway", "water", "place", "boundary"]);
+      if (POI_CATS.has(geo.category) && !["yes", "house"].includes(geo.type)) {
+        const t = geo.type.replace(/_/g, " ");
+        place.region = `${t.charAt(0).toUpperCase()}${t.slice(1)} · ${place.region}`;
+      }
     }
   } catch { /* offline — coordinates still stand */ }
   if (seq !== identifySeq) return; // user clicked somewhere else meanwhile

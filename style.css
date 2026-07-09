@@ -166,13 +166,12 @@
     outline-offset: 2px;
   }
 
-  /* ---- Search overlay ---- */
+  /* ---- Search: docked under the SEARCH chip, top-left, off the map's center ---- */
   #search {
     position: absolute;
-    inset-block-start: 16vh;
-    inset-inline-start: 50%;
-    translate: -50% 0;
-    inline-size: min(34rem, 90vw);
+    inset-block-start: clamp(3.6rem, 8vh, 5rem);
+    inset-inline-start: clamp(0.8rem, 2.5vw, 2rem);
+    inline-size: min(22rem, 86vw);
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -180,13 +179,13 @@
 
   #search-close {
     position: absolute;
-    inset-block-start: 0.55em;
-    inset-inline-end: 0.7em;
+    inset-block-start: 0.35em;
+    inset-inline-end: 0.35em;
     z-index: 1;
     background: none;
     border: none;
     color: var(--ink-faint);
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 1;
     cursor: pointer;
     padding: 0.2em 0.4em;
@@ -282,10 +281,10 @@
     inline-size: 100%;
     box-sizing: border-box;
     font-family: var(--font-ui);
-    font-size: 1.15rem;
+    font-size: 0.95rem;
     font-weight: 300;
     color: var(--ink);
-    padding: 0.8em 1.2em;
+    padding: 0.7em 2.4em 0.7em 1em;
     border: 1px solid var(--surface-edge);
     border-radius: var(--radius);
     background: oklch(0.14 0.01 260 / 0.8);
@@ -304,7 +303,9 @@
     padding: 0;
     list-style: none;
     border-radius: var(--radius);
-    overflow: hidden;
+    overflow: hidden auto;
+    max-block-size: 42vh;
+    scrollbar-width: thin;
   }
 
   #search-results li {
