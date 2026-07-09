@@ -273,7 +273,7 @@
     transition: opacity 500ms ease;
   }
 
-  body.clean :is(#topbar, .hud-card, #controls-hint, #progress, #toast, #wayback) {
+  body.clean :is(#topbar, .hud-card, #controls-hint, #progress, #toast, #wayback, #search) {
     opacity: 0;
     pointer-events: none;
   }

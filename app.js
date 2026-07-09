@@ -790,7 +790,16 @@ document.addEventListener("keydown", e => {
   scheduleHintFade();
   switch (e.key) {
     case "/": e.preventDefault(); toggleSearch(); break;
-    case "h": case "H": document.body.classList.toggle("clean"); break;
+    case "h": case "H":
+      // entering clean view also closes transient panels — search included
+      if (!document.body.classList.contains("clean")) {
+        closeSearch();
+        closeIntel();
+        closePassport();
+        closeWayback();
+      }
+      document.body.classList.toggle("clean");
+      break;
     case "ArrowRight": case "d": case "D": e.preventDefault(); panMap(PAN_STEP, 0); break;
     case "ArrowLeft": case "a": case "A": e.preventDefault(); panMap(-PAN_STEP, 0); break;
     case "ArrowUp": case "w": case "W": e.preventDefault(); panMap(0, -PAN_STEP); break;
