@@ -229,6 +229,64 @@ async function fetchWeather(place) {
 
 const cToF = c => Math.round(c * 9 / 5 + 32);
 
+/* ---------------- Imagery vintage ---------------- */
+
+// Esri's World Imagery service can be identify-queried for the capture
+// metadata of whatever photo is on screen at a point.
+const SAT_NAMES = {
+  WV01: "WorldView-1", WV02: "WorldView-2", WV03: "WorldView-3", WV04: "WorldView-4",
+  GE01: "GeoEye-1", PNEO: "Pléiades Neo",
+};
+
+function satName(code) {
+  if (!code) return null;
+  if (SAT_NAMES[code]) return SAT_NAMES[code];
+  if (code.startsWith("LG")) return "WorldView Legion";
+  if (code.startsWith("PHR")) return "Pléiades";
+  if (code.startsWith("SP")) return "SPOT";
+  return code;
+}
+
+function imageryAge(date) {
+  const days = Math.round((Date.now() - date.getTime()) / 86400000);
+  if (days < 60) return `${days} days old`;
+  if (days < 730) return `${Math.round(days / 30.4)} months old`;
+  return `${(days / 365.25).toFixed(1)} years old`;
+}
+
+async function fetchImageryInfo(lat, lng) {
+  const b = map.getBounds();
+  const c = map.getContainer();
+  const url = "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/identify"
+    + `?geometry=${lng.toFixed(6)},${lat.toFixed(6)}&geometryType=esriGeometryPoint&sr=4326`
+    + `&tolerance=1&mapExtent=${b.getWest()},${b.getSouth()},${b.getEast()},${b.getNorth()}`
+    + `&imageDisplay=${Math.round(c.clientWidth)},${Math.round(c.clientHeight)},96&returnGeometry=false&f=json`;
+  const res = await fetch(url);
+  if (!res.ok) return null;
+  const data = await res.json();
+  const attrs = data.results && data.results[0] && data.results[0].attributes;
+  if (!attrs) return null;
+  const raw = String(attrs["DATE (YYYYMMDD)"] || "");
+  if (!/^\d{8}$/.test(raw)) return null;
+  const date = new Date(+raw.slice(0, 4), +raw.slice(4, 6) - 1, +raw.slice(6, 8));
+  return {
+    date,
+    sat: satName(attrs.DESCRIPTION),
+    res: attrs["RESOLUTION (M)"] ? `${attrs["RESOLUTION (M)"]} m/px` : null,
+  };
+}
+
+function renderImagery(place) {
+  const els = [$("place-imagery"), $("dossier-imagery")];
+  for (const el of els) el.textContent = "";
+  fetchImageryInfo(place.lat, place.lng).then(info => {
+    if (state.current !== place || !info) return;
+    const when = info.date.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+    const line = ["IMAGE " + when, imageryAge(info.date), info.sat, info.res].filter(Boolean).join(" · ");
+    for (const el of els) el.textContent = line;
+  }).catch(() => {});
+}
+
 function renderWeather(place, attempt = 0) {
   const els = [$("place-weather"), $("dossier-weather")];
   if (attempt === 0) for (const el of els) el.textContent = "";
@@ -324,6 +382,7 @@ async function presentPlace(place, gen) {
   clearMarker();
   updateHUD(place);
   renderWeather(place);
+  renderImagery(place);
   closeIntel();
   closePassport();
 
@@ -827,6 +886,7 @@ async function identifyClick(lngLat) {
   updateClock();
   updateHUD(place);
   renderWeather(place);
+  renderImagery(place);
 }
 
 map.on("click", e => {
@@ -881,6 +941,7 @@ function goToSearchResult(r) {
   updateClock();
   updateHUD(place);
   renderWeather(place);
+  map.once("moveend", () => { if (state.current === place) renderImagery(place); });
 }
 
 async function runSearch() {

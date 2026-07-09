@@ -315,6 +315,15 @@
 
   .weather:empty { display: none; }
 
+  .imagery {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+  }
+
+  .imagery:empty { display: none; }
+
   .intel-btn {
     margin-block-start: 0.7em;
     font-family: var(--font-mono);

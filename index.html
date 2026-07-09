@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
   <!-- bump ?v= when style.css/app.js/locations.js change, or caches serve stale copies -->
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
   <div id="map"></div>
@@ -35,6 +35,7 @@
     <h1 id="place-name"></h1>
     <p id="place-blurb"></p>
     <p class="weather" id="place-weather"></p>
+    <p class="imagery" id="place-imagery"></p>
     <p class="coords" id="place-coords"></p>
     <button class="intel-btn" id="place-intel">MORE INTEL →</button>
   </section>
@@ -55,6 +56,7 @@
       <dd id="dossier-truth"></dd>
     </dl>
     <p class="weather" id="dossier-weather"></p>
+    <p class="imagery" id="dossier-imagery"></p>
     <p class="coords" id="dossier-coords"></p>
     <button class="intel-btn" id="dossier-intel">MORE INTEL →</button>
   </section>
@@ -100,7 +102,7 @@
   <div id="toast" role="status" hidden></div>
 
   <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
-  <script src="locations.js?v=8"></script>
-  <script src="app.js?v=8"></script>
+  <script src="locations.js?v=9"></script>
+  <script src="app.js?v=9"></script>
 </body>
 </html>
