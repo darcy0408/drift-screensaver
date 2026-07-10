@@ -634,6 +634,14 @@ window.PLACES = [
       lore: "The whole old town still sits inside its waterworks, cobbles and drawbridges functioning, like a terrarium of the old world.",
       truth: "Founded 1567, fortified through the Dano-Swedish wars, and preserved by the most Scandinavian force of all: the garrison never left, so nobody ever demolished anything. Continuous boring occupancy is history's best conservator."
     } },
+  { id: "copenhagen-ring", name: "The Erased Ring", region: "Copenhagen, Denmark", lat: 55.6875, lng: 12.5780, zoom: 13.8, tz: "Europe/Copenhagen", wiki: "Fortifications_of_Copenhagen", category: "mystery",
+    blurb: "A ring of star fortifications swallowed by the city — traceable in the shape of its ponds.",
+    dossier: {
+      file: "CF-069",
+      claim: "A complete star-fort ring around a capital, demolished and landscaped over — the Tartaria reading: the old world wasn't outgrown, it was buried, and the parks are the shroud.",
+      lore: "Look at the water. The ponds arcing through Ørstedsparken, the Botanical Garden, and Østre Anlæg zigzag in crisp bastion angles — because they ARE the moat, kept as ornament after the walls between them were carted away. Kastellet, at the ring's northern tip, survives intact: one star left standing to show what the whole necklace looked like.",
+      truth: "Copenhagen strangled inside its own armor: the military kept the ramparts long after cannons outranged them, banning solid construction outside — until the 1853 cholera epidemic killed 4,700 people in the overcrowded core. The demolition decrees (1856-1870), park commissions, and land sales are all in the city archive. The fort wasn't hidden; it was traded for breathing room, and the city kept the geometry as jewelry."
+    } },
   { id: "coral-castle", name: "Coral Castle", region: "Florida, USA", lat: 25.5003, lng: -80.4444, zoom: 16.2, tz: "America/New_York", wiki: "Coral_Castle", category: "mystery",
     blurb: "1,100 tons of stone, moved by one man, alone, at night.",
     dossier: {
