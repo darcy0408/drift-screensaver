@@ -248,6 +248,14 @@
     flex: 1;
     accent-color: var(--accent);
     min-block-size: 24px;
+    cursor: pointer;
+  }
+
+  .wayback-end {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
   }
 
   #wayback-close {

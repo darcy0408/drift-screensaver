@@ -977,7 +977,7 @@ function openWayback() {
   slider.max = String(WB.length);
   slider.value = waybackIdx === null ? String(WB.length) : String(waybackIdx);
   $("wayback").hidden = false;
-  toast("TIME MACHINE — DRAG BACK THROUGH THE YEARS");
+  toast("TIME MACHINE — DRAG THE SLIDER AT THE BOTTOM OF THE SCREEN");
 }
 
 function closeWayback() {
