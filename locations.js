@@ -86,7 +86,37 @@ window.PLACES = [
   { id: "almeria", name: "The Sea of Plastic", region: "Almería, Spain", lat: 36.776, lng: -2.813, zoom: 12, tz: "Europe/Madrid", wiki: "El_Ejido", category: "human",
     blurb: "40,000 hectares of greenhouses so bright and white they measurably cool the local climate. Europe's winter vegetables come from here." },
 
+  // ---------------- Satellite-era curiosities ----------------
+  { id: "boneyard", name: "The Boneyard", region: "Tucson, Arizona, USA", lat: 32.1516, lng: -110.8380, zoom: 14, tz: "America/Phoenix", wiki: "309th_Aerospace_Maintenance_and_Regeneration_Group", category: "human",
+    blurb: "Four thousand retired military aircraft parked in desert grids — the largest airplane graveyard on Earth, arranged like a spreadsheet of the entire Cold War." },
+  { id: "desert-breath", name: "Desert Breath", region: "El Gouna, Egypt", lat: 27.3805, lng: 33.6318, zoom: 15, tz: "Africa/Cairo", wiki: "Desert_Breath", category: "human",
+    blurb: "A double spiral of 178 cones a kilometre wide, built by three Greek artists in 1997 and left to dissolve back into the Sahara. Regularly mistaken for alien geometry — press T and watch two decades erode it." },
+  { id: "vulcan-point", name: "Vulcan Point", region: "Taal Volcano, Philippines", lat: 14.0113, lng: 120.9977, zoom: 12.5, tz: "Asia/Manila", wiki: "Taal_Volcano", category: "wonder",
+    blurb: "An island in a lake on an island in a lake on an island — geography's best nesting doll. The 2020 eruption boiled the inner lake away; the time machine shows it before and after." },
+  { id: "arica-coke", name: "The Coca-Cola Logo", region: "Arica, Chile", lat: -18.5296, lng: -70.2506, zoom: 15.8, tz: "America/Santiago", wiki: "Arica", category: "human",
+    blurb: "The world's largest logo, spelled out on a desert hillside with seventy thousand empty Coke bottles in 1986 — visible from orbit, which was precisely the point." },
+  { id: "jassim-wreck", name: "Wreck of the SS Jassim", region: "Wingate Reef, Sudan", lat: 19.6008, lng: 37.2951, zoom: 15.5, tz: "Africa/Khartoum", wiki: "Red_Sea", category: "wonder",
+    blurb: "A Bolivian cargo ferry that ran onto a Red Sea reef in 2003 and became one of the largest shipwrecks visible from space, slowly dissolving into the coral." },
+  { id: "pink-bunny", name: "The Pink Bunny of Colletto Fava", region: "Piedmont, Italy", lat: 44.2445, lng: 7.7688, zoom: 15.5, tz: "Europe/Rome", wiki: "Hase_(artwork)", category: "human",
+    blurb: "In 2005 Viennese artists knitted a 60-metre pink rabbit and laid it on a mountain, where hikers could nap on its belly. It rotted away by 2016 — a landmark that now exists ONLY in the time machine. Press T." },
+
   // ---------------- Mystery files ----------------
+  { id: "coronado", name: "The Coronado Complex", region: "San Diego, California, USA", lat: 32.6764, lng: -117.1568, zoom: 16, tz: "America/Los_Angeles", wiki: "Naval_Amphibious_Base_Coronado", category: "mystery",
+    blurb: "Four Navy barracks with an unfortunate floor plan.",
+    dossier: {
+      file: "CF-067",
+      claim: "A US Navy base built in the shape of a swastika — deliberately, say the theorists, hiding in plain sight for forty years until satellites ratted it out.",
+      lore: "Built in 1967, the shape went essentially unnoticed until Google Earth put an aerial view in every browser in 2007. The Navy then budgeted over $600,000 for landscaping and rooftop structures to disguise it — which believers read as confession.",
+      truth: "Architects' drawings show four L-shaped buildings arranged around a courtyard for shade and airflow; nobody in 1967 expected the public to ever see a roof plan. The real story is the satellite era itself: orbit turned every rooftop into a billboard, retroactively."
+    } },
+  { id: "atlantis-grid", name: "The Atlantis Grid", region: "Atlantic Ocean, west of the Canaries", lat: 31.25, lng: -24.25, zoom: 7, tz: "Etc/GMT+2", wiki: "Atlantis", category: "mystery",
+    blurb: "The sunken city that turned out to be the map itself.",
+    dossier: {
+      file: "CF-068",
+      claim: "In 2009, Google Ocean users found a perfect grid of 'streets' the size of Wales on the Atlantic floor — right where Plato-hunters wanted Atlantis. Headlines went global within days.",
+      lore: "The grid was really there in the data: crisp perpendicular lines etched into the seabed, kilometres apart, far too regular for geology. For one glorious news cycle, the lost city had coordinates.",
+      truth: "The 'streets' were the wakes of the mapping ships themselves — sonar tracklines with slightly better resolution than the satellite-derived seafloor around them. Google smoothed the data in 2011 and the city vanished. Look at this spot on our imagery: open water, because Esri never drew bathymetry here at all. Same planet, different data — the artifact was the map, not the territory."
+    } },
   { id: "area-51", name: "Area 51", region: "Nevada, USA", lat: 37.235, lng: -115.8111, zoom: 12.8, tz: "America/Los_Angeles", wiki: "Area_51", category: "mystery",
     blurb: "The most famous secret base on Earth.",
     dossier: {
