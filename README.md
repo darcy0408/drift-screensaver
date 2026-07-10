@@ -48,4 +48,10 @@ Spotted an oddity, a gorgeous place, or an imagery inconsistency (something that
 
 A single static web page (no build step, no API keys, no accounts): [MapLibre GL](https://maplibre.org/) over [Esri World Imagery](https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9), with [Esri Wayback](https://livingatlas.arcgis.com/wayback/) for history, [OpenStreetMap/Nominatim](https://nominatim.org/) for geocoding, [Wikipedia](https://www.wikipedia.org/) & [Wikidata](https://www.wikidata.org/) for knowledge, [Open-Meteo](https://open-meteo.com/) for weather, and [CARTO](https://carto.com/) label tiles. The Windows screensaver is a small C# WebView2 host (`wrapper/Program.cs`) compiled with the `csc.exe` that ships inside Windows — rebuild command in [`SESSION_NOTES.md`](SESSION_NOTES.md).
 
-Imagery © Esri, Maxar, Earthstar Geographics, and the GIS User Community. Mystery dossiers present folklore alongside the documented record — the claims are the *fun*, the record is the *fact*.
+## The ethos
+
+DRIFT isn't here to debunk anyone, and it isn't here to sell you a theory. Every case file lays out three exhibits — **the claim, the lore, and the record** — and hands you the instruments to weigh them yourself: the time machine (did it change?), the imagery's provenance (who photographed it, when, at what resolution?), cross-provider comparison (does Google show the same thing?), and live NASA polar imagery (see the poles the map projection can't draw). Where the record is incomplete, the file says so. Where the official story *was* the deception — Great Zimbabwe's censored archaeology, the Bennewitz disinformation campaign — the file says that too.
+
+Log what you find. Check it against the record. Bring receipts. That's the whole religion.
+
+Imagery © Esri, Maxar, Earthstar Geographics, and the GIS User Community.

@@ -654,7 +654,7 @@ async function loadIntel(place) {
     + `&coordinates=${encodeURIComponent(place.lat.toFixed(5) + ", " + place.lng.toFixed(5))}`;
   sa.target = "_blank";
   sa.rel = "noopener";
-  sa.textContent = "Spotted something odd here? Submit it to the atlas →";
+  sa.textContent = "Log a find or an inconsistency here →";
   submit.appendChild(sa);
   frag.appendChild(submit);
 
@@ -757,15 +757,62 @@ function visitPin(pin) {
   presentPlace(place, ++state.generation);
 }
 
+// The community field log: every find and inconsistency people have filed,
+// public and trackable (GitHub issues wearing a trench coat).
+async function loadFieldLog(container) {
+  const status = document.createElement("p");
+  status.className = "intel-loading";
+  status.textContent = "Checking the log…";
+  container.appendChild(status);
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/darcy0408/drift-screensaver/issues?labels=spot-submission&state=open&per_page=15`
+    );
+    if (!res.ok) throw new Error();
+    const entries = await res.json();
+    status.remove();
+    if (!entries.length) {
+      const p = document.createElement("p");
+      p.className = "intel-loading";
+      p.textContent = "No entries yet — open a spot's MORE INTEL and file the first one.";
+      container.appendChild(p);
+      return;
+    }
+    const ul = document.createElement("ul");
+    for (const it of entries) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = it.html_url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = it.title.replace(/^\[Spot\]\s*/i, "");
+      const n = document.createElement("span");
+      n.className = "dist";
+      n.textContent = it.comments ? `${it.comments} 💬` : "";
+      li.append(a, n);
+      ul.appendChild(li);
+    }
+    container.appendChild(ul);
+  } catch {
+    status.textContent = "Log unreachable right now.";
+  }
+}
+
 function renderPassport() {
   const content = $("passport-content");
   content.innerHTML = "";
   const pins = getPins();
+
+  const logHead = document.createElement("h3");
+  logHead.textContent = "Community field log";
+  const logBox = document.createElement("div");
+  loadFieldLog(logBox);
+
   if (!pins.length) {
     const p = document.createElement("p");
     p.className = "intel-loading";
     p.textContent = "Nothing pinned yet — press P when somewhere is worth keeping.";
-    content.appendChild(p);
+    content.append(p, logHead, logBox);
     return;
   }
   const ul = document.createElement("ul");
@@ -792,7 +839,7 @@ function renderPassport() {
     li.append(a, del);
     ul.appendChild(li);
   }
-  content.appendChild(ul);
+  content.append(ul, logHead, logBox);
 }
 
 function togglePassport() {

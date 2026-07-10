@@ -897,6 +897,22 @@
     list-style: none;
   }
 
+  #passport-content h3 {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 1.6em 0 0.6em;
+  }
+
+  #passport-content .dist {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+
   #passport-content li {
     display: flex;
     justify-content: space-between;
