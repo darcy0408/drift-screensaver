@@ -400,6 +400,119 @@ window.PLACES = [
       lore: "Here the cover-up was real and ran the other way: Rhodesia's government censored archaeologists and museum displays into the 1970s to deny the city's African origin, because the truth undermined the colony's founding story.",
       truth: "Excavation settled it long ago: built by ancestors of the Shona from the 11th century, hub of a gold trade reaching China (Ming porcelain in the ruins). The independent nation took its name from the monument in 1980 — the rare case file where the conspiracy theory was the official history."
     } },
+  // ---------------- The deep files ----------------
+  { id: "dulce", name: "Archuleta Mesa", region: "Dulce, New Mexico, USA", lat: 36.9614, lng: -106.9836, zoom: 13, tz: "America/Denver", wiki: "Dulce_Base", category: "mystery",
+    blurb: "The mesa with seven alleged basement levels.",
+    dossier: {
+      file: "CF-042",
+      claim: "A joint human-alien facility burrowed under the mesa — seven levels deep, with 'Nightmare Hall' on level six. The foundational underground-base legend.",
+      lore: "Born from physicist Paul Bennewitz, who intercepted odd signals near Kirtland AFB in the late 1970s and mapped them to Dulce. Declassified files later showed Air Force counterintelligence deliberately fed him fabricated UFO material to discredit what he was really hearing.",
+      truth: "The confirmed conspiracy is the disinformation campaign itself — the government really did gaslight a private citizen to protect classified (and mundane) programs. Cattle mutilations nearby were real enough for an FBI file; the basement remains unexcavated by anyone with a permit."
+    } },
+  { id: "oak-island", name: "Oak Island", region: "Nova Scotia, Canada", lat: 44.5136, lng: -64.2911, zoom: 14.6, tz: "America/Halifax", wiki: "Oak_Island_mystery", category: "mystery",
+    blurb: "The 230-year hole in the ground that eats fortunes.",
+    dossier: {
+      file: "CF-043",
+      claim: "The Money Pit: booby-trapped flood tunnels guarding Templar treasure, Shakespeare's manuscripts, or the Ark of the Covenant — pick your century's favorite.",
+      lore: "Since 1795, six treasure hunters have died and millions have been spent (Franklin Roosevelt dug here as a young man). Every excavation floods at depth, which believers read as 17th-century engineering and geologists read as limestone doing limestone things.",
+      truth: "Nothing verifiable has ever come up — a few old coins, timbers, and endless reality-TV seasons. The island's true machine converts hope into excavation invoices, and it has run flawlessly for two centuries."
+    } },
+  { id: "roswell", name: "Roswell", region: "New Mexico, USA", lat: 33.3016, lng: -104.5306, zoom: 13, tz: "America/Denver", wiki: "Roswell_incident", category: "mystery",
+    blurb: "Where the word 'UFO' got its capital letters.",
+    dossier: {
+      file: "CF-044",
+      claim: "July 1947: a flying disc crashes on a ranch, the Army announces it has recovered one — then retracts it the next day. Bodies, wreckage with hieroglyphs, and the mother of all cover-ups.",
+      lore: "The Army's own press release said 'flying disc' before the weather-balloon correction, and that 24-hour reversal fueled 75 years of lore. Witnesses multiplied for decades; deathbed confessions still surface.",
+      truth: "The 1994 Air Force report identified Project Mogul — a then-classified balloon array built to listen for Soviet nuclear tests, which explains both the strange debris and the panicked walk-back. A real secret was covered up; it just wasn't from another planet."
+    } },
+  { id: "point-pleasant", name: "Point Pleasant", region: "West Virginia, USA", lat: 38.8445, lng: -82.1371, zoom: 14, tz: "America/New_York", wiki: "Mothman", category: "mystery",
+    blurb: "The Mothman's town, and the bridge that fell.",
+    dossier: {
+      file: "CF-045",
+      claim: "For thirteen months in 1966-67 a winged figure with red eyes stalked this town — then the Silver Bridge collapsed into the Ohio River, killing 46, and the sightings stopped. Omen, or cause?",
+      lore: "Over a hundred witnesses reported the creature near the abandoned TNT works north of town. John Keel's 'The Mothman Prophecies' wove in Men in Black and prophecy; the town now has a festival, a museum, and a chrome statue.",
+      truth: "The bridge fell from a single corroded eyebar — a documented engineering failure that changed US bridge inspection law. The creature was plausibly a large owl or sandhill crane plus panic contagion; the grief that needed it to mean something was entirely real."
+    } },
+  { id: "dyatlov", name: "Dyatlov Pass", region: "Ural Mountains, Russia", lat: 61.7547, lng: 59.4300, zoom: 12, tz: "Asia/Yekaterinburg", wiki: "Dyatlov_Pass_incident", category: "mystery",
+    blurb: "Nine experienced hikers, one shredded tent, no witnesses.",
+    dossier: {
+      file: "CF-046",
+      claim: "February 1959: nine hikers cut their way OUT of their own tent and fled barefoot into -25°C darkness. Crushed ribs with no external wounds, a missing tongue, traces of radioactivity — explanations range from infrasound to Yeti to secret weapons tests.",
+      lore: "The Soviet inquiry closed with the immortal phrase 'a compelling natural force' and sealed the files. The pass now bears the group's leader's name, and every detail has spawned its own literature.",
+      truth: "A 2019-2021 Russian re-investigation and a Nature-published model point to a delayed slab avalanche — small, brutal, and enough to explain the injuries and the flight; the katabatic wind and rescue-era clumsiness explain most of the rest. 'Most' is doing some work in that sentence, which is why the file never quite closes."
+    } },
+  { id: "tunguska", name: "Tunguska", region: "Krasnoyarsk Krai, Siberia, Russia", lat: 60.8858, lng: 101.8942, zoom: 10, tz: "Asia/Krasnoyarsk", wiki: "Tunguska_event", category: "mystery",
+    blurb: "The morning the sky exploded over Siberia.",
+    dossier: {
+      file: "CF-047",
+      claim: "June 30, 1908: a blast a thousand times Hiroshima flattens 80 million trees — with no crater and no fragments. Theories: antimatter, a black hole, Tesla's death ray, a crashed ship.",
+      lore: "The forest fell in a perfect radial butterfly pattern, trees at the epicenter left standing and stripped. It took 19 years for the first expedition to even reach the site, and they found no meteorite at all.",
+      truth: "A stony asteroid ~50-60 m wide airburst 5-10 km up: all shockwave, no impactor — which is exactly what the treefall pattern models predict. The unsettling part is statistical: objects that size arrive every few centuries, and 1908 Siberia was a very lucky address."
+    } },
+  { id: "camp-hero", name: "Camp Hero", region: "Montauk, New York, USA", lat: 41.0637, lng: -71.8674, zoom: 14.6, tz: "America/New_York", wiki: "Camp_Hero_State_Park", category: "mystery",
+    blurb: "The radar dish that inspired Stranger Things.",
+    dossier: {
+      file: "CF-048",
+      claim: "The Montauk Project: time travel, psychic children, and a summoned monster in the bunkers beneath this Air Force station — the mythos Stranger Things was openly built on.",
+      lore: "The SAGE radar dish still looms over the dunes, too expensive to demolish. The legend began with Preston Nichols' 1992 books 'recovering memories' of experiments; believers connect it to the Philadelphia Experiment lore.",
+      truth: "It's a Cold War radar station, decommissioned in 1981 and now a state park; the 'sealed underground levels' are documented utility spaces. No evidence of anything stranger — though standing under that dead dish at dusk, you understand why the story chose this spot."
+    } },
+  { id: "nan-madol", name: "Nan Madol", region: "Pohnpei, Micronesia", lat: 6.8441, lng: 158.3348, zoom: 15, tz: "Pacific/Pohnpei", wiki: "Nan_Madol", category: "mystery",
+    blurb: "A megalithic city floating on a coral reef.",
+    dossier: {
+      file: "CF-049",
+      claim: "100 artificial islets built from 750,000 tonnes of basalt 'logs' — columns weighing up to 50 tonnes, moved across open water by a culture with no wheels, metal, or pulleys. Local legend says sorcerer-twins flew the stones; lost-continent theorists say it's a remnant of sunken Lemuria/Mu.",
+      lore: "The name means 'spaces between' — canals thread every islet. H.P. Lovecraft borrowed it as inspiration for sunken R'lyeh. Locals long avoided the ruins after dark; the paramount chiefs' bones lie in the largest tomb.",
+      truth: "Radiocarbon puts construction from ~1180 CE by the Saudeleur dynasty; the basalt is local columnar lava, likely rafted and levered into place — an astonishing but human feat nobody has fully replicated. No continent sank; a reef kingdom simply out-built our expectations of it."
+    } },
+  { id: "easter-island", name: "Rano Raraku", region: "Rapa Nui (Easter Island), Chile", lat: -27.1247, lng: -109.2886, zoom: 14, tz: "Pacific/Easter", wiki: "Easter_Island", category: "mystery",
+    blurb: "The quarry where the moai were born — and abandoned mid-step.",
+    dossier: {
+      file: "CF-050",
+      claim: "Nearly 900 stone giants on the world's most isolated island, some 80 tonnes, moved kilometres without wheels or large timber — ancient-astronaut theory's founding exhibit alongside Nazca.",
+      lore: "Almost half the moai never left this volcanic quarry; dozens stand buried to their shoulders on its slopes, and unfinished giants still lie fused to the bedrock. Oral tradition insists the statues 'walked.'",
+      truth: "Experiments proved the tradition literally right: teams with three ropes can 'walk' a standing moai down a road, refrigerator-style — the roadside fallen statues match walking accidents, not sled failures. The real cautionary tale (deforestation, collapse) is debated too: rats and European contact may deserve more blame than the islanders ever did."
+    } },
+  { id: "cheyenne-mountain", name: "Cheyenne Mountain", region: "Colorado, USA", lat: 38.7442, lng: -104.8464, zoom: 13.5, tz: "America/Denver", wiki: "Cheyenne_Mountain_Complex", category: "mystery",
+    blurb: "The hollowed-out mountain from every apocalypse movie.",
+    dossier: {
+      file: "CF-051",
+      claim: "NORAD's city inside a granite mountain — and per the lore, the place the government will ride out whatever it isn't telling us about, with tunnels connecting to Denver Airport's basement.",
+      lore: "Fifteen buildings on giant springs behind 25-tonne blast doors, under 600 m of granite. It's Stargate Command in fiction and half of Hollywood's WOPR-style war rooms. The Denver-tunnel myth ties two Colorado legends into one.",
+      truth: "Very real and semi-retired: NORAD moved daily operations to Peterson SFB in 2008, keeping the mountain as a hardened alternate. It tracks Santa every Christmas, which is either charming transparency or exactly what a mountain hiding something would do."
+    } },
+  { id: "wright-patterson", name: "Wright-Patterson AFB", region: "Dayton, Ohio, USA", lat: 39.8262, lng: -84.0483, zoom: 13, tz: "America/New_York", wiki: "Wright-Patterson_Air_Force_Base", category: "mystery",
+    blurb: "Home of the legendary Hangar 18.",
+    dossier: {
+      file: "CF-052",
+      claim: "Where the Roswell wreckage — and its occupants — allegedly went: 'Hangar 18' and the Blue Room, the Smithsonian of crashed saucers.",
+      lore: "Senator Barry Goldwater, a two-star general, asked to see the Blue Room and was refused by Curtis LeMay in language he politely declined to repeat — a genuine anecdote believers treasure. Project Blue Book, the real UFO investigation, was headquartered here.",
+      truth: "Blue Book's 12,618 case files are declassified and public (701 remain 'unidentified'). Foreign Technology Division here really did reverse-engineer captured hardware — MiGs, not motherships. There is no building numbered Hangar 18."
+    } },
+  { id: "rendlesham", name: "Rendlesham Forest", region: "Suffolk, England, UK", lat: 52.0928, lng: 1.4386, zoom: 13.5, tz: "Europe/London", wiki: "Rendlesham_Forest_incident", category: "mystery",
+    blurb: "Britain's Roswell, with a memo on file.",
+    dossier: {
+      file: "CF-053",
+      claim: "December 1980: US airmen from the twin NATO bases follow lights into the forest, touch a landed triangular craft, and the deputy base commander records binary telepathy and radiation readings — over multiple nights.",
+      lore: "Unique among UFO cases: an official Air Force memo (the Halt Memo) and Colonel Halt's own dictaphone tape from the woods exist and are public. The forest now has a marked 'UFO Trail' with a fiberglass craft at the landing site.",
+      truth: "The lighthouse at Orfordness pulses on the exact bearing the tape describes, the 'radiation' was within background norms, and sleep-deprived security police in Cold War darkness fill in the rest — say skeptics. Halt, a career officer, maintained his account until his death. Both files stay open."
+    } },
+  { id: "pine-gap", name: "Pine Gap", region: "Northern Territory, Australia", lat: -23.7990, lng: 133.7370, zoom: 13.8, tz: "Australia/Darwin", wiki: "Pine_Gap", category: "mystery",
+    blurb: "Australia's Area 51, wearing golf-ball radomes.",
+    dossier: {
+      file: "CF-054",
+      claim: "The southern hemisphere's most secret base: officially a 'joint defence space research facility,' unofficially everything from a CIA drone nerve center to a deep-underground alien archive.",
+      lore: "The white radomes in the desert are airspace-restricted even to Australian prime ministers' planes, and the facility helped trigger the dismissal of one Australian government in 1975 — a genuine constitutional crisis with Pine Gap in the background.",
+      truth: "Declassified histories and leaked documents describe a US-Australian satellite ground station intercepting signals and cueing military operations worldwide — no aliens required for it to be genuinely consequential and genuinely secret."
+    } },
+  { id: "varosha", name: "Varosha", region: "Famagusta, Cyprus", lat: 35.1085, lng: 33.9536, zoom: 14.5, tz: "Asia/Nicosia", wiki: "Varosha", category: "mystery",
+    blurb: "A resort city frozen mid-breakfast since 1974.",
+    dossier: {
+      file: "CF-055",
+      claim: "Not a theory — a real forbidden zone: a beach resort that hosted Elizabeth Taylor, evacuated in a single day and fenced off by an army for fifty years. Urban lore says car dealerships still hold 1974 models and tables are still set.",
+      lore: "For decades the only humans inside were UN patrols and Turkish soldiers; photographers who snuck in described trees growing through hotel lobbies. Partial 'reopening' began in 2020 — boardwalks through the decay.",
+      truth: "All documented history: the Turkish invasion of Cyprus split the island, and Varosha became a bargaining chip nobody cashed. UN Resolution 550 still forbids resettlement by anyone but its original inhabitants — so the ghost city remains evidence, not mystery."
+    } },
   { id: "coral-castle", name: "Coral Castle", region: "Florida, USA", lat: 25.5003, lng: -80.4444, zoom: 16.2, tz: "America/New_York", wiki: "Coral_Castle", category: "mystery",
     blurb: "1,100 tons of stone, moved by one man, alone, at night.",
     dossier: {
