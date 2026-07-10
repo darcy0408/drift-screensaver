@@ -235,14 +235,35 @@
     backdrop-filter: blur(16px);
   }
 
+  .wayback-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15em;
+    min-inline-size: 9em;
+    max-inline-size: 15em;
+  }
+
   #wayback-label {
     font-family: var(--font-mono);
     font-size: 0.72rem;
     letter-spacing: 0.18em;
     color: var(--accent);
-    min-inline-size: 6.5em;
     text-align: center;
   }
+
+  #wayback-source {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-inline-size: 100%;
+  }
+
+  #wayback-source:empty { display: none; }
 
   #wayback-slider {
     flex: 1;

@@ -254,10 +254,14 @@ function imageryAge(date) {
   return `${(days / 365.25).toFixed(1)} years old`;
 }
 
-async function fetchImageryInfo(lat, lng) {
+const LIVE_IMAGERY_SERVICE = "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer";
+
+// Works against the live World Imagery service and against any Wayback
+// release's metadata service — the older ones use SRC_* field names.
+async function fetchImageryInfo(lat, lng, service = LIVE_IMAGERY_SERVICE) {
   const b = map.getBounds();
   const c = map.getContainer();
-  const url = "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/identify"
+  const url = `${service}/identify`
     + `?geometry=${lng.toFixed(6)},${lat.toFixed(6)}&geometryType=esriGeometryPoint&sr=4326`
     + `&tolerance=1&mapExtent=${b.getWest()},${b.getSouth()},${b.getEast()},${b.getNorth()}`
     + `&imageDisplay=${Math.round(c.clientWidth)},${Math.round(c.clientHeight)},96&returnGeometry=false&f=json`;
@@ -266,13 +270,15 @@ async function fetchImageryInfo(lat, lng) {
   const data = await res.json();
   const attrs = data.results && data.results[0] && data.results[0].attributes;
   if (!attrs) return null;
-  const raw = String(attrs["DATE (YYYYMMDD)"] || "");
+  const raw = String(attrs["DATE (YYYYMMDD)"] || attrs.SRC_DATE || "");
   if (!/^\d{8}$/.test(raw)) return null;
   const date = new Date(+raw.slice(0, 4), +raw.slice(4, 6) - 1, +raw.slice(6, 8));
+  const resolution = attrs["RESOLUTION (M)"] || attrs.SRC_RES;
   return {
     date,
-    sat: satName(attrs.DESCRIPTION),
-    res: attrs["RESOLUTION (M)"] ? `${attrs["RESOLUTION (M)"]} m/px` : null,
+    sat: satName(attrs.DESCRIPTION || attrs.SRC_DESC),
+    res: resolution ? `${resolution} m/px` : null,
+    provider: attrs.SOURCE || attrs.NICE_DESC || null,
   };
 }
 
@@ -953,6 +959,24 @@ const waybackUrl = n =>
 const fmtWaybackDate = d =>
   new Date(d + "T00:00:00").toLocaleDateString("en-US", { month: "short", year: "numeric" }).toUpperCase();
 
+// "Who took this?" for the archived view under the map center.
+let waybackSrcSeq = 0;
+
+async function updateWaybackSource() {
+  const el = $("wayback-source");
+  if (waybackIdx === null || !WB[waybackIdx] || !WB[waybackIdx].m) { el.textContent = ""; return; }
+  const seq = ++waybackSrcSeq;
+  el.textContent = "…";
+  const c = map.getCenter();
+  const info = await fetchImageryInfo(c.lat, c.lng,
+    `https://metadata.maptiles.arcgis.com/arcgis/rest/services/World_Imagery_Metadata_${WB[waybackIdx].m}/MapServer`
+  ).catch(() => null);
+  if (seq !== waybackSrcSeq) return;
+  if (!info) { el.textContent = ""; return; }
+  const when = info.date.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+  el.textContent = ["shot " + when, info.sat, info.provider].filter(Boolean).join(" · ");
+}
+
 function setWayback(idx) {
   const src = map.getSource("esri");
   if (!src) return;
@@ -960,11 +984,118 @@ function setWayback(idx) {
     waybackIdx = null;
     src.setTiles([ESRI_TILES]);
     $("wayback-label").textContent = "TODAY";
+    $("wayback-source").textContent = "";
   } else {
     waybackIdx = idx;
     src.setTiles([waybackUrl(WB[idx].n)]);
     $("wayback-label").textContent = fmtWaybackDate(WB[idx].d);
+    updateWaybackSource();
   }
+}
+
+// one shared timer so opening the panel and map movement can't both kick
+// off scans at once
+let waybackMoveTimer;
+function scheduleWaybackScan(delay) {
+  clearTimeout(waybackMoveTimer);
+  waybackMoveTimer = setTimeout(() => {
+    if ($("wayback").hidden) return;
+    if (waybackIdx !== null) updateWaybackSource();
+    scanWaybackChanges();
+  }, delay);
+}
+
+map.on("moveend", () => {
+  if (!$("wayback").hidden) scheduleWaybackScan(500);
+});
+
+/* The slider only offers releases where THIS view actually changed.
+   The tilemap endpoint reports which release truly serves a tile
+   ("select"), so walking newest→oldest skips every no-change release. */
+
+const tileXY = (lat, lng, z) => {
+  const n = 2 ** z;
+  const x = Math.floor(((lng + 180) / 360) * n);
+  const rad = (lat * Math.PI) / 180;
+  const y = Math.floor(((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n);
+  const clamp = v => Math.min(Math.max(v, 0), n - 1);
+  return { x: clamp(x), y: clamp(y), z };
+};
+
+let sliderMap = WB.map((_, i) => i); // slider position -> WB index; last position = TODAY
+let wbScanSeq = 0;
+
+async function computeLocalChanges() {
+  const seq = ++wbScanSeq;
+  const c = map.getCenter();
+  const { x, y, z } = tileXY(c.lat, c.lng, Math.max(3, Math.min(Math.round(map.getZoom()), 16)));
+  const byN = new Map(WB.map((r, i) => [r.n, i]));
+  const found = new Set();
+  let idx = WB.length - 1;
+  let guard = 0;
+  while (idx >= 0 && guard++ < 60) {
+    let resp;
+    try {
+      const res = await fetch(
+        `https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tilemap/${WB[idx].n}/${z}/${y}/${x}`
+      );
+      if (!res.ok) break;
+      resp = await res.json();
+    } catch { return null; }
+    if (seq !== wbScanSeq) return null; // superseded by a newer scan
+    if (!resp || resp.valid === false || !resp.data || resp.data[0] !== 1) break;
+    const effIdx = byN.has(resp.select && resp.select[0]) ? byN.get(resp.select[0]) : idx;
+    found.add(effIdx);
+    idx = effIdx - 1;
+  }
+  return seq === wbScanSeq ? [...found].sort((a, b) => a - b) : null;
+}
+
+function rebuildWaybackSlider() {
+  const slider = $("wayback-slider");
+  slider.max = String(sliderMap.length);
+  let pos = sliderMap.length;
+  if (waybackIdx !== null) {
+    const at = sliderMap.findIndex(i => i >= waybackIdx);
+    pos = at === -1 ? sliderMap.length - 1 : at;
+  }
+  slider.value = String(pos);
+}
+
+async function scanWaybackChanges() {
+  $("wayback-label").textContent = "SCANNING…";
+  const scanSeq = wbScanSeq + 1; // computeLocalChanges will bump to this
+  const c = map.getCenter();
+  let local = await computeLocalChanges();
+  if ($("wayback").hidden) return;
+
+  // a tile can change at its edges while the photo at the view's center
+  // stays the same — collapse runs that share a center capture date
+  if (local && local.length > 1) {
+    const infos = await Promise.all(local.map(i => WB[i].m
+      ? fetchImageryInfo(c.lat, c.lng,
+          `https://metadata.maptiles.arcgis.com/arcgis/rest/services/World_Imagery_Metadata_${WB[i].m}/MapServer`
+        ).catch(() => null)
+      : Promise.resolve(null)));
+    if (wbScanSeq !== scanSeq || $("wayback").hidden) return; // superseded meanwhile
+    const refined = [];
+    let prevKey = "__none";
+    local.forEach((wbIdx, k) => {
+      const key = infos[k] ? `${infos[k].date.getTime()}|${infos[k].sat || ""}` : `unknown-${k}`;
+      if (key !== prevKey) { refined.push(wbIdx); prevKey = key; }
+    });
+    local = refined;
+  }
+
+  if (local && local.length) {
+    sliderMap = local;
+    toast(`${local.length} DISTINCT IMAGES OF THIS VIEW — DRAG THE SLIDER`);
+  } else {
+    sliderMap = WB.map((_, i) => i); // scan failed — fall back to every release
+    toast("TIME MACHINE — DRAG THE SLIDER AT THE BOTTOM OF THE SCREEN");
+  }
+  rebuildWaybackSlider();
+  $("wayback-label").textContent = waybackIdx === null ? "TODAY" : fmtWaybackDate(WB[waybackIdx].d);
 }
 
 function openWayback() {
@@ -973,11 +1104,10 @@ function openWayback() {
   closeIntel();
   closePassport();
   if (state.playing && !state.transitioning) setPlaying(false);
-  const slider = $("wayback-slider");
-  slider.max = String(WB.length);
-  slider.value = waybackIdx === null ? String(WB.length) : String(waybackIdx);
+  sliderMap = WB.map((_, i) => i);
+  rebuildWaybackSlider();
   $("wayback").hidden = false;
-  toast("TIME MACHINE — DRAG THE SLIDER AT THE BOTTOM OF THE SCREEN");
+  scheduleWaybackScan(50);
 }
 
 function closeWayback() {
@@ -991,10 +1121,11 @@ function toggleWayback() {
 
 let waybackTimer;
 $("wayback-slider").addEventListener("input", e => {
-  const idx = +e.target.value;
-  $("wayback-label").textContent = idx >= WB.length ? "TODAY" : fmtWaybackDate(WB[idx].d);
+  const pos = +e.target.value;
+  const idx = pos >= sliderMap.length ? null : sliderMap[pos];
+  $("wayback-label").textContent = idx === null ? "TODAY" : fmtWaybackDate(WB[idx].d);
   clearTimeout(waybackTimer); // don't reload tiles for every pixel of drag
-  waybackTimer = setTimeout(() => setWayback(idx >= WB.length ? null : idx), 150);
+  waybackTimer = setTimeout(() => setWayback(idx), 150);
 });
 
 $("wayback-close").addEventListener("click", closeWayback);
