@@ -466,6 +466,16 @@
 
   .imagery:empty { display: none; }
 
+  .credit {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    color: oklch(from var(--accent) l c h / 0.75);
+    text-transform: uppercase;
+  }
+
+  .credit:empty { display: none; }
+
   .card-actions {
     display: flex;
     flex-wrap: wrap;

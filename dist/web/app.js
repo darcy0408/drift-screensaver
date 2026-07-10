@@ -78,6 +78,7 @@ const map = new maplibregl.Map({
   minZoom: 1,
   maxZoom: 18.5,
   keyboard: false,
+  preserveDrawingBuffer: true, // lets EXPORT CARD snapshot the map
   attributionControl: { compact: true },
 });
 
@@ -181,12 +182,14 @@ function updateHUD(place) {
       $("dossier-lore").textContent = place.dossier.lore;
       $("dossier-truth").textContent = place.dossier.truth;
       $("dossier-coords").textContent = fmtCoords(place.lat, place.lng);
+      $("dossier-credit").textContent = place.credit ? `FILED BY ${place.credit}` : "";
       $("dossier-pole").hidden = place.id !== "agartha";
       showCard(dossier);
     } else {
       $("place-region").textContent = place.region;
       $("place-name").textContent = place.name;
       $("place-blurb").textContent = place.blurb || "";
+      $("place-credit").textContent = place.credit ? `FILED BY ${place.credit}` : "";
       $("place-coords").textContent = fmtCoords(place.lat, place.lng);
       showCard(card);
     }
@@ -798,10 +801,62 @@ async function loadFieldLog(container) {
   }
 }
 
+// Fresh passes: which atlas places have the newest photography right now.
+// Samples the atlas and asks Esri for capture dates; cached for 12 hours.
+async function loadFreshPasses(container) {
+  const status = document.createElement("p");
+  status.className = "intel-loading";
+  container.appendChild(status);
+  const cached = JSON.parse(localStorage.getItem("drift-fresh") || "null");
+  let items = cached && Date.now() - cached.at < 12 * 3600 * 1000 ? cached.items : null;
+  if (!items) {
+    status.textContent = "Checking the newest imagery…";
+    const sample = shuffled(PLACES).slice(0, 14);
+    const infos = await Promise.all(sample.map(p =>
+      fetchImageryInfo(p.lat, p.lng)
+        .then(i => i && { id: p.id, name: p.name, lat: p.lat, lng: p.lng, t: i.date.getTime(), sat: i.sat })
+        .catch(() => null)));
+    items = infos.filter(Boolean).sort((a, b) => b.t - a.t).slice(0, 7);
+    if (items.length) localStorage.setItem("drift-fresh", JSON.stringify({ at: Date.now(), items }));
+  }
+  status.remove();
+  if (!items || !items.length) {
+    const p = document.createElement("p");
+    p.className = "intel-loading";
+    p.textContent = "Imagery dates unreachable right now.";
+    container.appendChild(p);
+    return;
+  }
+  const ul = document.createElement("ul");
+  for (const it of items) {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = "#";
+    a.textContent = it.name;
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      const place = PLACES.find(p => p.id === it.id);
+      if (place) visitPin(place);
+    });
+    const when = document.createElement("span");
+    when.className = "dist";
+    when.textContent = new Date(it.t).toLocaleDateString("en-US", { month: "short", year: "numeric" })
+      + (it.sat ? ` · ${it.sat}` : "");
+    li.append(a, when);
+    ul.appendChild(li);
+  }
+  container.appendChild(ul);
+}
+
 function renderPassport() {
   const content = $("passport-content");
   content.innerHTML = "";
   const pins = getPins();
+
+  const freshHead = document.createElement("h3");
+  freshHead.textContent = "Fresh passes — newest imagery in the atlas";
+  const freshBox = document.createElement("div");
+  loadFreshPasses(freshBox);
 
   const logHead = document.createElement("h3");
   logHead.textContent = "Community field log";
@@ -812,7 +867,7 @@ function renderPassport() {
     const p = document.createElement("p");
     p.className = "intel-loading";
     p.textContent = "Nothing pinned yet — press P when somewhere is worth keeping.";
-    content.append(p, logHead, logBox);
+    content.append(p, freshHead, freshBox, logHead, logBox);
     return;
   }
   const ul = document.createElement("ul");
@@ -839,7 +894,7 @@ function renderPassport() {
     li.append(a, del);
     ul.appendChild(li);
   }
-  content.append(ul, logHead, logBox);
+  content.append(ul, freshHead, freshBox, logHead, logBox);
 }
 
 function togglePassport() {
@@ -918,6 +973,7 @@ document.addEventListener("keydown", e => {
     case "r": case "R": setMode("random"); break;
     case "g": case "G": setMode("golden"); break;
     case "v": case "V": togglePassport(); break;
+    case "x": case "X": toggleForts(); break;
     case "l": case "L": {
       state.labelsOn = !state.labelsOn;
       map.setLayoutProperty("labels", "visibility", state.labelsOn ? "visible" : "none");
@@ -1046,9 +1102,80 @@ map.on("click", e => {
   if (state.playing) setPlaying(false);
   closeIntel();
   closeSearch();
+  // a catalogued star fort under the cursor beats a reverse geocode
+  if (map.getLayer("starfort-pts")) {
+    const hits = map.queryRenderedFeatures(e.point, { layers: ["starfort-pts"] });
+    if (hits.length) { presentFort(hits[0]); return; }
+  }
   dropMarker(e.lngLat);
   identifyClick(e.lngLat);
 });
+
+/* ---------------- THE CATALOGUE: 2,045 star forts ---------------- */
+
+let fortsOn = false;
+
+function addFortLayer() {
+  if (!window.STARFORTS || map.getSource("starforts")) return;
+  map.addSource("starforts", {
+    type: "geojson",
+    data: {
+      type: "FeatureCollection",
+      features: window.STARFORTS.map(f => ({
+        type: "Feature",
+        properties: { n: f.n },
+        geometry: { type: "Point", coordinates: f.c },
+      })),
+    },
+  });
+  map.addLayer({
+    id: "starfort-pts",
+    type: "circle",
+    source: "starforts",
+    layout: { visibility: "none" },
+    paint: {
+      "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 2.5, 8, 4.5, 14, 7],
+      "circle-color": "#e8c35a",
+      "circle-opacity": 0.85,
+      "circle-stroke-color": "#241a06",
+      "circle-stroke-width": 1.2,
+    },
+  });
+  map.on("mouseenter", "starfort-pts", () => { map.getCanvas().style.cursor = "pointer"; });
+  map.on("mouseleave", "starfort-pts", () => { map.getCanvas().style.cursor = ""; });
+}
+
+function toggleForts() {
+  if (!map.getLayer("starfort-pts")) { toast("CATALOGUE UNAVAILABLE"); return; }
+  fortsOn = !fortsOn;
+  map.setLayoutProperty("starfort-pts", "visibility", fortsOn ? "visible" : "none");
+  toast(fortsOn
+    ? `THE CATALOGUE — ${window.STARFORTS.length.toLocaleString("en")} STAR FORT SITES · BY COLM GIBNEY, STARFORTS.ORG`
+    : "CATALOGUE HIDDEN");
+}
+
+function presentFort(feat) {
+  const [lng, lat] = feat.geometry.coordinates;
+  const offset = Math.round(lng / 15);
+  const place = {
+    id: "fort-" + lat.toFixed(4) + "-" + lng.toFixed(4),
+    name: feat.properties.n,
+    region: "Star fort — THE CATALOGUE",
+    lat, lng,
+    zoom: Math.max(map.getZoom(), 14.5),
+    tz: `Etc/GMT${offset <= 0 ? "+" + (-offset) : "-" + offset}`,
+    wiki: null, category: "fort",
+    blurb: `One of ${(window.STARFORTS || []).length.toLocaleString("en")} star-fort sites logged by a worldwide community of volunteers.`,
+    credit: "THE CATALOGUE by Colm Gibney · starforts.org",
+  };
+  dropMarker({ lng, lat });
+  map.flyTo({ center: [lng, lat], zoom: place.zoom, duration: 2200 });
+  state.current = place;
+  updateClock();
+  updateHUD(place);
+  renderWeather(place);
+  map.once("moveend", () => { if (state.current === place) renderImagery(place); });
+}
 
 /* ---------------- Time machine (Esri Wayback) ---------------- */
 
@@ -1307,6 +1434,102 @@ $("pole-arctic").addEventListener("click", () => openPole("arctic"));
 $("pole-antarctic").addEventListener("click", () => openPole("antarctic"));
 $("pole-close").addEventListener("click", closePole);
 
+/* ---------------- Export card as image ---------------- */
+
+function wrapText(ctx, text, x, y, maxW, lineH, maxLines) {
+  const words = String(text).split(" ");
+  let line = "", lines = 0;
+  for (let i = 0; i < words.length; i++) {
+    const test = line ? line + " " + words[i] : words[i];
+    if (ctx.measureText(test).width > maxW && line) {
+      if (++lines >= maxLines) { ctx.fillText(line.replace(/.{3}$/, "…"), x, y); return y + lineH; }
+      ctx.fillText(line, x, y);
+      y += lineH;
+      line = words[i];
+    } else line = test;
+  }
+  if (line) { ctx.fillText(line, x, y); y += lineH; }
+  return y;
+}
+
+function exportCard() {
+  const place = state.current;
+  if (!place) return;
+  const W = 1200, H = 1500, M = 70;
+  const c = document.createElement("canvas");
+  c.width = W; c.height = H;
+  const x = c.getContext("2d");
+
+  // map snapshot, cover-fit into the top
+  const mh = place.dossier ? 640 : 860;
+  const mc = map.getCanvas();
+  const scale = Math.max(W / mc.width, mh / mc.height);
+  const sw = W / scale, sh = mh / scale;
+  x.fillStyle = "#0a0b10";
+  x.fillRect(0, 0, W, H);
+  x.drawImage(mc, (mc.width - sw) / 2, (mc.height - sh) / 2, sw, sh, 0, 0, W, mh);
+  const g = x.createLinearGradient(0, mh - 200, 0, mh + 10);
+  g.addColorStop(0, "rgba(10,11,16,0)");
+  g.addColorStop(1, "#0a0b10");
+  x.fillStyle = g;
+  x.fillRect(0, mh - 200, W, 220);
+
+  const amber = "#e8c35a", ink = "#f0ede4", dim = "#b9b4a6", faint = "#8a867a";
+  let y = mh + 40;
+  x.fillStyle = amber;
+  x.font = "600 24px Consolas, monospace";
+  x.fillText((place.dossier ? `CASE FILE ${place.dossier.file} — ` : "") + (place.region || "").toUpperCase(), M, y);
+  y += 66;
+  x.fillStyle = ink;
+  x.font = "300 64px 'Segoe UI', sans-serif";
+  y = wrapText(x, place.name, M, y, W - 2 * M, 70, 2) + 14;
+
+  if (place.dossier) {
+    for (const [label, text, lines] of [["THE CLAIM", place.dossier.claim, 4], ["THE LORE", place.dossier.lore, 4], ["THE RECORD", place.dossier.truth, 5]]) {
+      x.fillStyle = amber;
+      x.font = "600 20px Consolas, monospace";
+      x.fillText(label, M, y);
+      y += 34;
+      x.fillStyle = dim;
+      x.font = "26px 'Segoe UI', sans-serif";
+      y = wrapText(x, text, M, y, W - 2 * M, 36, lines) + 22;
+    }
+  } else if (place.blurb) {
+    x.fillStyle = dim;
+    x.font = "30px 'Segoe UI', sans-serif";
+    y = wrapText(x, place.blurb, M, y, W - 2 * M, 42, 4) + 20;
+  }
+
+  const meta = [$("place-weather").textContent || $("dossier-weather").textContent,
+    $("place-imagery").textContent || $("dossier-imagery").textContent,
+    fmtCoords(place.lat, place.lng)].filter(Boolean);
+  x.font = "22px Consolas, monospace";
+  for (const line of meta) {
+    x.fillStyle = faint;
+    x.fillText(line, M, y);
+    y += 34;
+  }
+
+  x.fillStyle = amber;
+  x.font = "600 22px Consolas, monospace";
+  x.fillText("DRIFT — AN AMBIENT ATLAS", M, H - 46);
+  x.fillStyle = faint;
+  const site = "darcy0408.github.io/drift-screensaver";
+  x.fillText(site, W - M - x.measureText(site).width, H - 46);
+
+  c.toBlob(blob => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `drift-${place.id}.png`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+    toast("CARD EXPORTED — CHECK YOUR DOWNLOADS");
+  }, "image/png");
+}
+
+$("place-export").addEventListener("click", exportCard);
+$("dossier-export").addEventListener("click", exportCard);
+
 /* ---------------- Sharing & coordinates ---------------- */
 
 const SITE_URL = "https://darcy0408.github.io/drift-screensaver/";
@@ -1536,6 +1759,7 @@ window.drift = { map, state, fetchWeather }; // debugging handle
 
 map.on("load", () => {
   console.log("[drift] map loaded, starting tour");
+  addFortLayer();
   const m = PARAMS.get("mode");
   if (["mystery", "random", "golden"].includes(m)) state.mode = m;
   if (PARAMS.get("labels") === "1") {

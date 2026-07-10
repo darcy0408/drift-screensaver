@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
   <!-- bump ?v= when style.css/app.js/locations.js change, or caches serve stale copies -->
-  <link rel="stylesheet" href="style.css?v=28">
+  <link rel="stylesheet" href="style.css?v=29">
 </head>
 <body>
   <div id="map"></div>
@@ -38,10 +38,12 @@
     <p id="place-blurb"></p>
     <p class="weather" id="place-weather"></p>
     <p class="imagery" id="place-imagery"></p>
+    <p class="credit" id="place-credit"></p>
     <p class="coords" id="place-coords"></p>
     <div class="card-actions">
       <button class="intel-btn" id="place-intel">MORE INTEL →</button>
       <button class="intel-btn" id="place-share">COPY LINK</button>
+      <button class="intel-btn" id="place-export">EXPORT CARD</button>
       <a class="intel-btn" id="place-gmaps" href="#" target="_blank" rel="noopener">G MAPS ↗</a>
     </div>
   </section>
@@ -64,10 +66,12 @@
     </dl>
     <p class="weather" id="dossier-weather"></p>
     <p class="imagery" id="dossier-imagery"></p>
+    <p class="credit" id="dossier-credit"></p>
     <p class="coords" id="dossier-coords"></p>
     <div class="card-actions">
       <button class="intel-btn" id="dossier-intel">MORE INTEL →</button>
       <button class="intel-btn" id="dossier-share">COPY LINK</button>
+      <button class="intel-btn" id="dossier-export">EXPORT CARD</button>
       <a class="intel-btn" id="dossier-gmaps" href="#" target="_blank" rel="noopener">G MAPS ↗</a>
       <button class="intel-btn" id="dossier-pole" hidden>TODAY'S POLE ↗</button>
     </div>
@@ -122,6 +126,7 @@
     <span><kbd>R</kbd> random</span>
     <span><kbd>G</kbd> golden hour</span>
     <span><kbd>L</kbd> labels</span>
+    <span><kbd>X</kbd> star forts</span>
     <span><kbd>P</kbd> pin</span>
     <span><kbd>F</kbd> fullscreen</span>
   </footer>
@@ -148,8 +153,9 @@
   <div id="toast" role="status" hidden></div>
 
   <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
-  <script src="locations.js?v=28"></script>
-  <script src="wayback-releases.js?v=28"></script>
-  <script src="app.js?v=28"></script>
+  <script src="locations.js?v=29"></script>
+  <script src="starforts.js?v=29"></script>
+  <script src="wayback-releases.js?v=29"></script>
+  <script src="app.js?v=29"></script>
 </body>
 </html>
