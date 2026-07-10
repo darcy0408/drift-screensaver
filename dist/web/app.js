@@ -1138,7 +1138,11 @@ map.on("click", e => {
   if (state.playing) setPlaying(false);
   closeIntel();
   closeSearch();
-  // a catalogued star fort under the cursor beats a reverse geocode
+  // catalogued pins under the cursor beat a reverse geocode
+  if (map.getLayer("blur-pts")) {
+    const blur = map.queryRenderedFeatures(e.point, { layers: ["blur-pts"] });
+    if (blur.length) { presentBlurSite(blur[0]); return; }
+  }
   if (map.getLayer("starfort-pts")) {
     const hits = map.queryRenderedFeatures(e.point, { layers: ["starfort-pts"] });
     if (hits.length) { presentFort(hits[0]); return; }
@@ -1181,13 +1185,69 @@ function addFortLayer() {
   map.on("mouseleave", "starfort-pts", () => { map.getCanvas().style.cursor = ""; });
 }
 
+function addBlurLayer() {
+  if (!window.BLURRED || map.getSource("blursites")) return;
+  map.addSource("blursites", {
+    type: "geojson",
+    data: {
+      type: "FeatureCollection",
+      features: window.BLURRED.map(f => ({
+        type: "Feature",
+        properties: { n: f.n, k: f.k, w: f.w },
+        geometry: { type: "Point", coordinates: f.c },
+      })),
+    },
+  });
+  map.addLayer({
+    id: "blur-pts",
+    type: "circle",
+    source: "blursites",
+    layout: { visibility: "none" },
+    paint: {
+      "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 3.5, 8, 6, 14, 9],
+      "circle-color": "#e05656",
+      "circle-opacity": 0.9,
+      "circle-stroke-color": "#2b0d0d",
+      "circle-stroke-width": 1.4,
+    },
+  });
+  map.on("mouseenter", "blur-pts", () => { map.getCanvas().style.cursor = "pointer"; });
+  map.on("mouseleave", "blur-pts", () => { map.getCanvas().style.cursor = ""; });
+}
+
 function toggleForts() {
-  if (!map.getLayer("starfort-pts")) { toast("CATALOGUE UNAVAILABLE"); return; }
+  if (!map.getLayer("starfort-pts")) { toast("OVERLAYS UNAVAILABLE"); return; }
   fortsOn = !fortsOn;
-  map.setLayoutProperty("starfort-pts", "visibility", fortsOn ? "visible" : "none");
+  const vis = fortsOn ? "visible" : "none";
+  map.setLayoutProperty("starfort-pts", "visibility", vis);
+  if (map.getLayer("blur-pts")) map.setLayoutProperty("blur-pts", "visibility", vis);
   toast(fortsOn
-    ? `THE CATALOGUE — ${window.STARFORTS.length.toLocaleString("en")} STAR FORT SITES · BY COLM GIBNEY, STARFORTS.ORG`
-    : "CATALOGUE HIDDEN");
+    ? `OVERLAYS — ${window.STARFORTS.length.toLocaleString("en")} STAR FORTS (AMBER) · ${(window.BLURRED || []).length} REPORTED BLUR SITES (RED)`
+    : "OVERLAYS HIDDEN");
+}
+
+function presentBlurSite(feat) {
+  const [lng, lat] = feat.geometry.coordinates;
+  const offset = Math.round(lng / 15);
+  const place = {
+    id: "blur-" + lat.toFixed(4) + "-" + lng.toFixed(4),
+    name: feat.properties.n,
+    region: `Reported obscured — ${feat.properties.k}`,
+    lat, lng,
+    zoom: Math.max(map.getZoom(), 14),
+    tz: `Etc/GMT${offset <= 0 ? "+" + (-offset) : "-" + offset}`,
+    wiki: encodeURIComponent(feat.properties.w),
+    category: "blur",
+    blurb: "Catalogued as blurred or degraded on at least one map provider. Compare with G MAPS and the time machine — then log what you actually see.",
+    credit: "Wikipedia — satellite censorship list",
+  };
+  dropMarker({ lng, lat });
+  map.flyTo({ center: [lng, lat], zoom: place.zoom, duration: 2200 });
+  state.current = place;
+  updateClock();
+  updateHUD(place);
+  renderWeather(place);
+  map.once("moveend", () => { if (state.current === place) renderImagery(place); });
 }
 
 function presentFort(feat) {
@@ -1805,6 +1865,7 @@ window.drift = { map, state, fetchWeather }; // debugging handle
 map.on("load", () => {
   console.log("[drift] map loaded, starting tour");
   addFortLayer();
+  addBlurLayer();
   const m = PARAMS.get("mode");
   if (["mystery", "random", "golden"].includes(m)) state.mode = m;
   if (PARAMS.get("labels") === "1") {
