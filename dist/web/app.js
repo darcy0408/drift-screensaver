@@ -988,8 +988,16 @@ document.addEventListener("keydown", e => {
   switch (e.key) {
     case "/": e.preventDefault(); toggleSearch(); break;
     case "h": case "H": toggleClean(); break;
-    case "ArrowRight": case "d": case "D": e.preventDefault(); panMap(PAN_STEP, 0); break;
-    case "ArrowLeft": case "a": case "A": e.preventDefault(); panMap(-PAN_STEP, 0); break;
+    case "ArrowRight": case "d": case "D":
+      e.preventDefault();
+      if (e.key.startsWith("Arrow") && !$("wayback").hidden) stepWayback(1);
+      else panMap(PAN_STEP, 0);
+      break;
+    case "ArrowLeft": case "a": case "A":
+      e.preventDefault();
+      if (e.key.startsWith("Arrow") && !$("wayback").hidden) stepWayback(-1);
+      else panMap(-PAN_STEP, 0);
+      break;
     case "ArrowUp": case "w": case "W": e.preventDefault(); panMap(0, -PAN_STEP); break;
     case "ArrowDown": case "s": case "S": e.preventDefault(); panMap(0, PAN_STEP); break;
     case "n": case "N": case "PageDown": advance(1); break;
@@ -1389,6 +1397,15 @@ $("wayback-slider").addEventListener("input", e => {
 });
 
 $("wayback-close").addEventListener("click", closeWayback);
+
+// arrow keys drive the timeline whenever it's open, regardless of focus
+function stepWayback(dir) {
+  const s = $("wayback-slider");
+  if (s.disabled) return;
+  const pos = Math.max(0, Math.min(+s.max, +s.value + dir));
+  s.value = String(pos);
+  s.dispatchEvent(new Event("input", { bubbles: true }));
+}
 
 /* ---------------- Escape, one place ----------------
    The .scr host forwards Esc here; panels close first, a second Esc
