@@ -258,20 +258,44 @@ const LIVE_IMAGERY_SERVICE = "https://server.arcgisonline.com/arcgis/rest/servic
 
 // Works against the live World Imagery service and against any Wayback
 // release's metadata service — the older ones use SRC_* field names.
+// The extent is synthesized at a close-up scale even when the map is zoomed
+// out: the metadata layers only answer at street-ish scales, and "what's the
+// sharp imagery of this spot" is the question we're really asking.
 async function fetchImageryInfo(lat, lng, service = LIVE_IMAGERY_SERVICE) {
-  const b = map.getBounds();
   const c = map.getContainer();
+  const w = Math.max(c.clientWidth, 400);
+  const h = Math.max(c.clientHeight, 300);
+  const z = Math.max(map.getZoom(), 14.5);
+  const degPerPx = 360 / (2 ** z * 512);
+  const lngSpan = (w * degPerPx) / 2;
+  const latSpan = ((h * degPerPx) / 2) * Math.cos((lat * Math.PI) / 180);
   const url = `${service}/identify`
     + `?geometry=${lng.toFixed(6)},${lat.toFixed(6)}&geometryType=esriGeometryPoint&sr=4326`
-    + `&tolerance=1&mapExtent=${b.getWest()},${b.getSouth()},${b.getEast()},${b.getNorth()}`
-    + `&imageDisplay=${Math.round(c.clientWidth)},${Math.round(c.clientHeight)},96&returnGeometry=false&f=json`;
+    + `&tolerance=1&mapExtent=${(lng - lngSpan).toFixed(6)},${(lat - latSpan).toFixed(6)},${(lng + lngSpan).toFixed(6)},${(lat + latSpan).toFixed(6)}`
+    + `&imageDisplay=${w},${h},96&returnGeometry=false&f=json&layers=all`;
   const res = await fetch(url);
   if (!res.ok) return null;
   const data = await res.json();
-  const attrs = data.results && data.results[0] && data.results[0].attributes;
+  const rows = (data.results || []).map(r => r.attributes).filter(Boolean);
+  if (!rows.length) return null;
+  // prefer the metadata row covering the CURRENT zoom (what's on screen);
+  // otherwise the sharpest available
+  const zNow = Math.round(map.getZoom());
+  const inRange = rows.filter(a => {
+    const lo = Number(a.MinMapLevel), hi = Number(a.MaxMapLevel);
+    return Number.isFinite(lo) && Number.isFinite(hi) && zNow >= lo && zNow <= hi;
+  });
+  const byRes = arr => arr.slice().sort((x, y) =>
+    (parseFloat(x["RESOLUTION (M)"] || x.SRC_RES) || 99) - (parseFloat(y["RESOLUTION (M)"] || y.SRC_RES) || 99));
+  const rest = rows.filter(a => !inRange.includes(a));
+  // first candidate with an actual capture date wins; undated mosaic rows
+  // (common at wide zooms) fall through to the dated high-res imagery
+  let attrs = null, raw = "";
+  for (const a of [...byRes(inRange), ...byRes(rest)]) {
+    const d = String(a["DATE (YYYYMMDD)"] || a.SRC_DATE || "");
+    if (/^\d{8}$/.test(d)) { attrs = a; raw = d; break; }
+  }
   if (!attrs) return null;
-  const raw = String(attrs["DATE (YYYYMMDD)"] || attrs.SRC_DATE || "");
-  if (!/^\d{8}$/.test(raw)) return null;
   const date = new Date(+raw.slice(0, 4), +raw.slice(4, 6) - 1, +raw.slice(6, 8));
   const resolution = attrs["RESOLUTION (M)"] || attrs.SRC_RES;
   return {
