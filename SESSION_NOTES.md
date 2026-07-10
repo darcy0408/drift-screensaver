@@ -1,6 +1,28 @@
 # Session notes
 
-## 2026-07-09 — Published DRIFT publicly, added search / time machine / imagery vintage, fixed screensaver caching and dismissal bugs
+## 2026-07-09 (later) — Search docked out of the way, landmark-aware clicks, time machine now steps only real image changes with full attribution
+**Done:** (each verified by puppeteer-core end-to-end tests against installed Chrome; all pushed and live on GitHub Pages)
+- Search panel redesigned: docks top-left under the ⌕ SEARCH chip in a compact ~22rem column (was parked across the screen center); results scroll within 42vh. All existing close paths kept.
+- Click identification is landmark-aware: reverse geocode at building level (Nominatim zoom 18 when map zoom ≥14) runs alongside a Wikipedia geosearch (300 m); the nearest article names the click when the geocoder only finds something minor (footpath/bench) or the article is <120 m away. Verified: SoFi Stadium, Bondi Beach, Belvedere Castle; `a.road` kept in the name fallback chain so plain street clicks still name the street. Landmark clicks set `place.wiki` so the intel panel shows the article.
+- Time machine overhauled per user feedback:
+  - Slider now offers ONLY releases where the current view actually changed. Implementation: walk the wayback tilemap endpoint (`.../tilemap/{release}/{z}/{y}/{x}` — its `select` field names the release that truly serves the tile) newest→oldest, then collapse runs sharing a capture date at the view center via per-release metadata identify. Shibuya: 195 slider stops → 11 distinct photos.
+  - Each stop shows attribution: "shot Jan 15, 2007 · Terracolor · CNES/Airbus DS" (release date in amber above it). Older metadata services use SRC_* field names; parser handles both schemas.
+  - Slider is disabled with a SCANNING… label until the change-point scan lands (~5-10 s) — sliding during the scan previously gave the old every-release behavior, which the user hit and reported.
+  - Scan re-runs (single shared debounce timer) when the map moves while the panel is open.
+- Imagery attribution now works at EVERY zoom: identify synthesizes a close-up extent (metadata layers only answer at street scales) with `layers=all`, picks the row covering the current zoom, and falls through undated wide-zoom mosaic rows to dated imagery. Before this, tour stops wider than ~z14 (most of them) showed no IMAGE line and no time machine source line — the user reasonably reported the feature as absent.
+- Slider got 2014/NOW end markers and a toast that says where the slider is.
+
+**Decisions:**
+- Wikipedia geosearch (free, CORS-open) chosen over Overpass for landmark naming — Nominatim's address chain simply does not contain enclosing features (verified: a Central Park lawn click returns memorial→road→quarter, no park).
+- The commit message rule learned the hard way: PowerShell 5.1 mangles embedded double quotes when passing args to git — keep commit messages free of `"`.
+
+**Next:**
+1. Launch package (still pending user decision): `?ll=` deep links + copy-link button, root README.md with GIF, OG preview tags, viral-safe geocoder.
+2. Parked: guess-the-country mode, Reddit via wrapper fetch, Mapillary, per-monitor modes.
+
+**Risks/unverified:**
+- Wayback tilemap `select` semantics are undocumented Esri internals — if the endpoint changes shape, the scan falls back to all 195 releases (with a visible toast).
+- Change-point scan latency (~5-10 s) depends on Esri latency; multi-monitor .scr and `/p` preview still untested on real hardware.
 **Done:** (all web features verified by puppeteer-core end-to-end tests driving installed Chrome; wrapper changes verified by live .scr runs and user testing)
 - Published: repo is public at https://github.com/darcy0408/drift-screensaver with GitHub Pages serving the app live at https://darcy0408.github.io/drift-screensaver/ — every push to `main` auto-updates the site. Desktop shortcut "DRIFT" on the user's desktop launches `dist\DriftSaver.scr /s` with a custom amber-globe icon (`dist\drift.ico`).
 - Search (`/` key or SEARCH chip): Nominatim geocoding, results list, flight sized by result bounding box. Explicit-submit only (Nominatim policy).
