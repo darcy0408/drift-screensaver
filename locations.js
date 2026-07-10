@@ -712,6 +712,22 @@ window.PLACES = [
       truth: "Today the site is visible in ordinary resolution — bunker doors, security rings and all — because blurring it advertised it. Modern US policy mostly stopped blurring domestic sites for exactly that reason. What protects it isn't pixels; it's the mesa."
     } },
 
+  { id: "little-st-james", name: "Little Saint James", region: "U.S. Virgin Islands", lat: 18.3001, lng: -64.8259, zoom: 15, tz: "America/Puerto_Rico", wiki: "Little_Saint_James,_U.S._Virgin_Islands", category: "mystery",
+    blurb: "Jeffrey Epstein's private island — the temple, the tunnels, the list.",
+    dossier: {
+      file: "CF-076",
+      claim: "Tunnels beneath the blue-striped 'temple,' hidden cameras in every room feeding a blackmail operation, and a client list that never surfaces — the internet's most-searched island.",
+      lore: "The gold dome vanished from the temple years before the island sold; contractors said hurricane, theorists said otherwise. Flight logs from Epstein's jets are public court exhibits. Locals reportedly avoided the place long before the world learned why. In 2023 a billionaire bought the island planning a resort — the time machine catches the estate being unmade.",
+      truth: "The documented record is damning without any tunnels: a 2008 conviction, 2019 federal trafficking charges, Ghislaine Maxwell convicted in 2021, and a $75M settlement from JPMorgan over facilitating his finances. His death was ruled suicide; the DOJ Inspector General's report documented the failed cameras and sleeping guards that keep half the country unconvinced. No verified 'client list' has ever been produced in court — the proven crimes required no hidden rooms, which is its own kind of horror."
+    } },
+  { id: "zorro-ranch", name: "Zorro Ranch", region: "Stanley, New Mexico, USA", lat: 35.1997, lng: -105.9711, zoom: 13.8, tz: "America/Denver", wiki: "Zorro_Ranch", category: "mystery",
+    blurb: "Epstein's 8,000-acre New Mexico spread, airstrip included.",
+    dossier: {
+      file: "CF-077",
+      claim: "The desert hub of the operation: a private airstrip far from witnesses, a mansion staffed for guests who never signed registers, and — per the strangest reporting — the site where Epstein imagined 'seeding' humanity with his DNA.",
+      lore: "The 'baby ranch' detail isn't internet fiction: The New York Times reported in 2019, from interviews with scientists he courted, that Epstein spoke of inseminating women at the ranch as a transhumanist project. The hilltop mansion, hangar, and runway are all plainly visible from orbit.",
+      truth: "Accusers' court filings place abuse at the ranch; New Mexico's attorney general opened an investigation, and the state ended its lease dealings tied to the property. Epstein died before any ranch-specific charges could be tried, and the property sold in 2023. What the satellite shows — isolation by design — is the one claim nobody disputes."
+    } },
   { id: "copenhagen-ring", name: "The Erased Ring", region: "Copenhagen, Denmark", lat: 55.6875, lng: 12.5780, zoom: 13.8, tz: "Europe/Copenhagen", wiki: "Fortifications_of_Copenhagen", category: "mystery",
     blurb: "A ring of star fortifications swallowed by the city — traceable in the shape of its ponds.",
     dossier: {
