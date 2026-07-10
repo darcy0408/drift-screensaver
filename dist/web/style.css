@@ -8,6 +8,13 @@
   inset: 0;
 }
 
+/* Also unlayered and non-negotiable: our display:flex on these panels beats
+   the UA's [hidden] { display:none }, so hidden panels rendered anyway —
+   the cause of every phantom search-bar sighting. hidden must always win. */
+:is(#search, #wayback, #passport, #intel-panel)[hidden] {
+  display: none;
+}
+
 /* Required Esri imagery credit — keep it, but let it wear the theme.
    Unlayered so it out-cascades MapLibre's own (later in source order). */
 .maplibregl-ctrl-attrib {
