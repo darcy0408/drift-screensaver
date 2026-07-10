@@ -112,6 +112,11 @@ const EXPEDITIONS = [
   ["water", "VANISHING WATER"],
   ["mega", "MEGAPROJECTS RISING"],
   ["blurred", "GOOGLE BLURRED IT"],
+  ["ice", "THE ICE CLOCK"],
+  ["pop", "CITIES THAT VANISH"],
+  ["reefs", "THE REEF BUILDERS"],
+  ["ears", "THE LISTENING POSTS"],
+  ["cog", "CONTINUITY OF GOVERNMENT"],
 ];
 
 function cycleExpedition() {

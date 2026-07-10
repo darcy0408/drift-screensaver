@@ -114,6 +114,74 @@ window.PLACES = [
   { id: "palm-jebel-ali", name: "Palm Jebel Ali", region: "Dubai, UAE", lat: 25.0055, lng: 54.9903, zoom: 12.3, tz: "Asia/Dubai", wiki: "Palm_Jebel_Ali", category: "human", exp: "mega",
     blurb: "The Palm's bigger sibling sat dead in the water for fifteen years after 2008 — a drowned skeleton. Construction restarted in 2023: watch a ghost project resurrect, pass by pass." },
 
+  // ---------------- Expedition: the ice clock ----------------
+  { id: "jakobshavn", name: "Jakobshavn Isbræ", region: "Ilulissat, Greenland", lat: 69.1717, lng: -49.5000, zoom: 10.5, tz: "America/Nuuk", wiki: "Jakobshavn_Glacier", category: "wonder", exp: "ice",
+    blurb: "The fastest glacier on Earth — it likely calved the Titanic's iceberg, and its front retreats so quickly the time machine reads like a countdown." },
+  { id: "columbia-glacier", name: "Columbia Glacier", region: "Prince William Sound, Alaska, USA", lat: 61.0800, lng: -147.0300, zoom: 10.5, tz: "America/Anchorage", wiki: "Columbia_Glacier_(Alaska)", category: "wonder", exp: "ice",
+    blurb: "Twenty kilometres of retreat in a generation, leaving a brand-new fjord where solid ice stood. Scrub T and watch the water win." },
+  { id: "mendenhall", name: "Mendenhall Glacier", region: "Juneau, Alaska, USA", lat: 58.4370, lng: -134.5470, zoom: 12, tz: "America/Juneau", wiki: "Mendenhall_Glacier", category: "wonder", exp: "ice",
+    blurb: "America's drive-up glacier, pulling away from its own visitor center — the lake at its snout grows in every release." },
+  { id: "perito-moreno", name: "Perito Moreno", region: "Santa Cruz, Argentina", lat: -50.4700, lng: -73.0300, zoom: 11.5, tz: "America/Argentina/Rio_Gallegos", wiki: "Perito_Moreno_Glacier", category: "wonder", exp: "ice",
+    blurb: "The dissenter: a glacier that held its ground for a century while its siblings melted — the control group in the ice clock experiment." },
+
+  // ---------------- Expedition: cities that vanish ----------------
+  { id: "black-rock", name: "Black Rock City", region: "Nevada, USA", lat: 40.7864, lng: -119.2065, zoom: 12.5, tz: "America/Los_Angeles", wiki: "Black_Rock_City", category: "human", exp: "pop",
+    blurb: "For one week a year, the fifth-largest city in Nevada exists as a perfect crescent on a dry lakebed — then vanishes without a trace. The time machine catches Burning Man mid-heartbeat: there in an August pass, gone by October." },
+  { id: "kumbh-mela", name: "The Sangam", region: "Prayagraj, India", lat: 25.4224, lng: 81.8867, zoom: 12.5, tz: "Asia/Kolkata", wiki: "Kumbh_Mela", category: "human", exp: "pop",
+    blurb: "Where the Ganges meets the Yamuna, the largest gathering in human history materializes on the floodplain — a pop-up megacity of tens of millions of pilgrims, complete with roads, bridges, and districts, dismantled when the river rises." },
+  { id: "mina", name: "Mina Tent City", region: "Mecca, Saudi Arabia", lat: 21.4133, lng: 39.8933, zoom: 13.5, tz: "Asia/Riyadh", wiki: "Mina,_Saudi_Arabia", category: "human", exp: "pop",
+    blurb: "A valley of 100,000 identical air-conditioned tents that houses millions of Hajj pilgrims for five days a year — and stands empty, perfectly maintained, the other 360." },
+  { id: "oshkosh", name: "Wittman Field", region: "Oshkosh, Wisconsin, USA", lat: 43.9844, lng: -88.5570, zoom: 13, tz: "America/Chicago", wiki: "Wittman_Regional_Airport", category: "human", exp: "pop",
+    blurb: "For one week each July this small airfield becomes the busiest airport on Earth, with ten thousand aircraft camping on its grass. Catch the right summer pass and the fields are feathered with parked wings." },
+
+  // ---------------- Expedition: the reef builders ----------------
+  { id: "fiery-cross", name: "Fiery Cross Reef", region: "Spratly Islands, South China Sea", lat: 9.5498, lng: 112.8897, zoom: 13, tz: "Asia/Shanghai", wiki: "Fiery_Cross_Reef", category: "mystery", exp: "reefs",
+    blurb: "A submerged coral reef that became a military airbase in eighteen months.",
+    dossier: {
+      file: "CF-078",
+      claim: "Nothing to see here, said Beijing: the dredging fleet turning reefs into fortresses was building 'civilian facilities' and 'weather stations' — while runways, radar domes, and missile shelters assembled themselves in every satellite pass.",
+      lore: "In early 2014 this was water with some coral awash at low tide. By 2017: a 3,000-metre runway, hangars for combat aircraft, and harbors for warships. The US Navy called the campaign the 'Great Wall of Sand' — 3,200 acres of new land across the Spratlys. Our time machine covers the entire construction, pass by pass.",
+      truth: "A 2016 international tribunal ruled the reef-building violated the Law of the Sea; China ignored it, and satellite analysts (CSIS's island tracker) have documented every radar and runway since. No conspiracy theory required — this is the rare case where watching the map WAS the intelligence."
+    } },
+  { id: "subi-reef", name: "Subi Reef", region: "Spratly Islands, South China Sea", lat: 10.9227, lng: 114.0643, zoom: 13, tz: "Asia/Shanghai", wiki: "Subi_Reef", category: "human", exp: "reefs",
+    blurb: "Underwater at high tide in 2014; today a ring-shaped island base with a runway and a small town's worth of buildings. Press T and watch land being conjured." },
+  { id: "mischief-reef", name: "Mischief Reef", region: "Spratly Islands, South China Sea", lat: 9.9047, lng: 115.5322, zoom: 12.5, tz: "Asia/Shanghai", wiki: "Mischief_Reef", category: "human", exp: "reefs",
+    blurb: "The largest of the manufactured islands — an entire atoll lagoon converted to a naval anchorage, missile shelters ringing what was fishing ground within living memory." },
+  { id: "woody-island", name: "Woody Island", region: "Paracel Islands, South China Sea", lat: 16.8340, lng: 112.3384, zoom: 13.5, tz: "Asia/Shanghai", wiki: "Woody_Island_(South_China_Sea)", category: "human", exp: "reefs",
+    blurb: "The prototype: militarized decades earlier, now with a city, schools, and surface-to-air missiles — the finished picture the newer reefs are growing toward." },
+  { id: "scarborough", name: "Scarborough Shoal", region: "South China Sea", lat: 15.1533, lng: 117.7583, zoom: 12, tz: "Asia/Manila", wiki: "Scarborough_Shoal", category: "wonder", exp: "reefs",
+    blurb: "The one that hasn't been built — yet. A contested triangle of coral watched by three navies and every satellite analyst on Earth; if dredgers ever appear here, you'll see it in the fresh passes." },
+
+  // ---------------- Expedition: the listening posts ----------------
+  { id: "duga", name: "The Duga Radar", region: "Chornobyl Exclusion Zone, Ukraine", lat: 51.3050, lng: 30.0660, zoom: 14, tz: "Europe/Kyiv", wiki: "Duga_radar", category: "mystery", exp: "ears",
+    blurb: "The Russian Woodpecker: a steel wall taller than the pyramids, hidden in a radioactive forest.",
+    dossier: {
+      file: "CF-079",
+      claim: "From 1976, a sharp tapping invaded shortwave radios worldwide — ten pulses a second, drowning broadcasts on every continent. Theories: Soviet weather control, submarine signals, and the classic — mass mind control. Broadcasters called it the Russian Woodpecker.",
+      lore: "The source was this: an over-the-horizon radar array 700 metres long and 150 tall, built beside Chernobyl with its own secret town (marked 'children's camp' on Soviet maps). It fell silent forever in 1989. Too big to demolish, too radioactive to salvage, it still stands in the exclusion-zone forest — a cathedral of the Cold War.",
+      truth: "Declassification settled it: Duga watched for the heat plumes of American missile launches over the pole, and the woodpecker was simply its pulse. The mind-control lore survives because standing under 14,000 tonnes of antenna in a dead forest, the mundane explanation somehow feels less believable than the myth."
+    } },
+  { id: "menwith-hill", name: "RAF Menwith Hill", region: "Yorkshire, England, UK", lat: 54.0084, lng: -1.6893, zoom: 14, tz: "Europe/London", wiki: "RAF_Menwith_Hill", category: "human", exp: "ears",
+    blurb: "Three dozen giant golf balls on the Yorkshire moors — the largest electronic intelligence station outside the United States, each radome hiding which way its antenna points." },
+  { id: "sugar-grove", name: "Sugar Grove Station", region: "West Virginia, USA", lat: 38.5130, lng: -79.2800, zoom: 13.5, tz: "America/New_York", wiki: "Sugar_Grove_Station", category: "human", exp: "ears",
+    blurb: "Built inside the National Radio Quiet Zone — where the law silences everyone else's transmitters — this NSA station listened to the hemisphere's calls. Decommissioned, sold, and briefly marketed as a wellness retreat." },
+  { id: "teufelsberg", name: "Teufelsberg", region: "Berlin, Germany", lat: 52.4977, lng: 13.2410, zoom: 14.5, tz: "Europe/Berlin", wiki: "Teufelsberg", category: "human", exp: "ears",
+    blurb: "Devil's Mountain: an NSA listening station on an artificial hill built from the rubble of bombed Berlin — which itself buried an unfinished Nazi military college too stubborn to demolish. Now a graffiti gallery with the best view in the city." },
+
+  // ---------------- Expedition: continuity of government ----------------
+  { id: "mount-weather", name: "Mount Weather", region: "Virginia, USA", lat: 39.0626, lng: -77.8888, zoom: 13.8, tz: "America/New_York", wiki: "Mount_Weather_Emergency_Operations_Center", category: "human", exp: "cog",
+    blurb: "FEMA's mountain: the classified relocation site where the executive branch rides out catastrophe. Its existence was secret until a 1974 plane crash on the ridge forced an acknowledgment — the underground city's floor plan remains classified." },
+  { id: "raven-rock", name: "Raven Rock Mountain Complex", region: "Pennsylvania, USA", lat: 39.7346, lng: -77.4192, zoom: 13.8, tz: "America/New_York", wiki: "Raven_Rock_Mountain_Complex", category: "human", exp: "cog",
+    blurb: "Site R — the Pentagon's understudy, a hollowed mountain six miles from Camp David with room for thousands. Dick Cheney's 'undisclosed location' after 9/11 wasn't undisclosed to the map." },
+  { id: "greenbrier", name: "The Greenbrier", region: "White Sulphur Springs, West Virginia, USA", lat: 37.7861, lng: -80.3080, zoom: 14.3, tz: "America/New_York", wiki: "The_Greenbrier", category: "mystery", exp: "cog",
+    blurb: "A five-star resort with Congress's doomsday bunker under the west wing.",
+    dossier: {
+      file: "CF-080",
+      claim: "For thirty years, guests golfed and dined at America's grandest resort, never knowing the entire United States Congress was meant to survive nuclear war directly beneath the hotel's west wing.",
+      lore: "Project Greek Island: a 112,000-square-foot bunker with chambers for the House and Senate, a crematorium-adjacent medical wing, and blast doors hidden behind ordinary conference-room wallpaper. The 'TV repairmen' who lived in town for decades were its secret maintenance crew.",
+      truth: "The Washington Post exposed it in 1992 and the government decommissioned it within three years — you can now book a tour between spa appointments. The claim, for once, was entirely, deliciously true; declassification just moved it from conspiracy to brochure."
+    } },
+
   // ---------------- Satellite-era curiosities ----------------
   { id: "boneyard", name: "The Boneyard", region: "Tucson, Arizona, USA", lat: 32.1516, lng: -110.8380, zoom: 14, tz: "America/Phoenix", wiki: "309th_Aerospace_Maintenance_and_Regeneration_Group", category: "human",
     blurb: "Four thousand retired military aircraft parked in desert grids — the largest airplane graveyard on Earth, arranged like a spreadsheet of the entire Cold War." },
@@ -209,7 +277,7 @@ window.PLACES = [
       lore: "Likely born from a whaling ship's 1876 sighting of a pumice raft, Sandy Island survived every audit for 136 years because each map quietly copied the last. Cartographers call these 'phantom islands' — and some may still be out there.",
       truth: "Officially 'undiscovered' by an Australian survey vessel in November 2012 and deleted from the databases. The ocean floor here is 1,400 m down. The map was never the territory."
     } },
-  { id: "haarp", name: "HAARP", region: "Gakona, Alaska", lat: 62.39, lng: -145.15, zoom: 13.8, tz: "America/Anchorage", wiki: "High-frequency_Active_Auroral_Research_Program", category: "mystery",
+  { id: "haarp", name: "HAARP", region: "Gakona, Alaska", lat: 62.39, lng: -145.15, zoom: 13.8, tz: "America/Anchorage", wiki: "High-frequency_Active_Auroral_Research_Program", category: "mystery", exp: "ears",
     blurb: "180 antennas in the Alaskan wilderness.",
     dossier: {
       file: "CF-009",
@@ -418,7 +486,7 @@ window.PLACES = [
       lore: "It genuinely rewrote textbooks: monumental religion apparently came BEFORE agriculture, not after. And someone did backfill the whole complex by hand, entombing it for ten millennia — archaeology's politest 'why?'",
       truth: "The revolution is real but human: hunter-gatherers organizing feasts and labor, no lost technology required — quarry, ramps, rope. The burial reads as ritual decommissioning. The unsettling part isn't aliens; it's how little we knew about our own species' opening act."
     } },
-  { id: "svalbard-vault", name: "Svalbard Global Seed Vault", region: "Spitsbergen, Norway", lat: 78.2358, lng: 15.4913, zoom: 14, tz: "Arctic/Longyearbyen", wiki: "Svalbard_Global_Seed_Vault", category: "mystery",
+  { id: "svalbard-vault", name: "Svalbard Global Seed Vault", region: "Spitsbergen, Norway", lat: 78.2358, lng: 15.4913, zoom: 14, tz: "Arctic/Longyearbyen", wiki: "Svalbard_Global_Seed_Vault", category: "mystery", exp: "cog",
     blurb: "A concrete fin in a frozen mountainside, 1,300 km past the Arctic Circle.",
     dossier: {
       file: "CF-037",
@@ -531,7 +599,7 @@ window.PLACES = [
       lore: "Almost half the moai never left this volcanic quarry; dozens stand buried to their shoulders on its slopes, and unfinished giants still lie fused to the bedrock. Oral tradition insists the statues 'walked.'",
       truth: "Experiments proved the tradition literally right: teams with three ropes can 'walk' a standing moai down a road, refrigerator-style — the roadside fallen statues match walking accidents, not sled failures. The real cautionary tale (deforestation, collapse) is debated too: rats and European contact may deserve more blame than the islanders ever did."
     } },
-  { id: "cheyenne-mountain", name: "Cheyenne Mountain", region: "Colorado, USA", lat: 38.7442, lng: -104.8464, zoom: 13.5, tz: "America/Denver", wiki: "Cheyenne_Mountain_Complex", category: "mystery",
+  { id: "cheyenne-mountain", name: "Cheyenne Mountain", region: "Colorado, USA", lat: 38.7442, lng: -104.8464, zoom: 13.5, tz: "America/Denver", wiki: "Cheyenne_Mountain_Complex", category: "mystery", exp: "cog",
     blurb: "The hollowed-out mountain from every apocalypse movie.",
     dossier: {
       file: "CF-051",
@@ -555,7 +623,7 @@ window.PLACES = [
       lore: "Unique among UFO cases: an official Air Force memo (the Halt Memo) and Colonel Halt's own dictaphone tape from the woods exist and are public. The forest now has a marked 'UFO Trail' with a fiberglass craft at the landing site.",
       truth: "The lighthouse at Orfordness pulses on the exact bearing the tape describes, the 'radiation' was within background norms, and sleep-deprived security police in Cold War darkness fill in the rest — say skeptics. Halt, a career officer, maintained his account until his death. Both files stay open."
     } },
-  { id: "pine-gap", name: "Pine Gap", region: "Northern Territory, Australia", lat: -23.7990, lng: 133.7370, zoom: 13.8, tz: "Australia/Darwin", wiki: "Pine_Gap", category: "mystery",
+  { id: "pine-gap", name: "Pine Gap", region: "Northern Territory, Australia", lat: -23.7990, lng: 133.7370, zoom: 13.8, tz: "Australia/Darwin", wiki: "Pine_Gap", category: "mystery", exp: "ears",
     blurb: "Australia's Area 51, wearing golf-ball radomes.",
     dossier: {
       file: "CF-054",
