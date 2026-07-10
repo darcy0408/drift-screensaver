@@ -36,6 +36,7 @@ const state = {
   history: [],
   histPos: -1,
   playing: true,
+  expedition: null,
   transitioning: false,
   generation: 0,
   dwellStart: 0,
@@ -94,11 +95,34 @@ function shuffled(arr) {
 }
 
 function rebuildPlaylist() {
-  const pool = state.mode === "mystery"
-    ? PLACES.filter(p => p.category === "mystery")
-    : PLACES;
-  state.playlist = shuffled(pool);
+  if (state.expedition) {
+    // expeditions play in curated order, not shuffled
+    state.playlist = PLACES.filter(p => p.exp === state.expedition);
+  } else {
+    const pool = state.mode === "mystery"
+      ? PLACES.filter(p => p.category === "mystery")
+      : PLACES;
+    state.playlist = shuffled(pool);
+  }
   state.cursor = -1;
+}
+
+const EXPEDITIONS = [
+  [null, ""],
+  ["water", "VANISHING WATER"],
+  ["mega", "MEGAPROJECTS RISING"],
+  ["blurred", "GOOGLE BLURRED IT"],
+];
+
+function cycleExpedition() {
+  const i = EXPEDITIONS.findIndex(e => e[0] === state.expedition);
+  const [key, label] = EXPEDITIONS[(i + 1) % EXPEDITIONS.length];
+  state.expedition = key;
+  if (key) state.mode = "tour";
+  rebuildPlaylist();
+  setModeChip();
+  toast(key ? `EXPEDITION — ${label}` : "EXPEDITION ENDED — RESUMING WORLD TOUR");
+  advance(1);
 }
 
 function weightedBox() {
@@ -348,8 +372,10 @@ function updateClock() {
 
 function setModeChip() {
   const chip = $("mode-chip");
-  chip.classList.toggle("mystery", state.mode === "mystery");
-  chip.textContent = { tour: "WORLD TOUR", mystery: "MYSTERY FILES", random: "DEEP FIELD // RANDOM", golden: "GOLDEN HOUR" }[state.mode];
+  chip.classList.toggle("mystery", state.mode === "mystery" || !!state.expedition);
+  chip.textContent = state.expedition
+    ? "EXPEDITION · " + (EXPEDITIONS.find(e => e[0] === state.expedition) || [])[1]
+    : { tour: "WORLD TOUR", mystery: "MYSTERY FILES", random: "DEEP FIELD // RANDOM", golden: "GOLDEN HOUR" }[state.mode];
 }
 
 let toastTimer;
@@ -714,6 +740,7 @@ function pickGoldenPlace() {
 /* ---------------- Modes & pins ---------------- */
 
 function setMode(mode) {
+  state.expedition = null; // picking a mode ends any expedition
   state.mode = state.mode === mode ? "tour" : mode;
   rebuildPlaylist();
   setModeChip();
@@ -974,6 +1001,7 @@ document.addEventListener("keydown", e => {
     case "g": case "G": setMode("golden"); break;
     case "v": case "V": togglePassport(); break;
     case "x": case "X": toggleForts(); break;
+    case "e": case "E": cycleExpedition(); break;
     case "l": case "L": {
       state.labelsOn = !state.labelsOn;
       map.setLayoutProperty("labels", "visibility", state.labelsOn ? "visible" : "none");

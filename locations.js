@@ -86,6 +86,34 @@ window.PLACES = [
   { id: "almeria", name: "The Sea of Plastic", region: "Almería, Spain", lat: 36.776, lng: -2.813, zoom: 12, tz: "Europe/Madrid", wiki: "El_Ejido", category: "human",
     blurb: "40,000 hectares of greenhouses so bright and white they measurably cool the local climate. Europe's winter vegetables come from here." },
 
+  // ---------------- Expedition: vanishing water ----------------
+  { id: "aral-sea", name: "The Aral Sea", region: "Kazakhstan / Uzbekistan", lat: 45.3, lng: 59.8, zoom: 7.5, tz: "Asia/Almaty", wiki: "Aral_Sea", category: "wonder", exp: "water",
+    blurb: "The fourth-largest lake on Earth, drained to water cotton fields — the greatest man-made disappearance in history. Press T: its eastern basin dies within our slider's range, in 2014." },
+  { id: "lake-poopo", name: "Lake Poopó", region: "Altiplano, Bolivia", lat: -18.55, lng: -67.08, zoom: 9.5, tz: "America/La_Paz", wiki: "Lake_Poop%C3%B3", category: "wonder", exp: "water",
+    blurb: "Bolivia's second-largest lake was declared fully evaporated in December 2015. The time machine holds its deathbed photographs — water in 2014, salt by 2016." },
+  { id: "lake-urmia", name: "Lake Urmia", region: "Iran", lat: 37.7, lng: 45.3, zoom: 9, tz: "Asia/Tehran", wiki: "Lake_Urmia", category: "wonder", exp: "water",
+    blurb: "Once the Middle East's largest lake, now a blood-red salt flat that ebbs and briefly recovers — scrub T and watch it breathe its last decade in and out." },
+  { id: "salton-sea", name: "The Salton Sea", region: "California, USA", lat: 33.3, lng: -115.83, zoom: 10, tz: "America/Los_Angeles", wiki: "Salton_Sea", category: "wonder", exp: "water",
+    blurb: "An accidental sea born from a 1905 canal blunder, once ringed with resorts — now receding into toxic dust past the skeletons of its marinas." },
+  { id: "lake-mead", name: "Lake Mead", region: "Nevada / Arizona, USA", lat: 36.15, lng: -114.40, zoom: 10.5, tz: "America/Los_Angeles", wiki: "Lake_Mead", category: "wonder", exp: "water",
+    blurb: "America's largest reservoir, wearing its decline as a white 'bathtub ring' of mineralized rock. The time machine turns the ring's growth into a countdown." },
+  { id: "colorado-delta", name: "The Colorado River Delta", region: "Sonora, Mexico", lat: 31.8, lng: -114.8, zoom: 10, tz: "America/Hermosillo", wiki: "Colorado_River_Delta", category: "wonder", exp: "water",
+    blurb: "Where one of the world's great rivers is supposed to meet the sea — and hasn't, most years, since the 1960s. The dry veins of the delta are the river's fossil." },
+
+  // ---------------- Expedition: megaprojects rising ----------------
+  { id: "neom-line", name: "The Line, NEOM", region: "Tabuk Province, Saudi Arabia", lat: 28.25, lng: 35.65, zoom: 11, tz: "Asia/Riyadh", wiki: "The_Line,_Saudi_Arabia", category: "human", exp: "mega",
+    blurb: "A city designed as a single 170-kilometre straight line. Whatever you think of it, the trench is real — press T and watch a ruler-straight scar appear across an untouched desert." },
+  { id: "gerd", name: "Grand Ethiopian Renaissance Dam", region: "Benishangul-Gumuz, Ethiopia", lat: 11.2144, lng: 35.0925, zoom: 11.5, tz: "Africa/Addis_Ababa", wiki: "Grand_Ethiopian_Renaissance_Dam", category: "human", exp: "mega",
+    blurb: "Africa's largest power plant, damming the Blue Nile. The reservoir filled between 2020 and 2023 — in the time machine, a valley becomes an inland sea in three slider stops." },
+  { id: "egypt-new-capital", name: "New Administrative Capital", region: "Egypt", lat: 30.0072, lng: 31.7417, zoom: 11.5, tz: "Africa/Cairo", wiki: "New_Administrative_Capital", category: "human", exp: "mega",
+    blurb: "Egypt is building a brand-new capital city in empty desert east of Cairo — Africa's tallest tower included. In 2016 the imagery shows sand; today, a metropolis-shaped circuit board." },
+  { id: "daxing", name: "Beijing Daxing Airport", region: "Beijing, China", lat: 39.5098, lng: 116.4105, zoom: 12.5, tz: "Asia/Shanghai", wiki: "Beijing_Daxing_International_Airport", category: "human", exp: "mega",
+    blurb: "The golden starfish: the world's largest single-terminal airport, built in under five years. The time machine catches it hatching from farmland." },
+  { id: "nusantara", name: "Nusantara", region: "East Kalimantan, Indonesia", lat: -0.9736, lng: 116.7020, zoom: 11.5, tz: "Asia/Makassar", wiki: "Nusantara_(planned_city)", category: "human", exp: "mega",
+    blurb: "Indonesia is moving its capital from sinking Jakarta into the Borneo jungle. Since 2022, the imagery shows the forest unzipping into boulevards." },
+  { id: "palm-jebel-ali", name: "Palm Jebel Ali", region: "Dubai, UAE", lat: 25.0055, lng: 54.9903, zoom: 12.3, tz: "Asia/Dubai", wiki: "Palm_Jebel_Ali", category: "human", exp: "mega",
+    blurb: "The Palm's bigger sibling sat dead in the water for fifteen years after 2008 — a drowned skeleton. Construction restarted in 2023: watch a ghost project resurrect, pass by pass." },
+
   // ---------------- Satellite-era curiosities ----------------
   { id: "boneyard", name: "The Boneyard", region: "Tucson, Arizona, USA", lat: 32.1516, lng: -110.8380, zoom: 14, tz: "America/Phoenix", wiki: "309th_Aerospace_Maintenance_and_Regeneration_Group", category: "human",
     blurb: "Four thousand retired military aircraft parked in desert grids — the largest airplane graveyard on Earth, arranged like a spreadsheet of the entire Cold War." },
@@ -634,6 +662,56 @@ window.PLACES = [
       lore: "The whole old town still sits inside its waterworks, cobbles and drawbridges functioning, like a terrarium of the old world.",
       truth: "Founded 1567, fortified through the Dano-Swedish wars, and preserved by the most Scandinavian force of all: the garrison never left, so nobody ever demolished anything. Continuous boring occupancy is history's best conservator."
     } },
+  // ---------------- Expedition: Google blurred it ----------------
+  { id: "dimona", name: "Negev Nuclear Research Center", region: "Dimona, Israel", lat: 31.0016, lng: 35.1447, zoom: 13.8, tz: "Asia/Jerusalem", wiki: "Negev_Nuclear_Research_Center", category: "mystery", exp: "blurred",
+    blurb: "The site an act of the US Congress kept blurry.",
+    dossier: {
+      file: "CF-070",
+      claim: "The most famous 'censored' site on Earth: for 25 years, every US mapping service was legally forbidden from showing Israel sharply — because of this facility.",
+      lore: "The Kyl-Bingaman Amendment (1997) capped US commercial imagery of Israel at ~2-metre resolution, so Google Earth showed the whole country in soup while neighboring Jordan was crisp. Theorists read the blur as proof of anything they liked; the blur itself was never a secret.",
+      truth: "The law is public, and it lapsed in practice in 2020 when foreign providers offered sharper imagery anyway — US regulators then relaxed the cap. Compare providers here and check the time machine: watch a whole country come into focus around 2021. A censorship story where every receipt is on file."
+    } },
+  { id: "volkel", name: "Volkel Air Base", region: "Netherlands", lat: 51.6560, lng: 5.7080, zoom: 13.5, tz: "Europe/Amsterdam", wiki: "Volkel_Air_Base", category: "mystery", exp: "blurred",
+    blurb: "The airfield the Dutch pixelated for decades.",
+    dossier: {
+      file: "CF-071",
+      claim: "For years, Dutch mapping services smeared this airbase into abstract art — camouflage-pattern pixelation so aggressive it became an internet legend. The reason: the worst-kept secret in NATO.",
+      lore: "US nuclear bombs are stored here under 'neither confirm nor deny' — confirmed anyway by a leaked NATO document, a Dutch former prime minister's loose lips, and a US Air Force review. The blur outlived the secret by a decade.",
+      truth: "The Netherlands stopped requiring the censorship in the 2010s; imagery here is now sharp on most providers. Compare this view with Google's — and note what the blur never hid: the weapons' presence was documented in print all along. Censorship mostly marks the map with a flag saying LOOK HERE."
+    } },
+  { id: "huis-ten-bosch", name: "Huis ten Bosch Palace", region: "The Hague, Netherlands", lat: 52.0952, lng: 4.3160, zoom: 15.3, tz: "Europe/Amsterdam", wiki: "Huis_ten_Bosch", category: "mystery", exp: "blurred",
+    blurb: "A royal palace that spent years as a smudge.",
+    dossier: {
+      file: "CF-072",
+      claim: "The Dutch king's residence was blurred on Google for years while any tourist could walk up and photograph it — the internet's favorite example of security theater.",
+      lore: "Google's Dutch imagery once turned the palace and grounds into melted crayon while the surrounding forest stayed crisp, spawning a genre of 'what are they hiding at the palace' videos.",
+      truth: "Dutch law once let institutions demand obscuring of 'sensitive' sites regardless of usefulness; the requirement was dropped and current imagery is sharp. The palace hid state dinners. Check it against Google today — then remember every provider inherits different laws."
+    } },
+  { id: "mururoa", name: "Moruroa Atoll", region: "French Polynesia", lat: -21.8390, lng: -138.9030, zoom: 11.8, tz: "Pacific/Tahiti", wiki: "Moruroa", category: "mystery", exp: "blurred",
+    blurb: "France's nuclear test atoll, long missing from the map.",
+    dossier: {
+      file: "CF-073",
+      claim: "193 nuclear tests were conducted here, and for years the atoll was blurred, blacked out, or simply absent at high zoom on major providers.",
+      lore: "The lagoon hides collapsed test shafts, and part of the atoll's flank slumped after a 1979 test — declassified French reports admit the rim is fractured. It remains a military exclusion zone monitored for collapse.",
+      truth: "France declassified swathes of its test records in 2021 (the 'Moruroa Files' investigation put doses far above official claims). Imagery today varies by provider — which is the point of this expedition: same atoll, different maps. Log what each one shows you."
+    } },
+  { id: "marcoule", name: "Marcoule Nuclear Site", region: "Occitanie, France", lat: 44.1420, lng: 4.7080, zoom: 13.8, tz: "Europe/Paris", wiki: "Marcoule_Nuclear_Site", category: "mystery", exp: "blurred",
+    blurb: "One of the sites France legally scrambles.",
+    dossier: {
+      file: "CF-074",
+      claim: "French law still requires blurring or degrading imagery of designated defense sites — and the birthplace of France's plutonium program is on the list.",
+      lore: "Depending on the provider and the year, Marcoule appears sharp, smeared, cloud-patched, or painted over with fake fields — collect the variants like trading cards.",
+      truth: "The legal register of protected sites is public (the French call the obscuring 'floutage'), even when the imagery isn't. Compare this Esri view against Google France: two legal regimes, one riverbank. Nothing paranormal — just sovereignty drawn in pixels."
+    } },
+  { id: "kumsc", name: "Kirtland Underground Munitions Complex", region: "Albuquerque, New Mexico, USA", lat: 34.9880, lng: -106.5460, zoom: 13.5, tz: "America/Denver", wiki: "Kirtland_Air_Force_Base", category: "mystery", exp: "blurred",
+    blurb: "The mountain garage for the American arsenal.",
+    dossier: {
+      file: "CF-075",
+      claim: "Beneath this unremarkable patch of desert sits the largest nuclear weapons storage facility on Earth — and early imagery of it was conspicuously degraded.",
+      lore: "KUMSC reportedly holds a four-digit number of warheads under one mesa at the edge of Albuquerque's suburbs — a fact that is somehow both public knowledge and never quite said out loud. UFO lore attached itself to the adjacent Manzano mountains decades ago.",
+      truth: "Today the site is visible in ordinary resolution — bunker doors, security rings and all — because blurring it advertised it. Modern US policy mostly stopped blurring domestic sites for exactly that reason. What protects it isn't pixels; it's the mesa."
+    } },
+
   { id: "copenhagen-ring", name: "The Erased Ring", region: "Copenhagen, Denmark", lat: 55.6875, lng: 12.5780, zoom: 13.8, tz: "Europe/Copenhagen", wiki: "Fortifications_of_Copenhagen", category: "mystery",
     blurb: "A ring of star fortifications swallowed by the city — traceable in the shape of its ponds.",
     dossier: {
