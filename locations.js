@@ -513,6 +513,97 @@ window.PLACES = [
       lore: "For decades the only humans inside were UN patrols and Turkish soldiers; photographers who snuck in described trees growing through hotel lobbies. Partial 'reopening' began in 2020 — boardwalks through the decay.",
       truth: "All documented history: the Turkish invasion of Cyprus split the island, and Varosha became a bargaining chip nobody cashed. UN Resolution 550 still forbids resettlement by anyone but its original inhabitants — so the ghost city remains evidence, not mystery."
     } },
+  { id: "agartha", name: "The Polar Opening", region: "Edge of the map, Arctic Ocean", lat: 85.0, lng: -40, zoom: 4, tz: "Etc/GMT", wiki: "Hollow_Earth", category: "mystery",
+    blurb: "You are as far north as this map — or any web map — can take you.",
+    dossier: {
+      file: "CF-056",
+      claim: "Agartha: a hollow Earth entered through openings at the poles, lit by an inner sun. John Cleves Symmes petitioned Congress to find the holes in 1818; 'The Smoky God' (1908) sailed a fisherman through the north one; a 'secret diary' flew Admiral Byrd in after him. The fact that every online map cuts off before 90° is, believers note, awfully convenient.",
+      lore: "The Byrd diary places his inner-earth flight 'beyond the North Pole' in February 1947 — a month history records him commanding Operation Highjump at the SOUTH Pole. Rather than sink the story, the wrong pole doubled it: now there are said to be doors at both ends.",
+      truth: "The map ends here because Web Mercator's math stretches to infinity at the poles — every tile map on the internet stops at 85.05°, including Google. The poles themselves are photographed constantly by polar-orbiting science satellites (browse them on NASA Worldview, in a polar projection). And seismology settles the interior: earthquake waves pass through a dense solid-and-molten Earth, leaving nowhere to put a sun. The door isn't hidden; there's simply no room behind it."
+    } },
+
+  // ---------------- Star forts: the world tour (the genre's core argument
+  // is the same geometry on every continent — so here it is) ----------------
+  { id: "manjarabad", name: "Manjarabad Fort", region: "Karnataka, India", lat: 12.9101, lng: 75.6520, zoom: 16, tz: "Asia/Kolkata", wiki: "Manjarabad_Fort", category: "mystery",
+    blurb: "A perfect eight-pointed star in the Western Ghats.",
+    dossier: {
+      file: "CF-057",
+      claim: "The Tartaria movement's favorite Indian exhibit: European star geometry deep in the Indian hills, allegedly centuries before any European could have built it.",
+      lore: "From the air it's an eight-pointed mandala in laterite stone, jungle pressing at the walls. Old-world channels pair its photo with Bourtange's and ask how two hemispheres 'independently' drew the same star.",
+      truth: "Built 1792 by Tipu Sultan — who documentedly employed French military engineers in his war against the British. The star reached India the same way it reached Japan: as consulting fees. Same math, same brief, same shape."
+    } },
+  { id: "san-marcos", name: "Castillo de San Marcos", region: "St. Augustine, Florida, USA", lat: 29.8975, lng: -81.3113, zoom: 15.8, tz: "America/New_York", wiki: "Castillo_de_San_Marcos", category: "mystery",
+    blurb: "The oldest masonry fort in the continental United States.",
+    dossier: {
+      file: "CF-058",
+      claim: "A stone star 'far too old' for its official 1695 date, in a city old-world researchers consider suspiciously over-built for a colonial outpost.",
+      lore: "The walls are coquina — compressed shellstone that swallowed cannonballs like styrofoam instead of shattering, which sounds like lost technology until you hold a piece.",
+      truth: "Spain's construction ledgers survive down to the quarry receipts (the stone came from Anastasia Island, across the bay). The cannonball-absorbing walls are geology, not alchemy — and the reason the fort was never taken in battle."
+    } },
+  { id: "fort-monroe", name: "Fort Monroe", region: "Virginia, USA", lat: 37.0043, lng: -76.3080, zoom: 14.8, tz: "America/New_York", wiki: "Fort_Monroe", category: "mystery",
+    blurb: "America's largest moated fortress.",
+    dossier: {
+      file: "CF-059",
+      claim: "A seven-front stone colossus the size of a town, allegedly beyond the young republic's means — 'inherited and repurposed,' say the old-world channels.",
+      lore: "Robert E. Lee helped engineer it as a young officer; Jefferson Davis was imprisoned in it; escaped slaves who reached it in 1861 were declared 'contraband of war,' making the fort a hinge of emancipation history.",
+      truth: "Congress funded it in a documented panic after the British burned Washington in 1814 — the receipts, quarrels, and 15 years of construction correspondence fill archives. Nations build biggest right after being humiliated."
+    } },
+  { id: "suomenlinna", name: "Suomenlinna", region: "Helsinki, Finland", lat: 60.1454, lng: 24.9881, zoom: 13.8, tz: "Europe/Helsinki", wiki: "Suomenlinna", category: "mystery",
+    blurb: "A star fortress scattered across six islands.",
+    dossier: {
+      file: "CF-060",
+      claim: "Bastions grown across an archipelago like crystal — geometry theorists say follows the islands 'too naturally,' as if the rock was shaped first.",
+      lore: "Built by Sweden, surrendered to Russia, inherited by Finland: three flags over the same walls, which the lore reads as three custodians of something older.",
+      truth: "Eighteenth-century Sweden documented the project obsessively — it nearly bankrupted the kingdom, and the fortress fell in 1808 partly because it was never finished. A UNESCO site with 800 residents and the world's most scenic ferry commute."
+    } },
+  { id: "alba-carolina", name: "Alba Carolina Citadel", region: "Alba Iulia, Romania", lat: 46.0678, lng: 23.5699, zoom: 14.3, tz: "Europe/Bucharest", wiki: "Alba_Carolina_Citadel", category: "mystery",
+    blurb: "A seven-pointed star you could fit a town inside — because one is.",
+    dossier: {
+      file: "CF-061",
+      claim: "Europe's largest Vauban-style citadel, in Transylvania of all places — old-world channels love that the 'official' build time (23 years with 20,000 serfs) sounds as fantastical as any alternative.",
+      lore: "Romania restored it gloriously in the 2000s, which fed the theory mill: why does a 'military relic' look this ceremonial, with baroque gates like triumphal arches?",
+      truth: "Because it WAS ceremonial: the Habsburgs built it (1715-1738) as much to stamp imperial authority on Transylvania as to fight the Ottomans. The gates were propaganda in stone; the 20,000 serfs were tragically real and taxed for the privilege."
+    } },
+  { id: "peschiera", name: "Peschiera del Garda", region: "Lake Garda, Italy", lat: 45.4394, lng: 10.6839, zoom: 14.6, tz: "Europe/Rome", wiki: "Peschiera_del_Garda", category: "mystery",
+    blurb: "A pentagon star floating where a river leaves a lake.",
+    dossier: {
+      file: "CF-062",
+      claim: "A five-pointed island-fortress with water running through its veins — the 'water-machine' reading of star forts at its most photogenic.",
+      lore: "The Mincio river genuinely flows through the fortifications in channels, which makes the energy-machine crowd's diagrams almost draw themselves.",
+      truth: "Venice fortified an existing river-mouth town in the 1550s: the water is the moat, the harbor, and the sewer, all documented in the Serenissima's engineering archives. UNESCO-listed with Palmanova — same builders, same century, same paper trail."
+    } },
+  { id: "rocroi", name: "Rocroi", region: "Ardennes, France", lat: 49.9258, lng: 4.5225, zoom: 14.8, tz: "Europe/Paris", wiki: "Rocroi", category: "mystery",
+    blurb: "A star-shaped village where streets radiate like a spider's web.",
+    dossier: {
+      file: "CF-063",
+      claim: "An entire town whose street plan is the fortification — theorists present its aerial view as proof these weren't forts at all, but 'devices' people later moved into.",
+      lore: "In 1643 the plain outside hosted the battle that broke the Spanish infantry's century of dominance — lore says the fort 'chose' the site of empires changing hands.",
+      truth: "Cause and effect run the other way: armies fought here BECAUSE the fortress guarded the invasion road. The radial streets exist so defenders could rush any bastion from the center — urban design as crossfire."
+    } },
+  { id: "good-hope", name: "Castle of Good Hope", region: "Cape Town, South Africa", lat: -33.9258, lng: 18.4232, zoom: 15.8, tz: "Africa/Johannesburg", wiki: "Castle_of_Good_Hope", category: "mystery",
+    blurb: "A five-pointed star at the foot of Table Mountain.",
+    dossier: {
+      file: "CF-064",
+      claim: "The 'oldest colonial building in South Africa' — or, per the old-world reading, the newest tenant of a star that guarded the Cape long before 1666.",
+      lore: "It originally sat on the shoreline; land reclamation stranded it blocks from the sea, which mudflood channels read as evidence the coastline (and the history) moved.",
+      truth: "The Dutch East India Company's construction diary survives — soldiers, sailors, and enslaved laborers raised it between 1666 and 1679, and the reclamation that stranded it is on Victorian-era municipal maps. The star followed the shipping lanes, like everywhere else."
+    } },
+  { id: "real-felipe", name: "Real Felipe Fortress", region: "Callao, Peru", lat: -12.0620, lng: -77.1470, zoom: 15.3, tz: "America/Lima", wiki: "Real_Felipe_Fortress", category: "mystery",
+    blurb: "The largest fortress Spain ever built in the Americas.",
+    dossier: {
+      file: "CF-065",
+      claim: "A pentagon guarding Lima's port — South America's entry in the 'same star, every continent' catalog.",
+      lore: "Built, the story goes, after pirates sacked Callao — but old-world channels note it faces the sea like it was always there, and that an earthquake-tsunami 'conveniently' erased the earlier city in 1746.",
+      truth: "The 1746 disaster is exactly why it exists: Spain rebuilt the port's defenses from scratch, naming the fort for the new king. Its guns fired their angriest shots in 1866 — against Spain itself, defending Peruvian independence. The blueprints live in Seville's Archive of the Indies."
+    } },
+  { id: "fredrikstad", name: "Fredrikstad Old Town", region: "Norway", lat: 59.2040, lng: 11.0300, zoom: 14.8, tz: "Europe/Oslo", wiki: "Fredrikstad", category: "mystery",
+    blurb: "Northern Europe's best-preserved fortress town, moats intact.",
+    dossier: {
+      file: "CF-066",
+      claim: "A star so well kept that theorists argue it can't be 'preserved' — it must simply never have been old.",
+      lore: "The whole old town still sits inside its waterworks, cobbles and drawbridges functioning, like a terrarium of the old world.",
+      truth: "Founded 1567, fortified through the Dano-Swedish wars, and preserved by the most Scandinavian force of all: the garrison never left, so nobody ever demolished anything. Continuous boring occupancy is history's best conservator."
+    } },
   { id: "coral-castle", name: "Coral Castle", region: "Florida, USA", lat: 25.5003, lng: -80.4444, zoom: 16.2, tz: "America/New_York", wiki: "Coral_Castle", category: "mystery",
     blurb: "1,100 tons of stone, moved by one man, alone, at night.",
     dossier: {
