@@ -171,6 +171,7 @@ function updateHUD(place) {
   hideCard(card);
   hideCard(dossier);
 
+  updateCardLinks(place);
   setTimeout(() => {
     if (place.dossier) {
       $("dossier-file").textContent = `CASE FILE ${place.dossier.file}`;
@@ -642,6 +643,20 @@ async function loadIntel(place) {
   } catch { /* offline — leave what we have */ }
 
   if (!frag.childNodes.length) addP("Nothing on record within 10 km. That is either very boring or very interesting.");
+
+  // community: anyone can propose this spot for the atlas via a GitHub form
+  const submit = document.createElement("p");
+  submit.className = "intel-submit";
+  const sa = document.createElement("a");
+  sa.href = `${REPO_URL}/issues/new?template=submit-spot.yml`
+    + `&title=${encodeURIComponent("[Spot] " + place.name)}`
+    + `&coordinates=${encodeURIComponent(place.lat.toFixed(5) + ", " + place.lng.toFixed(5))}`;
+  sa.target = "_blank";
+  sa.rel = "noopener";
+  sa.textContent = "Spotted something odd here? Submit it to the atlas →";
+  submit.appendChild(sa);
+  frag.appendChild(submit);
+
   state.intelCache.set(place.id, frag);
   return frag;
 }
@@ -869,6 +884,8 @@ $("intel-close").addEventListener("click", closeIntel);
 $("passport-close").addEventListener("click", closePassport);
 $("place-intel").addEventListener("click", toggleIntel);
 $("dossier-intel").addEventListener("click", toggleIntel);
+$("place-share").addEventListener("click", shareLink);
+$("dossier-share").addEventListener("click", shareLink);
 
 // Manual exploration pauses the tour.
 for (const ev of ["dragstart", "dblclick", "touchstart"]) {
@@ -1178,6 +1195,53 @@ window.__driftEsc = () => {
   }
 };
 
+/* ---------------- Sharing & coordinates ---------------- */
+
+const SITE_URL = "https://darcy0408.github.io/drift-screensaver/";
+const REPO_URL = "https://github.com/darcy0408/drift-screensaver";
+
+function shareLink() {
+  const c = state.current || { lat: map.getCenter().lat, lng: map.getCenter().lng };
+  const url = `${SITE_URL}?ll=${c.lat.toFixed(5)},${c.lng.toFixed(5)},${map.getZoom().toFixed(2)}`;
+  navigator.clipboard.writeText(url)
+    .then(() => toast("LINK COPIED — ANYONE CAN OPEN IT"))
+    .catch(() => toast(url)); // clipboard blocked — at least show it
+}
+
+function updateCardLinks(place) {
+  const href = `https://www.google.com/maps/@?api=1&map_action=map&center=${place.lat.toFixed(6)},${place.lng.toFixed(6)}&zoom=${Math.round(Math.min(map.getZoom(), 20))}&basemap=satellite`;
+  $("place-gmaps").href = href;
+  $("dossier-gmaps").href = href;
+}
+
+// fly to explicit coordinates (from a pasted link or "lat, lng")
+function goToCoords(lat, lng, zoom) {
+  closeSearch();
+  if (state.playing) setPlaying(false);
+  const z = zoom || Math.max(map.getZoom(), 14);
+  dropMarker({ lng, lat });
+  map.flyTo({ center: [lng, lat], zoom: z, duration: 2500 });
+  map.once("moveend", () => identifyClick({ lng, lat }));
+}
+
+// recognize coordinates and Google Maps URLs pasted into search, so people
+// can check a spot they found on Google against this imagery (and the
+// time machine) in one paste
+function parseCoordQuery(q) {
+  let m = q.match(/^\s*(-?\d{1,2}(?:\.\d+)?)[,\s]+(-?\d{1,3}(?:\.\d+)?)\s*$/);
+  if (m && Math.abs(+m[1]) <= 90 && Math.abs(+m[2]) <= 180) {
+    return { lat: +m[1], lng: +m[2], zoom: null };
+  }
+  m = q.match(/@(-?\d+\.\d+),(-?\d+\.\d+)(?:,(\d+(?:\.\d+)?)([zm]))?/); // google maps address-bar URL
+  if (m) {
+    const zoom = m[4] === "z" ? Math.min(+m[3], 18.5) : 15;
+    return { lat: +m[1], lng: +m[2], zoom };
+  }
+  m = q.match(/[?&]q(?:uery)?=(-?\d+\.\d+),(-?\d+\.\d+)/); // ?q=lat,lng style links
+  if (m) return { lat: +m[1], lng: +m[2], zoom: null };
+  return null;
+}
+
 /* ---------------- Search ---------------- */
 
 function openSearch() {
@@ -1238,6 +1302,8 @@ function goToSearchResult(r) {
 async function runSearch() {
   const q = $("search-input").value.trim();
   if (!q) return;
+  const coords = parseCoordQuery(q);
+  if (coords) return goToCoords(coords.lat, coords.lng, coords.zoom);
   const list = $("search-results");
   list.innerHTML = "<li><span class='result-detail'>Searching…</span></li>";
   try {
@@ -1384,5 +1450,16 @@ map.on("load", () => {
   scheduleHintFade();
   setInterval(updateClock, 1000);
   tick();
-  advance(1);
+
+  // shared deep link (?ll=lat,lng,zoom) opens paused at that exact spot
+  const ll = (PARAMS.get("ll") || "").match(/^(-?\d+\.?\d*),(-?\d+\.?\d*)(?:,(\d+\.?\d*))?$/);
+  if (ll && Math.abs(+ll[1]) <= 90 && Math.abs(+ll[2]) <= 180) {
+    state.playing = false;
+    fadeIn();
+    map.jumpTo({ center: [+ll[2], +ll[1]], zoom: ll[3] ? Math.min(+ll[3], 18.5) : 14 });
+    dropMarker({ lng: +ll[2], lat: +ll[1] });
+    identifyClick({ lng: +ll[2], lat: +ll[1] });
+  } else {
+    advance(1);
+  }
 });

@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
   <!-- bump ?v= when style.css/app.js/locations.js change, or caches serve stale copies -->
-  <link rel="stylesheet" href="style.css?v=21">
+  <link rel="stylesheet" href="style.css?v=22">
 </head>
 <body>
   <div id="map"></div>
@@ -39,7 +39,11 @@
     <p class="weather" id="place-weather"></p>
     <p class="imagery" id="place-imagery"></p>
     <p class="coords" id="place-coords"></p>
-    <button class="intel-btn" id="place-intel">MORE INTEL →</button>
+    <div class="card-actions">
+      <button class="intel-btn" id="place-intel">MORE INTEL →</button>
+      <button class="intel-btn" id="place-share">COPY LINK</button>
+      <a class="intel-btn" id="place-gmaps" href="#" target="_blank" rel="noopener">G MAPS ↗</a>
+    </div>
   </section>
 
   <section id="dossier" class="hud-card" hidden>
@@ -61,7 +65,11 @@
     <p class="weather" id="dossier-weather"></p>
     <p class="imagery" id="dossier-imagery"></p>
     <p class="coords" id="dossier-coords"></p>
-    <button class="intel-btn" id="dossier-intel">MORE INTEL →</button>
+    <div class="card-actions">
+      <button class="intel-btn" id="dossier-intel">MORE INTEL →</button>
+      <button class="intel-btn" id="dossier-share">COPY LINK</button>
+      <a class="intel-btn" id="dossier-gmaps" href="#" target="_blank" rel="noopener">G MAPS ↗</a>
+    </div>
   </section>
 
   <aside id="passport" hidden>
@@ -118,8 +126,8 @@
   <div id="toast" role="status" hidden></div>
 
   <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
-  <script src="locations.js?v=21"></script>
-  <script src="wayback-releases.js?v=21"></script>
-  <script src="app.js?v=21"></script>
+  <script src="locations.js?v=22"></script>
+  <script src="wayback-releases.js?v=22"></script>
+  <script src="app.js?v=22"></script>
 </body>
 </html>

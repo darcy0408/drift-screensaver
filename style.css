@@ -466,6 +466,21 @@
 
   .imagery:empty { display: none; }
 
+  .card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45em;
+    margin-block-start: 0.7em;
+  }
+
+  .card-actions .intel-btn { margin-block-start: 0; }
+
+  a.intel-btn {
+    text-decoration: none;
+    display: inline-block;
+  }
+
   .intel-btn {
     margin-block-start: 0.7em;
     font-family: var(--font-mono);
@@ -705,6 +720,16 @@
     letter-spacing: 0.15em;
     color: var(--ink-faint);
   }
+
+  .intel-submit {
+    margin-block-start: 1.6em;
+    padding-block-start: 0.9em;
+    border-block-start: 1px solid oklch(1 0 0 / 0.08);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+  }
+
+  .intel-submit a { color: var(--accent); }
 
   /* ---- Passport: mirrors the intel panel, slides in from the left ---- */
   #passport {

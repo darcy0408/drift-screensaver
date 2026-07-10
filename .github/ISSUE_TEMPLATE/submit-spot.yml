@@ -1,0 +1,51 @@
+name: Submit a spot
+description: Found an oddity, a beautiful place, or an imagery inconsistency worth adding to DRIFT?
+title: "[Spot] "
+labels: ["spot-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for scouting! Give us the coordinates and the story — if it holds up,
+        it becomes part of the atlas (mystery spots get a full case file).
+  - type: input
+    id: name
+    attributes:
+      label: Name of the place
+      placeholder: e.g. Fort Bourtange
+    validations:
+      required: true
+  - type: input
+    id: coordinates
+    attributes:
+      label: Coordinates (lat, lng)
+      description: Click the spot in DRIFT and copy from the card, or right-click in Google Maps.
+      placeholder: "53.00660, 7.19270"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of spot is it?
+      options:
+        - Mystery / lore (star fort, oddity, conspiracy site)
+        - Beautiful or notable place
+        - Imagery inconsistency (looks different on Google Maps vs here)
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What do you see?
+      description: |
+        What's notable or odd? If it's an inconsistency, say what Google Maps shows
+        versus what this app (Esri imagery) shows — the time machine (T) can help you
+        check whether it changed over the years.
+    validations:
+      required: true
+  - type: input
+    id: sources
+    attributes:
+      label: Links or sources (optional)
+      placeholder: video, article, forum thread…
