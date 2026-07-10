@@ -272,6 +272,11 @@
     cursor: pointer;
   }
 
+  #wayback-slider:disabled {
+    opacity: 0.35;
+    cursor: progress;
+  }
+
   .wayback-end {
     font-family: var(--font-mono);
     font-size: 0.6rem;

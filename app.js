@@ -1063,6 +1063,7 @@ function rebuildWaybackSlider() {
 }
 
 async function scanWaybackChanges() {
+  $("wayback-slider").disabled = true; // no month-by-month sliding before the scan lands
   $("wayback-label").textContent = "SCANNING…";
   const scanSeq = wbScanSeq + 1; // computeLocalChanges will bump to this
   const c = map.getCenter();
@@ -1092,9 +1093,10 @@ async function scanWaybackChanges() {
     toast(`${local.length} DISTINCT IMAGES OF THIS VIEW — DRAG THE SLIDER`);
   } else {
     sliderMap = WB.map((_, i) => i); // scan failed — fall back to every release
-    toast("TIME MACHINE — DRAG THE SLIDER AT THE BOTTOM OF THE SCREEN");
+    toast("COULD NOT SCAN THIS VIEW — SHOWING EVERY RELEASE");
   }
   rebuildWaybackSlider();
+  $("wayback-slider").disabled = false;
   $("wayback-label").textContent = waybackIdx === null ? "TODAY" : fmtWaybackDate(WB[waybackIdx].d);
 }
 
@@ -1106,6 +1108,7 @@ function openWayback() {
   if (state.playing && !state.transitioning) setPlaying(false);
   sliderMap = WB.map((_, i) => i);
   rebuildWaybackSlider();
+  $("wayback-slider").disabled = true; // unlocked when the scan lands
   $("wayback").hidden = false;
   scheduleWaybackScan(50);
 }
