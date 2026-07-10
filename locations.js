@@ -5,7 +5,7 @@
 
 window.PLACES = [
   // ---------------- Natural wonders ----------------
-  { id: "grand-canyon", name: "Grand Canyon", region: "Arizona, USA", lat: 36.0997, lng: -112.1124, zoom: 12.3, tz: "America/Phoenix", wiki: "Grand Canyon", category: "wonder",
+  { id: "grand-canyon", name: "Grand Canyon", region: "Arizona, USA", lat: 36.0997, lng: -112.1124, zoom: 12.3, tz: "America/Phoenix", wiki: "Grand Canyon", category: "wonder", exp: "parks",
     blurb: "Two billion years of Earth's crust laid open by the Colorado River — the canyon is so large it makes its own weather." },
   { id: "sossusvlei", name: "Sossusvlei", region: "Namib Desert, Namibia", lat: -24.75, lng: 15.30, zoom: 12.5, tz: "Africa/Windhoek", wiki: "Sossusvlei", category: "wonder",
     blurb: "Rust-red dunes up to 380 m tall surround a white clay pan dotted with 900-year-old dead trees." },
@@ -31,7 +31,7 @@ window.PLACES = [
     blurb: "A caustic soda lake that runs blood-red with salt-loving microbes and calcifies anything that dies in it." },
   { id: "dallol", name: "Dallol", region: "Danakil Depression, Ethiopia", lat: 14.2417, lng: 40.30, zoom: 13, tz: "Africa/Addis_Ababa", wiki: "Dallol_(hydrothermal_system)", category: "wonder",
     blurb: "Acid pools in neon green and yellow, 125 m below sea level, in the hottest inhabited place on the planet." },
-  { id: "grand-prismatic", name: "Grand Prismatic Spring", region: "Wyoming, USA", lat: 44.5251, lng: -110.8382, zoom: 14.5, tz: "America/Denver", wiki: "Grand_Prismatic_Spring", category: "wonder",
+  { id: "grand-prismatic", name: "Grand Prismatic Spring", region: "Wyoming, USA", lat: 44.5251, lng: -110.8382, zoom: 14.5, tz: "America/Denver", wiki: "Grand_Prismatic_Spring", category: "wonder", exp: "parks",
     blurb: "A rainbow-ringed hot spring bigger than a football field, sitting on top of a supervolcano." },
   { id: "ha-long", name: "Hạ Long Bay", region: "Vietnam", lat: 20.9101, lng: 107.1839, zoom: 11.5, tz: "Asia/Ho_Chi_Minh", wiki: "H%E1%BA%A1_Long_Bay", category: "wonder",
     blurb: "Nearly 2,000 limestone towers scattered across an emerald bay — legend says a dragon spat them out as jade." },
@@ -181,6 +181,42 @@ window.PLACES = [
       lore: "Project Greek Island: a 112,000-square-foot bunker with chambers for the House and Senate, a crematorium-adjacent medical wing, and blast doors hidden behind ordinary conference-room wallpaper. The 'TV repairmen' who lived in town for decades were its secret maintenance crew.",
       truth: "The Washington Post exposed it in 1992 and the government decommissioned it within three years — you can now book a tour between spa appointments. The claim, for once, was entirely, deliciously true; declassification just moved it from conspiracy to brochure."
     } },
+
+  // ---------------- Expedition: the national parks ----------------
+  { id: "yosemite", name: "Yosemite Valley", region: "California, USA", lat: 37.7456, lng: -119.5936, zoom: 12.3, tz: "America/Los_Angeles", wiki: "Yosemite_Valley", category: "wonder", exp: "parks",
+    blurb: "A glacier-carved trench a kilometre deep, guarded by El Capitan and Half Dome — John Muir's cathedral, and the valley that invented the national park idea." },
+  { id: "racetrack-playa", name: "Racetrack Playa", region: "Death Valley, California, USA", lat: 36.6819, lng: -117.5627, zoom: 13.5, tz: "America/Los_Angeles", wiki: "Racetrack_Playa", category: "mystery", exp: "parks",
+    blurb: "The lakebed where stones sail themselves.",
+    dossier: {
+      file: "CF-081",
+      claim: "Boulders weighing hundreds of pounds cross this dry lakebed on their own, carving long trails — blamed over the decades on magnetic anomalies, energy vortices, and pranksters with too much free time.",
+      lore: "The trails are real and everywhere: graceful arcs, sharp turns, parallel processions. For seventy years nobody — not one person — ever saw a stone actually move, which kept every theory alive.",
+      truth: "In 2014, GPS-tagged stones and time-lapse cameras finally caught it: rare winter floods freeze into thin ice panes that, melting at dawn, sail before light winds and bulldoze the stones at walking pace. The answer required ice, wind, patience, and luck — and it subtracted nothing from the strangeness of standing there."
+    } },
+  { id: "everglades", name: "The Everglades", region: "Florida, USA", lat: 25.30, lng: -80.93, zoom: 10, tz: "America/New_York", wiki: "Everglades_National_Park", category: "wonder", exp: "parks",
+    blurb: "Not a swamp — a river fifty miles wide and one inch deep, flowing imperceptibly to the sea through a mosaic of sawgrass and mangrove readable only from above." },
+  { id: "zion", name: "Zion Canyon", region: "Utah, USA", lat: 37.2690, lng: -112.9469, zoom: 12.8, tz: "America/Denver", wiki: "Zion_National_Park", category: "wonder", exp: "parks",
+    blurb: "The Virgin River's slot through two thousand feet of Navajo sandstone — from orbit, a thread of green splitting a wall of red." },
+  { id: "denali", name: "Denali", region: "Alaska, USA", lat: 63.1148, lng: -151.1926, zoom: 9.5, tz: "America/Anchorage", wiki: "Denali", category: "wonder", exp: "parks",
+    blurb: "North America's roof, so massive it makes its own weather — the summit hides two days out of three, but the glaciers radiating from it read clearly from space." },
+
+  // ---------------- Expedition: the Pentagon's back nine ----------------
+  { id: "andrews-golf", name: "The Courses at Andrews", region: "Joint Base Andrews, Maryland, USA", lat: 38.78751, lng: -76.88749, zoom: 14.3, tz: "America/New_York", wiki: "Joint_Base_Andrews", category: "mystery", exp: "golf",
+    blurb: "Fifty-four holes on the base that flies Air Force One.",
+    dossier: {
+      file: "CF-082",
+      claim: "The Pentagon quietly operates one of the largest golf empires on Earth — proof, say critics, of where the defense budget really relaxes, and where the deals that matter get made off the record.",
+      lore: "The Department of Defense runs roughly 145 golf courses worldwide, from Okinawa to Germany. These courses beside Air Force One's runway are the crown jewels: presidents of both parties have logged hundreds of rounds here, trailed by the officer carrying the nuclear football.",
+      truth: "The empire is real but the funding is the twist: military courses run on 'nonappropriated funds' — greens fees and club sales, not tax dollars, at least on paper — and the count is documented in DoD morale-and-welfare reports. What no report explains away is the view from orbit: emerald fairways inside razor-wire perimeters, the empire's most honest org chart."
+    } },
+  { id: "navy-marine-golf", name: "Navy-Marine Golf Course", region: "Honolulu, Hawaii, USA", lat: 21.34310, lng: -157.92380, zoom: 14.5, tz: "Pacific/Honolulu", wiki: "Joint_Base_Pearl_Harbor%E2%80%93Hickam", category: "human", exp: "golf",
+    blurb: "Eighteen holes wedged between Pearl Harbor and the airport — battleship row's neighbor is a par 72." },
+  { id: "banyan-tree-golf", name: "Banyan Tree Golf Course", region: "Kadena Air Base, Okinawa, Japan", lat: 26.33767, lng: 127.75346, zoom: 14.3, tz: "Asia/Tokyo", wiki: "Kadena_Air_Base", category: "human", exp: "golf",
+    blurb: "On the Pacific's most strategically loaded island, where every acre is contested politics, the US Air Force maintains eighteen immaculate holes beside the flight line." },
+  { id: "west-point-golf", name: "West Point Golf Course", region: "New York, USA", lat: 41.38984, lng: -73.99235, zoom: 14.3, tz: "America/New_York", wiki: "United_States_Military_Academy", category: "human", exp: "golf",
+    blurb: "Carved into the Hudson Highlands above the academy — cadets march, officers putt, and the river that decided the Revolution slides past below." },
+  { id: "belvoir-golf", name: "Fort Belvoir Golf Club", region: "Virginia, USA", lat: 38.73005, lng: -77.16336, zoom: 14.3, tz: "America/New_York", wiki: "Fort_Belvoir", category: "human", exp: "golf",
+    blurb: "Thirty-six holes on the base that hosts more three-letter agencies than anywhere outside Washington — the fairways sit atop one of America's most classified zip codes." },
 
   // ---------------- Satellite-era curiosities ----------------
   { id: "boneyard", name: "The Boneyard", region: "Tucson, Arizona, USA", lat: 32.1516, lng: -110.8380, zoom: 14, tz: "America/Phoenix", wiki: "309th_Aerospace_Maintenance_and_Regeneration_Group", category: "human",

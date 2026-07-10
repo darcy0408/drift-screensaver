@@ -117,6 +117,8 @@ const EXPEDITIONS = [
   ["reefs", "THE REEF BUILDERS"],
   ["ears", "THE LISTENING POSTS"],
   ["cog", "CONTINUITY OF GOVERNMENT"],
+  ["parks", "THE NATIONAL PARKS"],
+  ["golf", "THE PENTAGON'S BACK NINE"],
 ];
 
 function cycleExpedition() {
@@ -1148,6 +1150,10 @@ map.on("click", e => {
     const blur = map.queryRenderedFeatures(e.point, { layers: ["blur-pts"] });
     if (blur.length) { presentBlurSite(blur[0]); return; }
   }
+  if (map.getLayer("park-pts")) {
+    const parks = map.queryRenderedFeatures(e.point, { layers: ["park-pts"] });
+    if (parks.length) { presentPark(parks[0]); return; }
+  }
   if (map.getLayer("starfort-pts")) {
     const hits = map.queryRenderedFeatures(e.point, { layers: ["starfort-pts"] });
     if (hits.length) { presentFort(hits[0]); return; }
@@ -1220,14 +1226,68 @@ function addBlurLayer() {
   map.on("mouseleave", "blur-pts", () => { map.getCanvas().style.cursor = ""; });
 }
 
+function addParkLayer() {
+  if (!window.PARKS || map.getSource("parks")) return;
+  map.addSource("parks", {
+    type: "geojson",
+    data: {
+      type: "FeatureCollection",
+      features: window.PARKS.map(f => ({
+        type: "Feature",
+        properties: { n: f.n },
+        geometry: { type: "Point", coordinates: f.c },
+      })),
+    },
+  });
+  map.addLayer({
+    id: "park-pts",
+    type: "circle",
+    source: "parks",
+    layout: { visibility: "none" },
+    paint: {
+      "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 3, 8, 5.5, 14, 8],
+      "circle-color": "#6fbf73",
+      "circle-opacity": 0.9,
+      "circle-stroke-color": "#0d2410",
+      "circle-stroke-width": 1.3,
+    },
+  });
+  map.on("mouseenter", "park-pts", () => { map.getCanvas().style.cursor = "pointer"; });
+  map.on("mouseleave", "park-pts", () => { map.getCanvas().style.cursor = ""; });
+}
+
+function presentPark(feat) {
+  const [lng, lat] = feat.geometry.coordinates;
+  const offset = Math.round(lng / 15);
+  const place = {
+    id: "park-" + lat.toFixed(4) + "-" + lng.toFixed(4),
+    name: feat.properties.n,
+    region: "US National Park",
+    lat, lng,
+    zoom: Math.max(map.getZoom(), 11),
+    tz: `Etc/GMT${offset <= 0 ? "+" + (-offset) : "-" + offset}`,
+    wiki: encodeURIComponent(feat.properties.n),
+    category: "park",
+    blurb: "One of the 63 United States national parks.",
+  };
+  dropMarker({ lng, lat });
+  map.flyTo({ center: [lng, lat], zoom: place.zoom, duration: 2200 });
+  state.current = place;
+  updateClock();
+  updateHUD(place);
+  renderWeather(place);
+  map.once("moveend", () => { if (state.current === place) renderImagery(place); });
+}
+
 function toggleForts() {
   if (!map.getLayer("starfort-pts")) { toast("OVERLAYS UNAVAILABLE"); return; }
   fortsOn = !fortsOn;
   const vis = fortsOn ? "visible" : "none";
   map.setLayoutProperty("starfort-pts", "visibility", vis);
   if (map.getLayer("blur-pts")) map.setLayoutProperty("blur-pts", "visibility", vis);
+  if (map.getLayer("park-pts")) map.setLayoutProperty("park-pts", "visibility", vis);
   toast(fortsOn
-    ? `OVERLAYS — ${window.STARFORTS.length.toLocaleString("en")} STAR FORTS (AMBER) · ${(window.BLURRED || []).length} REPORTED BLUR SITES (RED)`
+    ? `OVERLAYS — ${window.STARFORTS.length.toLocaleString("en")} STAR FORTS (AMBER) · ${(window.BLURRED || []).length} BLUR SITES (RED) · ${(window.PARKS || []).length} NATIONAL PARKS (GREEN)`
     : "OVERLAYS HIDDEN");
 }
 
@@ -1871,6 +1931,7 @@ map.on("load", () => {
   console.log("[drift] map loaded, starting tour");
   addFortLayer();
   addBlurLayer();
+  addParkLayer();
   const m = PARAMS.get("mode");
   if (["mystery", "random", "golden"].includes(m)) state.mode = m;
   if (PARAMS.get("labels") === "1") {
