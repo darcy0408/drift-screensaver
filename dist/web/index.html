@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
   <!-- bump ?v= when style.css/app.js/locations.js change, or caches serve stale copies -->
-  <link rel="stylesheet" href="style.css?v=24">
+  <link rel="stylesheet" href="style.css?v=26">
 </head>
 <body>
   <div id="map"></div>
@@ -69,8 +69,23 @@
       <button class="intel-btn" id="dossier-intel">MORE INTEL →</button>
       <button class="intel-btn" id="dossier-share">COPY LINK</button>
       <a class="intel-btn" id="dossier-gmaps" href="#" target="_blank" rel="noopener">G MAPS ↗</a>
+      <button class="intel-btn" id="dossier-pole" hidden>TODAY'S POLE ↗</button>
     </div>
   </section>
+
+  <div id="pole" hidden>
+    <header>
+      <h2 id="pole-title">THE NORTH POLE</h2>
+      <button id="pole-close" aria-label="Close pole view">×</button>
+    </header>
+    <img id="pole-img" alt="Satellite view of the pole in polar stereographic projection">
+    <p id="pole-caption"></p>
+    <div class="pole-actions">
+      <button class="intel-btn" id="pole-arctic">ARCTIC</button>
+      <button class="intel-btn" id="pole-antarctic">ANTARCTIC</button>
+      <a class="intel-btn" id="pole-worldview" href="https://worldview.earthdata.nasa.gov/?p=arctic" target="_blank" rel="noopener">NASA WORLDVIEW ↗</a>
+    </div>
+  </div>
 
   <aside id="passport" hidden>
     <header>
@@ -122,12 +137,19 @@
     <button id="wayback-close" aria-label="Exit time machine">×</button>
   </div>
 
+  <div id="touchbar" hidden>
+    <button id="tb-next">NEXT ▶</button>
+    <button id="tb-mode">MODE</button>
+    <button id="tb-time">TIME 🕰</button>
+    <button id="tb-hide">HIDE</button>
+  </div>
+
   <div id="progress"><div id="progress-fill"></div></div>
   <div id="toast" role="status" hidden></div>
 
   <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
-  <script src="locations.js?v=24"></script>
-  <script src="wayback-releases.js?v=24"></script>
-  <script src="app.js?v=24"></script>
+  <script src="locations.js?v=26"></script>
+  <script src="wayback-releases.js?v=26"></script>
+  <script src="app.js?v=26"></script>
 </body>
 </html>

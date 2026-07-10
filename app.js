@@ -181,6 +181,7 @@ function updateHUD(place) {
       $("dossier-lore").textContent = place.dossier.lore;
       $("dossier-truth").textContent = place.dossier.truth;
       $("dossier-coords").textContent = fmtCoords(place.lat, place.lng);
+      $("dossier-pole").hidden = place.id !== "agartha";
       showCard(dossier);
     } else {
       $("place-region").textContent = place.region;
@@ -804,6 +805,28 @@ function togglePassport() {
 
 /* ---------------- Input ---------------- */
 
+// entering clean view also closes transient panels — search included
+function toggleClean() {
+  if (!document.body.classList.contains("clean")) {
+    closeSearch();
+    closeIntel();
+    closePassport();
+    closeWayback();
+    closePole();
+  }
+  document.body.classList.toggle("clean");
+}
+
+// The touch bar stands in for the keyboard on phones and tablets.
+if (matchMedia("(pointer: coarse)").matches) $("touchbar").hidden = false;
+
+const MODE_CYCLE = ["tour", "mystery", "random", "golden"];
+$("tb-next").addEventListener("click", () => advance(1));
+$("tb-mode").addEventListener("click", () =>
+  setMode(MODE_CYCLE[(MODE_CYCLE.indexOf(state.mode) + 1) % MODE_CYCLE.length]));
+$("tb-time").addEventListener("click", toggleWayback);
+$("tb-hide").addEventListener("click", toggleClean);
+
 let hintTimer;
 function scheduleHintFade() {
   $("controls-hint").classList.remove("faded");
@@ -835,16 +858,7 @@ document.addEventListener("keydown", e => {
   scheduleHintFade();
   switch (e.key) {
     case "/": e.preventDefault(); toggleSearch(); break;
-    case "h": case "H":
-      // entering clean view also closes transient panels — search included
-      if (!document.body.classList.contains("clean")) {
-        closeSearch();
-        closeIntel();
-        closePassport();
-        closeWayback();
-      }
-      document.body.classList.toggle("clean");
-      break;
+    case "h": case "H": toggleClean(); break;
     case "ArrowRight": case "d": case "D": e.preventDefault(); panMap(PAN_STEP, 0); break;
     case "ArrowLeft": case "a": case "A": e.preventDefault(); panMap(-PAN_STEP, 0); break;
     case "ArrowUp": case "w": case "W": e.preventDefault(); panMap(0, -PAN_STEP); break;
@@ -1179,7 +1193,7 @@ $("wayback-close").addEventListener("click", closeWayback);
    (or Esc with nothing open) exits the screensaver. */
 
 function anyPanelOpen() {
-  return !$("search").hidden || !$("wayback").hidden
+  return !$("search").hidden || !$("wayback").hidden || !$("pole").hidden
     || $("intel-panel").classList.contains("open")
     || $("passport").classList.contains("open");
 }
@@ -1190,10 +1204,61 @@ window.__driftEsc = () => {
     closeIntel();
     closePassport();
     closeWayback();
+    closePole();
   } else if (HOSTED) {
     window.chrome.webview.postMessage("exit");
   }
 };
+
+/* ---------------- Today's Pole (NASA GIBS, polar projection) ---------------- */
+
+// Web Mercator can't draw the poles — but NASA's VIIRS instrument photographs
+// them daily, and the Worldview snapshot service renders those passes in
+// polar stereographic on demand. The Hollow Earth case file's receipts.
+const POLES = {
+  arctic: { crs: "EPSG:3413", title: "THE NORTH POLE", wv: "arctic" },
+  antarctic: { crs: "EPSG:3031", title: "THE SOUTH POLE", wv: "antarctic" },
+};
+
+function openPole(which) {
+  const p = POLES[which];
+  const d = new Date(Date.now() - 86400000); // yesterday: complete orbital coverage
+  const day = d.toISOString().slice(0, 10);
+  $("pole").hidden = false;
+  $("pole-title").textContent = `${p.title} — ${day.toUpperCase()}`;
+  $("pole-caption").textContent = "Fetching yesterday's satellite passes from NASA…";
+  $("pole-worldview").href = `https://worldview.earthdata.nasa.gov/?p=${p.wv}`;
+  $("pole-arctic").classList.toggle("active", which === "arctic");
+  $("pole-antarctic").classList.toggle("active", which === "antarctic");
+  const img = $("pole-img");
+  img.onload = () => {
+    const month = d.getUTCMonth() + 1;
+    const dark = which === "antarctic" ? month >= 4 && month <= 9 : month <= 2 || month >= 11;
+    $("pole-caption").textContent =
+      "Photographed yesterday by the VIIRS instrument on Suomi NPP, assembled from every "
+      + "orbital pass and drawn in polar stereographic — the projection Web Mercator can't. "
+      + (dark
+        ? "Mostly dark because the pole is deep in its months-long polar night — the sun, not a cover-up."
+        : "Fully lit: the pole is in its months-long polar day right now.");
+  };
+  img.onerror = () => {
+    if ($("pole").hidden || !img.src) return;
+    $("pole-caption").textContent = "NASA's snapshot service didn't answer — try again in a minute, or open Worldview directly.";
+  };
+  img.src = "https://wvs.earthdata.nasa.gov/api/v1/snapshot?REQUEST=GetSnapshot"
+    + `&TIME=${day}&BBOX=-4194304,-4194304,4194304,4194304&CRS=${p.crs}`
+    + "&LAYERS=VIIRS_SNPP_CorrectedReflectance_TrueColor&FORMAT=image/jpeg&WIDTH=1100&HEIGHT=1100";
+}
+
+function closePole() {
+  $("pole").hidden = true;
+  $("pole-img").removeAttribute("src");
+}
+
+$("dossier-pole").addEventListener("click", () => openPole("arctic"));
+$("pole-arctic").addEventListener("click", () => openPole("arctic"));
+$("pole-antarctic").addEventListener("click", () => openPole("antarctic"));
+$("pole-close").addEventListener("click", closePole);
 
 /* ---------------- Sharing & coordinates ---------------- */
 
