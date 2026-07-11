@@ -1,4 +1,31 @@
-# Session notes
+﻿# Session notes
+
+## 2026-07-10 — Content explosion (161 places, 83 case files, 10 expeditions, 3 pin catalogues), community layer, NASA pole viewer, phone touch bar
+**Done:** (web features verified by puppeteer-core end-to-end tests; all pushed; live site auto-deploys)
+- README.md with screenshots (docs/), share blurb delivered in chat. Ethos section: no verdicts — claim/lore/record plus verification instruments.
+- Content: Why Files canon (CF-042–055), Agartha/Polar Opening (CF-056) with a TODAY'S POLE viewer fetching yesterday's Arctic/Antarctic from NASA GIBS in polar stereographic, star forts on every continent (CF-057–066), Google Earth classics + Coronado swastika + Atlantis Grid (CF-067/068), Copenhagen's Erased Ring (CF-069), Epstein island/ranch (CF-076/077 — record held to courts/DOJ IG/named reporting), Racetrack Playa (CF-081), Andrews golf (CF-082), Vatican + Chronovisor (CF-083).
+- Ten expeditions on the `E` key (curated, ORDERED tours): vanishing water, megaprojects, Google-blurred-it, ice clock, cities that vanish, reef builders, listening posts, continuity of government, national parks, Pentagon's back nine.
+- Three pin catalogues on `X`: 2,035 star forts (Colm Gibney's KMZ, starforts.org, no-copyright; junk placemarks filtered), 21 Wikipedia-catalogued blur sites (build-blurred.js harvests the article's links, resolves coords via Wikipedia's coordinate DB), 63 US national parks (build-parks.js). Clicking any pin presents it; blur/park pins wire their Wikipedia article into MORE INTEL.
+- Community layer: `?ll=lat,lng,zoom` deep links + COPY LINK (copies public site URL), EXPORT CARD (map snapshot + dossier text to 1200×1500 PNG; map runs preserveDrawingBuffer), G MAPS compare button, search accepts pasted Google Maps URLs and raw coordinates, GitHub issue form (.github/ISSUE_TEMPLATE/submit-spot.yml) linked prefilled from the intel panel, contributor credit line (place.credit → "FILED BY …"), passport panel gains Community Field Log (GitHub issues API) and Fresh Passes (newest capture dates across sampled atlas places, cached 12 h).
+- Phones: touch bar (NEXT/MODE/TIME/HIDE) on coarse pointers; keyboard hints hidden there. Verified under iPhone emulation.
+- Fixes: the phantom-search root cause (author display:flex beats UA [hidden] — unlayered `:is(...)[hidden]{display:none}` rule now enforces it, verified at computed-style level); arrows drive the timeline whenever it's open regardless of focus; wayback change-scan survives metros whose tilemap `select` references internal release ids missing from the public catalogue (samples onward, keeps partial results — Vatican went from 195-fallback to 9 distinct images in 4 s).
+
+**Decisions:**
+- Repo is PRIVATE by user choice until "all the way done" — the Pages site stays public and auto-updates (verified), so the share link works; submit form/field log/README/ZIP downloads stay dormant until the repo is flipped public (one toggle re-enables everything).
+- Community submissions ride GitHub issues (moderated, free, no backend); contributor credit via place.credit is the reward mechanism.
+- Epstein/true-crime files: claims presented as claims, record limited to convictions, DOJ IG, and named outlets.
+
+**Next:**
+1. Launch package remains pending user go: OG preview tags, viral-safe geocoder (Nominatim policy), Show HN/Reddit posting.
+2. Parked ideas: Today's File (daily featured case), daily guess game with emoji-share, ambient sound toggle, expedition picker for the phone touch bar (E is keyboard-only), ghost-architecture expedition, importing more of the blur list (most entries are prose without coordinates — community bounty).
+
+**Blocked on user:** deciding when the repo goes public; multi-monitor .scr test.
+
+**Risks/unverified:**
+- The .scr wrapper hasn't been recompiled or exercised since the touch-bar/expedition era — web-only changes flow through, but a fresh full screensaver run is worth a glance next session.
+- EXPORT CARD verified as download-trigger + blob only — nobody has eyeballed the rendered PNG composition yet.
+- Wayback internal-release sampling (idx -= 4) coarsens release labels in heavy-update metros; capture dates shown remain accurate.
+- data catalogues (starforts/blurred/parks) are build-time snapshots; regeneration scripts are in tools/ and documented in each file's header comment.
 
 ## 2026-07-09 (later) — Search docked out of the way, landmark-aware clicks, time machine now steps only real image changes with full attribution
 **Done:** (each verified by puppeteer-core end-to-end tests against installed Chrome; all pushed and live on GitHub Pages)
