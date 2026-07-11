@@ -1423,7 +1423,7 @@ async function computeLocalChanges() {
   const found = new Set();
   let idx = WB.length - 1;
   let guard = 0;
-  while (idx >= 0 && guard++ < 60) {
+  while (idx >= 0 && guard++ < 80) {
     let resp;
     try {
       const res = await fetch(
@@ -1431,12 +1431,21 @@ async function computeLocalChanges() {
       );
       if (!res.ok) break;
       resp = await res.json();
-    } catch { return null; }
+    } catch { break; } // keep whatever the walk found so far
     if (seq !== wbScanSeq) return null; // superseded by a newer scan
     if (!resp || resp.valid === false || !resp.data || resp.data[0] !== 1) break;
-    const effIdx = byN.has(resp.select && resp.select[0]) ? byN.get(resp.select[0]) : idx;
-    found.add(effIdx);
-    idx = effIdx - 1;
+    const sel = resp.select && resp.select[0];
+    if (byN.has(sel)) {
+      const effIdx = byN.get(sel);
+      found.add(effIdx);
+      idx = effIdx - 1;
+    } else {
+      // heavily-updated metros reference internal release ids missing from
+      // the public catalogue — sample onward; the capture-date dedupe below
+      // collapses the repeats
+      found.add(idx);
+      idx -= 4;
+    }
   }
   return seq === wbScanSeq ? [...found].sort((a, b) => a - b) : null;
 }

@@ -832,6 +832,14 @@ window.PLACES = [
       lore: "The 'baby ranch' detail isn't internet fiction: The New York Times reported in 2019, from interviews with scientists he courted, that Epstein spoke of inseminating women at the ranch as a transhumanist project. The hilltop mansion, hangar, and runway are all plainly visible from orbit.",
       truth: "Accusers' court filings place abuse at the ranch; New Mexico's attorney general opened an investigation, and the state ended its lease dealings tied to the property. Epstein died before any ranch-specific charges could be tried, and the property sold in 2023. What the satellite shows — isolation by design — is the one claim nobody disputes."
     } },
+  { id: "vatican", name: "Vatican City", region: "The Holy See", lat: 41.9027, lng: 12.4570, zoom: 15, tz: "Europe/Rome", wiki: "Vatican_City", category: "mystery",
+    blurb: "The world's smallest state, and its most speculated-about archive.",
+    dossier: {
+      file: "CF-083",
+      claim: "The 'Secret Archives': suppressed gospels, records of everything from extraterrestrial contact to the true fate of empires — and, per the strangest legend of all, the Chronovisor: a machine built by a Benedictine priest in the 1950s that could view the past, allegedly locked away here after filming the Crucifixion.",
+      lore: "Father Pellegrino Ernetti, a genuine Venetian priest and respected scholar of ancient music, really did claim the device existed; the 'photograph of Christ' he circulated was matched within years to a souvenir carving from a Umbrian church. The archive itself holds 53 miles of shelving from the 8th century onward — Galileo's trial, Henry VIII's annulment plea, a letter from Genghis Khan's grandson.",
+      truth: "'Secretum' meant private, not hidden — the archive has admitted outside scholars since 1881 and was renamed the Apostolic Archive in 2019 precisely to shed the mystique. Researchers request documents daily; the honest mystery is that vast holdings remain uncatalogued. As for machines that view the past: you are operating the only working chronovisor right now. Press T."
+    } },
   { id: "copenhagen-ring", name: "The Erased Ring", region: "Copenhagen, Denmark", lat: 55.6875, lng: 12.5780, zoom: 13.8, tz: "Europe/Copenhagen", wiki: "Fortifications_of_Copenhagen", category: "mystery",
     blurb: "A ring of star fortifications swallowed by the city — traceable in the shape of its ponds.",
     dossier: {
