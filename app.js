@@ -1574,34 +1574,63 @@ const POLES = {
   antarctic: { crs: "EPSG:3031", title: "THE SOUTH POLE", wv: "antarctic" },
 };
 
-function openPole(which) {
+const POLE_SNAPSHOT = crs =>
+  "https://wvs.earthdata.nasa.gov/api/v1/snapshot?REQUEST=GetSnapshot"
+  + "&BBOX=-4194304,-4194304,4194304,4194304&CRS=" + crs
+  + "&LAYERS=VIIRS_SNPP_CorrectedReflectance_TrueColor&FORMAT=image/jpeg&WIDTH=1100&HEIGHT=1100";
+
+// The current UTC day usually has no assembled VIIRS mosaic yet — the snapshot
+// service still answers 200, but with a small all-black JPEG and the header
+// `Data-Present: false`. And "yesterday" in local time can still be today in
+// UTC. So walk back from yesterday to the most recent day NASA actually has
+// imagery for; the Data-Present header is CORS-exposed, so a cheap HEAD reads it.
+async function latestPoleDay(crs) {
+  const base = POLE_SNAPSHOT(crs);
+  for (let back = 1; back <= 7; back++) {
+    const day = new Date(Date.now() - back * 86400000).toISOString().slice(0, 10);
+    try {
+      const res = await fetch(`${base}&TIME=${day}`, { method: "HEAD" });
+      if (res.ok && res.headers.get("Data-Present") === "true") return day;
+    } catch { break; } // offline — stop probing, fall back below
+  }
+  return new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+}
+
+let poleSeq = 0;
+
+async function openPole(which) {
+  const seq = ++poleSeq; // guards against rapid arctic<->antarctic switches
   const p = POLES[which];
-  const d = new Date(Date.now() - 86400000); // yesterday: complete orbital coverage
-  const day = d.toISOString().slice(0, 10);
   $("pole").hidden = false;
-  $("pole-title").textContent = `${p.title} — ${day.toUpperCase()}`;
-  $("pole-caption").textContent = "Fetching yesterday's satellite passes from NASA…";
+  $("pole-title").textContent = p.title;
+  $("pole-caption").textContent = "Finding NASA's latest complete satellite pass…";
   $("pole-worldview").href = `https://worldview.earthdata.nasa.gov/?p=${p.wv}`;
   $("pole-arctic").classList.toggle("active", which === "arctic");
   $("pole-antarctic").classList.toggle("active", which === "antarctic");
   const img = $("pole-img");
+  img.onload = img.onerror = null;
+  img.removeAttribute("src"); // blank the previous pole while we probe
+
+  const day = await latestPoleDay(p.crs);
+  if (seq !== poleSeq || $("pole").hidden) return; // switched poles or closed meanwhile
+
+  const month = +day.slice(5, 7);
+  const dark = which === "antarctic" ? month >= 4 && month <= 9 : month <= 2 || month >= 11;
+  $("pole-title").textContent = `${p.title} — ${day.toUpperCase()}`;
   img.onload = () => {
-    const month = d.getUTCMonth() + 1;
-    const dark = which === "antarctic" ? month >= 4 && month <= 9 : month <= 2 || month >= 11;
+    if (seq !== poleSeq) return;
     $("pole-caption").textContent =
-      "Photographed yesterday by the VIIRS instrument on Suomi NPP, assembled from every "
+      "Photographed by the VIIRS instrument on Suomi NPP, assembled from every "
       + "orbital pass and drawn in polar stereographic — the projection Web Mercator can't. "
       + (dark
-        ? "Mostly dark because the pole is deep in its months-long polar night — the sun, not a cover-up."
-        : "Fully lit: the pole is in its months-long polar day right now.");
+        ? "The centre is dark because the pole is deep in its months-long polar night — the sun, not a cover-up."
+        : "The pole is in its months-long polar day right now.");
   };
   img.onerror = () => {
-    if ($("pole").hidden || !img.src) return;
+    if (seq !== poleSeq || $("pole").hidden || !img.src) return;
     $("pole-caption").textContent = "NASA's snapshot service didn't answer — try again in a minute, or open Worldview directly.";
   };
-  img.src = "https://wvs.earthdata.nasa.gov/api/v1/snapshot?REQUEST=GetSnapshot"
-    + `&TIME=${day}&BBOX=-4194304,-4194304,4194304,4194304&CRS=${p.crs}`
-    + "&LAYERS=VIIRS_SNPP_CorrectedReflectance_TrueColor&FORMAT=image/jpeg&WIDTH=1100&HEIGHT=1100";
+  img.src = `${POLE_SNAPSHOT(p.crs)}&TIME=${day}`;
 }
 
 function closePole() {
