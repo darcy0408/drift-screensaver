@@ -1023,7 +1023,8 @@ document.addEventListener("keydown", e => {
       toast(state.labelsOn ? "LABELS ON" : "LABELS OFF");
       break;
     }
-    case "p": case "P": pinCurrent(); break;
+    case "k": case "K": pinCurrent(); break;
+    case "p": case "P": cyclePole(); break;
     case "f": case "F":
       document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
       break;
@@ -1606,6 +1607,13 @@ function openPole(which) {
 function closePole() {
   $("pole").hidden = true;
   $("pole-img").removeAttribute("src");
+}
+
+// One-key pole tour: closed → North → South → closed.
+function cyclePole() {
+  if ($("pole").hidden) openPole("arctic");
+  else if ($("pole-arctic").classList.contains("active")) openPole("antarctic");
+  else closePole();
 }
 
 $("dossier-pole").addEventListener("click", () => openPole("arctic"));

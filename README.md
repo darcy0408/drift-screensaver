@@ -15,7 +15,8 @@
 - **Imagery vintage** — every card shows when the current photo was taken, how old it is, which satellite took it, and its resolution.
 - **Live conditions** — temperature (°C/°F), sky, and daylight window at every stop, via Open-Meteo.
 - **Golden hour mode (`G`)** — tours only places where the sun is currently rising or setting. **Deep field (`R`)** — random points on Earth. **Mystery files (`M`)** — case files only.
-- **Passport (`P`/`V`)** — pin places you love and fly back to them.
+- **Poles (`P`)** — the map (like every web map) stops at 85° — so `P` opens NASA's daily polar-stereographic pass of the North pole; press again for the South, again to close.
+- **Passport (`K`/`V`)** — pin places you love and fly back to them.
 - **Share (`COPY LINK`)** — every view has a URL that opens exactly there for anyone.
 
 ![Uluru at golden hour with live weather and imagery attribution](docs/uluru-golden-hour.png)
@@ -29,7 +30,8 @@
 | scroll / arrows / WASD | pan | `O` | world view and back |
 | pinch / `+` `−` | zoom | `H` | hide the interface |
 | `Space` | pause / resume tour | `I` | area intel panel |
-| `M` `R` `G` | mystery / random / golden hour | `P` / `V` | pin / passport |
+| `M` `R` `G` | mystery / random / golden hour | `K` / `V` | pin / passport |
+| `P` | view the poles (N → S → close) | `F` | fullscreen |
 | `L` | place-name labels | `Esc` | close panel, then exit |
 
 ## Install as a Windows screensaver
