@@ -2,8 +2,10 @@ name: mobile-build
 
 # Builds the Android APK/AAB on Linux and the iOS app (unsigned) on macOS.
 # Native projects are generated fresh each run (npx cap add) — nothing
-# platform-specific is committed. Download artifacts from the run page:
-# the debug APK sideloads directly onto an Android phone.
+# platform-specific is committed. Builds are published as assets on the
+# rolling "mobile-latest" prerelease (NOT as Actions artifacts: those count
+# against the account storage quota, which other repos exhaust). The debug
+# APK sideloads directly onto an Android phone.
 on:
   workflow_dispatch:
   push:
@@ -11,6 +13,9 @@ on:
     paths:
       - "mobile/**"
       - ".github/workflows/mobile-build.yml"
+
+permissions:
+  contents: write
 
 jobs:
   android:
@@ -31,14 +36,17 @@ jobs:
       - run: npx cap sync android
       - name: Build debug APK + release AAB (unsigned)
         run: cd android && chmod +x gradlew && ./gradlew assembleDebug bundleRelease
-      - uses: actions/upload-artifact@v4
-        with:
-          name: drift-android-debug-apk
-          path: mobile/android/app/build/outputs/apk/debug/app-debug.apk
-      - uses: actions/upload-artifact@v4
-        with:
-          name: drift-android-release-aab-unsigned
-          path: mobile/android/app/build/outputs/bundle/release/app-release.aab
+      - name: Publish to rolling release
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create mobile-latest --prerelease --title "Mobile builds (rolling)" \
+            --notes "Latest CI builds. DRIFT-debug.apk sideloads on Android; the AAB is the unsigned Play upload; the iOS zip is the unsigned .app." \
+            2>/dev/null || true
+          cp mobile/android/app/build/outputs/apk/debug/app-debug.apk DRIFT-debug.apk
+          cp mobile/android/app/build/outputs/bundle/release/app-release.aab DRIFT-release-unsigned.aab
+          gh release upload mobile-latest DRIFT-debug.apk DRIFT-release-unsigned.aab --clobber
 
   ios:
     runs-on: macos-latest
@@ -61,7 +69,12 @@ jobs:
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build
       - name: Package .app
         run: cd dd/Build/Products/Release-iphoneos && zip -r DRIFT-ios-unsigned.zip App.app
-      - uses: actions/upload-artifact@v4
-        with:
-          name: drift-ios-app-unsigned
-          path: mobile/dd/Build/Products/Release-iphoneos/DRIFT-ios-unsigned.zip
+      - name: Publish to rolling release
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create mobile-latest --prerelease --title "Mobile builds (rolling)" \
+            --notes "Latest CI builds. DRIFT-debug.apk sideloads on Android; the AAB is the unsigned Play upload; the iOS zip is the unsigned .app." \
+            2>/dev/null || true
+          gh release upload mobile-latest mobile/dd/Build/Products/Release-iphoneos/DRIFT-ios-unsigned.zip --clobber

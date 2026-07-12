@@ -7,13 +7,15 @@ Android/iOS projects fresh on every run — nothing platform-specific is committ
 ## Get a build
 
 Push anything touching `mobile/` (or run the **mobile-build** workflow manually from
-the Actions tab). Artifacts on the run page:
+the Actions tab). Builds land on the rolling
+[**mobile-latest** release](https://github.com/darcy0408/drift-screensaver/releases/tag/mobile-latest)
+(not Actions artifacts — those count against the account storage quota):
 
-| Artifact | What it is |
+| Asset | What it is |
 |---|---|
-| `drift-android-debug-apk` | Sideload this on any Android phone to test today (Settings → allow installs from your browser/files app) |
-| `drift-android-release-aab-unsigned` | Upload target for Play Console (Play App Signing signs it for you) |
-| `drift-ios-app-unsigned` | Proof the iOS build compiles; App Store submission needs a signed archive (below) |
+| `DRIFT-debug.apk` | Sideload this on any Android phone to test today (Settings → allow installs from your browser/files app) |
+| `DRIFT-release-unsigned.aab` | Upload target for Play Console (Play App Signing signs it for you) |
+| `DRIFT-ios-unsigned.zip` | Proof the iOS build compiles; App Store submission needs a signed archive (below) |
 
 ## Publish to Google Play (account: $25 one-time — you have this)
 
