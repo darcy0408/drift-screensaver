@@ -1620,11 +1620,10 @@ async function openPole(which) {
   img.onload = () => {
     if (seq !== poleSeq) return;
     $("pole-caption").textContent =
-      "Photographed by the VIIRS instrument on Suomi NPP, assembled from every "
-      + "orbital pass and drawn in polar stereographic — the projection Web Mercator can't. "
+      "Photographed by the VIIRS instrument on Suomi NPP, assembled from every orbital pass and drawn in polar stereographic — the projection the everyday web map never shows you. "
       + (dark
-        ? "The centre is dark because the pole is deep in its months-long polar night — the sun, not a cover-up."
-        : "The pole is in its months-long polar day right now.");
+        ? "The centre is black because the pole is deep in its months-long polar night — for half the year, even the satellites fly over darkness."
+        : "The pole is deep in its months-long polar day — right now the sun up there never sets.");
   };
   img.onerror = () => {
     if (seq !== poleSeq || $("pole").hidden || !img.src) return;
@@ -1701,7 +1700,7 @@ function exportCard() {
   y = wrapText(x, place.name, M, y, W - 2 * M, 70, 2) + 14;
 
   if (place.dossier) {
-    for (const [label, text, lines] of [["THE CLAIM", place.dossier.claim, 4], ["THE LORE", place.dossier.lore, 4], ["THE RECORD", place.dossier.truth, 5]]) {
+    for (const [label, text, lines] of [["THE CLAIM", place.dossier.claim, 4], ["THE LORE", place.dossier.lore, 4], ["THE OFFICIAL STORY", place.dossier.truth, 5]]) {
       x.fillStyle = amber;
       x.font = "600 20px Consolas, monospace";
       x.fillText(label, M, y);

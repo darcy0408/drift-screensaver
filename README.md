@@ -8,7 +8,7 @@
 
 ## What it does
 
-- **World tour** — drifts cinematically between 76 curated places: natural wonders, human marks, and 41 **mystery case files** (star forts, Tartaria lore, Area 51, phantom islands, megaliths…) each presenting *the claim, the lore, and the record* side by side.
+- **World tour** — drifts cinematically between 76 curated places: natural wonders, human marks, and 41 **mystery case files** (star forts, Tartaria lore, Area 51, phantom islands, megaliths…) each presenting *the claim, the lore, and the official story* side by side.
 - **Click anywhere** — drops a marker and tells you what's there: streets, stadiums, beaches, landmarks (Wikipedia-aware, so it says "SoFi Stadium," not "footpath").
 - **Search anything** — an address, a city, a country… or **paste a Google Maps URL / raw coordinates** to jump to a spot you found elsewhere and compare it against independent Esri imagery.
 - **Time machine (`T`)** — scrub through Esri's Wayback archive to 2014. The slider only stops where *your view actually changed*, and each stop names the capture date, satellite, and provider.
@@ -52,8 +52,8 @@ A single static web page (no build step, no API keys, no accounts): [MapLibre GL
 
 ## The ethos
 
-DRIFT isn't here to debunk anyone, and it isn't here to sell you a theory. Every case file lays out three exhibits — **the claim, the lore, and the record** — and hands you the instruments to weigh them yourself: the time machine (did it change?), the imagery's provenance (who photographed it, when, at what resolution?), cross-provider comparison (does Google show the same thing?), and live NASA polar imagery (see the poles the map projection can't draw). Where the record is incomplete, the file says so. Where the official story *was* the deception — Great Zimbabwe's censored archaeology, the Bennewitz disinformation campaign — the file says that too.
+Every case file opens the same way: three exhibits, side by side — **the claim, the lore, and the official story**. Then it hands you the instruments to check that official story yourself: the time machine (did the imagery change when they said it did?), the imagery's provenance (who photographed it, when, at what resolution?), cross-provider comparison (does Google show the same thing?), and live NASA polar imagery (see the poles the map projection can't draw). Where the official story is incomplete, the file says so. Where the official story *was* the deception — Great Zimbabwe's censored archaeology, the Bennewitz disinformation campaign — the file says that too.
 
-Log what you find. Check it against the record. Bring receipts. That's the whole religion.
+Log what you find. Check it against the official story. Bring receipts. That's the whole religion.
 
 Imagery © Esri, Maxar, Earthstar Geographics, and the GIS User Community.

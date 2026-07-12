@@ -81,7 +81,7 @@ window.PLACES = [
       file: "CF-020",
       claim: "The poster child of 'Tartaria' theory: star cities this geometrically perfect weren't built by people with shovels — they're inherited infrastructure from an erased worldwide civilization.",
       lore: "Search any star fort online and you'll find the same question: why does this exact radial design appear on every continent? Theorists say the forts are 'energy machines' aligned to a lost grid, their true builders scrubbed from history in the 1800s.",
-      truth: "The shape is just geometry doing its job: after cannons made high walls obsolete, low angled bastions let defenders cover every inch of wall with crossfire — and the design spread worldwide because the same European military engineers were hired everywhere. Venice's archives hold Palmanova's invoices. Utopia still needed paying."
+      truth: "Historians credit geometry, not inheritance: after cannons made high walls obsolete, low angled bastions let defenders cover every inch of wall with crossfire, and the design spread worldwide because the same European military engineers were hired everywhere. Venice's archives hold Palmanova's invoices — utopia still needed paying. Nobody's found invoices for the 'inherited' version yet."
     } },
   { id: "almeria", name: "The Sea of Plastic", region: "Almería, Spain", lat: 36.776, lng: -2.813, zoom: 12, tz: "Europe/Madrid", wiki: "El_Ejido", category: "human",
     blurb: "40,000 hectares of greenhouses so bright and white they measurably cool the local climate. Europe's winter vegetables come from here." },
@@ -141,7 +141,7 @@ window.PLACES = [
       file: "CF-078",
       claim: "Nothing to see here, said Beijing: the dredging fleet turning reefs into fortresses was building 'civilian facilities' and 'weather stations' — while runways, radar domes, and missile shelters assembled themselves in every satellite pass.",
       lore: "In early 2014 this was water with some coral awash at low tide. By 2017: a 3,000-metre runway, hangars for combat aircraft, and harbors for warships. The US Navy called the campaign the 'Great Wall of Sand' — 3,200 acres of new land across the Spratlys. Our time machine covers the entire construction, pass by pass.",
-      truth: "A 2016 international tribunal ruled the reef-building violated the Law of the Sea; China ignored it, and satellite analysts (CSIS's island tracker) have documented every radar and runway since. No conspiracy theory required — this is the rare case where watching the map WAS the intelligence."
+      truth: "A 2016 international tribunal ruled the reef-building violated the Law of the Sea; Beijing's official line calls it sovereign construction and ignored the ruling. Satellite analysts (CSIS's island tracker) have logged every radar dish and runway since — this is the rare file where watching the map WAS the intelligence. The tracker's still updating; check what's new since your last pass."
     } },
   { id: "subi-reef", name: "Subi Reef", region: "Spratly Islands, South China Sea", lat: 10.9227, lng: 114.0643, zoom: 13, tz: "Asia/Shanghai", wiki: "Subi_Reef", category: "human", exp: "reefs",
     blurb: "Underwater at high tide in 2014; today a ring-shaped island base with a runway and a small town's worth of buildings. Press T and watch land being conjured." },
@@ -159,7 +159,7 @@ window.PLACES = [
       file: "CF-079",
       claim: "From 1976, a sharp tapping invaded shortwave radios worldwide — ten pulses a second, drowning broadcasts on every continent. Theories: Soviet weather control, submarine signals, and the classic — mass mind control. Broadcasters called it the Russian Woodpecker.",
       lore: "The source was this: an over-the-horizon radar array 700 metres long and 150 tall, built beside Chernobyl with its own secret town (marked 'children's camp' on Soviet maps). It fell silent forever in 1989. Too big to demolish, too radioactive to salvage, it still stands in the exclusion-zone forest — a cathedral of the Cold War.",
-      truth: "Declassification settled it: Duga watched for the heat plumes of American missile launches over the pole, and the woodpecker was simply its pulse. The mind-control lore survives because standing under 14,000 tonnes of antenna in a dead forest, the mundane explanation somehow feels less believable than the myth."
+      truth: "The declassified file says Duga watched for the heat plumes of American missile launches over the pole, and the woodpecker was its pulse, ticking out a scan rate. That's the official account, anyway — standing under 14,000 tonnes of antenna in a dead forest, plenty of visitors still find it harder to believe than the mind-control version."
     } },
   { id: "menwith-hill", name: "RAF Menwith Hill", region: "Yorkshire, England, UK", lat: 54.0084, lng: -1.6893, zoom: 14, tz: "Europe/London", wiki: "RAF_Menwith_Hill", category: "human", exp: "ears",
     blurb: "Three dozen giant golf balls on the Yorkshire moors — the largest electronic intelligence station outside the United States, each radome hiding which way its antenna points." },
@@ -179,7 +179,7 @@ window.PLACES = [
       file: "CF-080",
       claim: "For thirty years, guests golfed and dined at America's grandest resort, never knowing the entire United States Congress was meant to survive nuclear war directly beneath the hotel's west wing.",
       lore: "Project Greek Island: a 112,000-square-foot bunker with chambers for the House and Senate, a crematorium-adjacent medical wing, and blast doors hidden behind ordinary conference-room wallpaper. The 'TV repairmen' who lived in town for decades were its secret maintenance crew.",
-      truth: "The Washington Post exposed it in 1992 and the government decommissioned it within three years — you can now book a tour between spa appointments. The claim, for once, was entirely, deliciously true; declassification just moved it from conspiracy to brochure."
+      truth: "The Washington Post exposed it in 1992 and the government decommissioned it within three years — you can now book a tour between spa appointments. The claim, for once, was entirely, deliciously true: declassification didn't debunk this one, it handed you a floor plan. Ask the tour guide what's still off it."
     } },
 
   // ---------------- Expedition: the national parks ----------------
@@ -191,7 +191,7 @@ window.PLACES = [
       file: "CF-081",
       claim: "Boulders weighing hundreds of pounds cross this dry lakebed on their own, carving long trails — blamed over the decades on magnetic anomalies, energy vortices, and pranksters with too much free time.",
       lore: "The trails are real and everywhere: graceful arcs, sharp turns, parallel processions. For seventy years nobody — not one person — ever saw a stone actually move, which kept every theory alive.",
-      truth: "In 2014, GPS-tagged stones and time-lapse cameras finally caught it: rare winter floods freeze into thin ice panes that, melting at dawn, sail before light winds and bulldoze the stones at walking pace. The answer required ice, wind, patience, and luck — and it subtracted nothing from the strangeness of standing there."
+      truth: "In 2014, GPS-tagged stones and time-lapse cameras caught it happening: researchers say rare winter floods freeze into thin ice panes that, melting at dawn, sail before light winds and bulldoze the stones at walking pace. The official account needed ice, wind, patience, and luck all lining up — and it subtracted nothing from the strangeness of standing there, watching for the next trail to start."
     } },
   { id: "everglades", name: "The Everglades", region: "Florida, USA", lat: 25.30, lng: -80.93, zoom: 10, tz: "America/New_York", wiki: "Everglades_National_Park", category: "wonder", exp: "parks",
     blurb: "Not a swamp — a river fifty miles wide and one inch deep, flowing imperceptibly to the sea through a mosaic of sawgrass and mangrove readable only from above." },
@@ -239,7 +239,7 @@ window.PLACES = [
       file: "CF-067",
       claim: "A US Navy base built in the shape of a swastika — deliberately, say the theorists, hiding in plain sight for forty years until satellites ratted it out.",
       lore: "Built in 1967, the shape went essentially unnoticed until Google Earth put an aerial view in every browser in 2007. The Navy then budgeted over $600,000 for landscaping and rooftop structures to disguise it — which believers read as confession.",
-      truth: "Architects' drawings show four L-shaped buildings arranged around a courtyard for shade and airflow; nobody in 1967 expected the public to ever see a roof plan. The real story is the satellite era itself: orbit turned every rooftop into a billboard, retroactively."
+      truth: "The Navy's own architects' drawings show four L-shaped buildings arranged around a courtyard for shade and airflow — officially, nobody in 1967 expected the public to ever see a roof plan. Draw your own line between accident and confession: orbit turned every rooftop on Earth into a billboard, retroactively, and this one reads as a swastika."
     } },
   { id: "atlantis-grid", name: "The Atlantis Grid", region: "Atlantic Ocean, west of the Canaries", lat: 31.25, lng: -24.25, zoom: 7, tz: "Etc/GMT+2", wiki: "Atlantis", category: "mystery",
     blurb: "The sunken city that turned out to be the map itself.",
@@ -247,7 +247,7 @@ window.PLACES = [
       file: "CF-068",
       claim: "In 2009, Google Ocean users found a perfect grid of 'streets' the size of Wales on the Atlantic floor — right where Plato-hunters wanted Atlantis. Headlines went global within days.",
       lore: "The grid was really there in the data: crisp perpendicular lines etched into the seabed, kilometres apart, far too regular for geology. For one glorious news cycle, the lost city had coordinates.",
-      truth: "The 'streets' were the wakes of the mapping ships themselves — sonar tracklines with slightly better resolution than the satellite-derived seafloor around them. Google smoothed the data in 2011 and the city vanished. Look at this spot on our imagery: open water, because Esri never drew bathymetry here at all. Same planet, different data — the artifact was the map, not the territory."
+      truth: "Google's explanation: the 'streets' were the wakes of the mapping ships themselves — sonar tracklines reading slightly sharper than the satellite-derived seafloor around them. Google smoothed the data in 2011 and the grid vanished from their maps. Look at this spot on our imagery: open water, because Esri never drew bathymetry here at all. Same planet, different data — check a third provider and see what shows up."
     } },
   { id: "area-51", name: "Area 51", region: "Nevada, USA", lat: 37.235, lng: -115.8111, zoom: 12.8, tz: "America/Los_Angeles", wiki: "Area_51", category: "mystery",
     blurb: "The most famous secret base on Earth.",
@@ -255,7 +255,7 @@ window.PLACES = [
       file: "CF-001",
       claim: "Crashed flying saucers from Roswell are stored and reverse-engineered here, in hangars dug into Papoose Mountain.",
       lore: "The CIA didn't acknowledge the base existed until 2013. Employees commute on unmarked 'Janet' flights from a private Las Vegas terminal. The airspace above is the most restricted in America, and physicist Bob Lazar's 1989 claims about 'Element 115' launched the modern UFO mythos.",
-      truth: "Declassified documents show it was built to test the U-2 and A-12 spy planes — aircraft so unusual they generated many of the era's UFO reports themselves. Whatever flies here now is classified, which keeps the legend fed."
+      truth: "The declassified file says it was built to test the U-2 and A-12 spy planes — aircraft so unusual they generated many of the era's UFO reports themselves. Whatever flies there now is still classified, and the agency isn't saying. Legend, meet vacuum."
     } },
   { id: "richat", name: "Richat Structure", region: "Mauritania", lat: 21.124, lng: -11.401, zoom: 10.3, tz: "Africa/Nouakchott", wiki: "Richat_Structure", category: "mystery",
     blurb: "The Eye of the Sahara.",
@@ -263,7 +263,7 @@ window.PLACES = [
       file: "CF-002",
       claim: "This 40 km bullseye in the desert is the ruins of Atlantis — its concentric rings matching Plato's description of the city's circular harbours.",
       lore: "Astronauts have used the Eye as a landmark since the Gemini missions. Atlantis theorists point out Plato's dimensions for the city (23 stadia) roughly match the structure's diameter, and that it sits near ancient shorelines.",
-      truth: "Geologists identify it as an eroded dome of layered rock — no artefacts, walls, or worked stone have ever been found. It's arguably stranger than Atlantis: a 100-million-year wound in the crust that never became a volcano."
+      truth: "Geologists' read: an eroded dome of layered rock. No artefacts, walls, or worked stone have turned up yet — though nobody claims to have dug every inch of it. It's arguably stranger than Atlantis regardless: a 100-million-year wound in the crust that never became a volcano."
     } },
   { id: "marree-man", name: "Marree Man", region: "South Australia", lat: -29.532, lng: 137.468, zoom: 12.5, tz: "Australia/Adelaide", wiki: "Marree_Man", category: "mystery",
     blurb: "A 2.7 km figure nobody admits to drawing.",
@@ -271,7 +271,7 @@ window.PLACES = [
       file: "CF-003",
       claim: "The largest geoglyph on Earth appeared overnight in 1998 — and no one has ever claimed it.",
       lore: "The figure of a hunter was discovered by a charter pilot in June 1998. Anonymous faxes tipped off hotels, a buried plaque referenced an American flag, and a satellite phone was found nearby. Theories name US airmen, local artists, even the artist Bardius Goldberg — who neither confirmed nor denied before his death.",
-      truth: "Still officially unsolved. Whoever did it needed GPS, a tractor plough, and total secrecy across weeks of work — a conspiracy that actually happened, just probably a mundane one."
+      truth: "Still officially unsolved — no one has ever claimed it, and no suspect has ever been named. Whoever did it needed GPS, a tractor plough, and total secrecy across weeks of desert work: a real conspiracy, executed and never confessed to. File stays open."
     } },
   { id: "nazca", name: "Nazca Lines", region: "Peru", lat: -14.739, lng: -75.13, zoom: 13.5, tz: "America/Lima", wiki: "Nazca_Lines", category: "mystery",
     blurb: "Drawings meant to be seen from above, made by people who couldn't fly.",
@@ -279,7 +279,7 @@ window.PLACES = [
       file: "CF-004",
       claim: "Runways and signals for ancient astronauts — Erich von Däniken's 'Chariots of the Gods' made these lines the founding text of alien-visitor theory.",
       lore: "Hundreds of figures — a hummingbird, a monkey, a 'spaceman' waving from a hillside — drawn between 500 BCE and 500 CE, some only fully visible from altitude. New figures are still being found by drone survey today.",
-      truth: "The Nazca made them by removing dark surface stones to expose pale ground — a technique you can replicate with rope and stakes. Most likely processional paths and offerings to water gods. Still: they made art for a viewpoint they would never reach."
+      truth: "Archaeologists say the Nazca made them by removing dark surface stones to expose pale ground beneath — a technique you can replicate yourself with rope and stakes. The leading theory: processional paths and offerings to water gods. Nobody's fully explained why a ground-level culture needed a sky-level view — that part's still open."
     } },
   { id: "bermuda-triangle", name: "Bermuda Triangle", region: "North Atlantic", lat: 25.0, lng: -71.0, zoom: 6.2, tz: "America/New_York", wiki: "Bermuda_Triangle", category: "mystery",
     blurb: "Half a million square miles of ocean with a reputation.",
@@ -287,7 +287,7 @@ window.PLACES = [
       file: "CF-005",
       claim: "Ships and aircraft vanish here without trace — Flight 19, the USS Cyclops, dozens more — taken by methane eruptions, magnetic anomalies, or something else.",
       lore: "The legend ignited in 1964 over Flight 19: five Navy bombers lost in 1945, followed by the rescue plane sent after them. The Cyclops disappeared in 1918 with 309 souls and no distress call — still the US Navy's largest non-combat loss of life.",
-      truth: "Lloyd's of London and the US Coast Guard both find loss rates here statistically normal for such heavily trafficked, storm-prone water. The triangle's real power is that nobody can quite stop looking at it."
+      truth: "Lloyd's of London and the US Coast Guard both say loss rates here run statistically normal for such heavily trafficked, storm-prone water. Their numbers, anyway. The triangle's real power is that nobody can quite stop looking at it."
     } },
   { id: "dia", name: "Denver International Airport", region: "Colorado, USA", lat: 39.8617, lng: -104.6731, zoom: 13.2, tz: "America/Denver", wiki: "Denver_International_Airport", category: "mystery",
     blurb: "The airport that leans into it.",
@@ -295,7 +295,7 @@ window.PLACES = [
       file: "CF-006",
       claim: "A secret bunker complex beneath the terminals — HQ for the New World Order, marked by masonic plaques, apocalyptic murals, and a demonic blue horse.",
       lore: "It opened 16 months late and $2 billion over budget ('for the tunnels'). The dedication stone really is masonic. The murals really do depict a gas-masked figure with a sword. 'Blucifer,' the 32-foot demon horse, really did kill its own sculptor when a section fell on him.",
-      truth: "The tunnels are a failed automated-baggage system; the murals are anti-war art. The airport now sells NWO-themed merchandise and puts up talking-gargoyle installations — the rare conspiracy subject that decided to become its own gift shop."
+      truth: "Officially, the tunnels are a failed automated-baggage system and the murals are anti-war art. The airport leans into it anyway, selling NWO-themed merchandise and staffing talking-gargoyle installations — the rare conspiracy subject that decided to become its own gift shop."
     } },
   { id: "north-sentinel", name: "North Sentinel Island", region: "Andaman Islands, India", lat: 11.5578, lng: 92.2411, zoom: 12.3, tz: "Asia/Kolkata", wiki: "North_Sentinel_Island", category: "mystery",
     blurb: "The island the modern world is forbidden to touch.",
@@ -319,7 +319,7 @@ window.PLACES = [
       file: "CF-009",
       claim: "A weather-control weapon. Or an earthquake machine. Or a mind-control array. HAARP has been blamed for hurricanes, floods, and the hum in people's ears.",
       lore: "Built by the Air Force and DARPA to fire 3.6 megawatts of radio energy into the ionosphere, it can create artificial auroras — a genuinely sci-fi capability that made every theory feel plausible. A Russian military journal once accused it of being able to 'flip Earth's magnetic poles.'",
-      truth: "It heats a patch of upper atmosphere the way a match heats a swimming pool — the beam's energy is billions of times weaker than a thunderstorm's. Now run by a university, it holds open-house days where you can walk among the antennas."
+      truth: "Physicists' comparison: it heats a patch of upper atmosphere the way a match heats a swimming pool, the beam's energy billions of times weaker than a thunderstorm's — that's the official measurement, anyway. Now run by a university, it holds open-house days where you can walk among the antennas and measure it yourself."
     } },
   { id: "steppe-geoglyphs", name: "Ushtogay Square", region: "Turgai, Kazakhstan", lat: 50.8319, lng: 65.3251, zoom: 13.8, tz: "Asia/Almaty", wiki: "Steppe_Geoglyphs", category: "mystery",
     blurb: "Earthworks visible only from space, found by a man browsing Google Earth.",
@@ -335,7 +335,7 @@ window.PLACES = [
       file: "CF-011",
       claim: "A vast carved portrait of an Indigenous leader wearing a headdress — and, apparently, earbuds.",
       lore: "Found by a grandmother browsing Google Earth in 2006. The head is 255 m across and uncannily detailed; the 'earbud' cord runs perfectly to the ear.",
-      truth: "Pure pareidolia, and better for it: the face is rain-eroded badland, and the earbud is a gas well and its access road. No one carved anything — your brain did all the work just now."
+      truth: "Geologists call it pareidolia: the face is rain-eroded badland, and the earbud is a gas well with its access road. Officially, no one carved it — but you were looking for a face, and your brain built one anyway, just now."
     } },
   { id: "kola", name: "Kola Superdeep Borehole", region: "Murmansk, Russia", lat: 69.3963, lng: 30.6094, zoom: 14.3, tz: "Europe/Moscow", wiki: "Kola_Superdeep_Borehole", category: "mystery",
     blurb: "The deepest hole humans ever dug, welded shut.",
@@ -343,7 +343,7 @@ window.PLACES = [
       file: "CF-012",
       claim: "The 'Well to Hell' — Soviet drillers at 12 km supposedly broke into a cavity and lowered a microphone that recorded the screams of the damned.",
       lore: "The screams tape has circulated since 1989 (it appears to be a looped horror-film soundtrack). The real hole is 12,262 m deep but only 23 cm wide, capped by a rusted plate you could step over without noticing.",
-      truth: "What they actually found was weirder than hell: rock plasticised by heat that ate drill bits, water where none should exist, and microscopic plankton fossils from 2 billion years ago, two-thirds of the way to the mantle... and we still got less than 0.2% of the way to the centre."
+      truth: "What they found down there was weirder than hell: rock plasticised by heat that ate drill bits, water where none should exist, and microscopic plankton fossils from 2 billion years ago, two-thirds of the way to the mantle... and we still got less than 0.2% of the way to the centre."
     } },
   { id: "shasta", name: "Mount Shasta", region: "California, USA", lat: 41.4092, lng: -122.1949, zoom: 11.3, tz: "America/Los_Angeles", wiki: "Mount_Shasta", category: "mystery",
     blurb: "The volcano with a city inside, allegedly.",
@@ -351,7 +351,7 @@ window.PLACES = [
       file: "CF-013",
       claim: "Survivors of the lost continent of Lemuria live in a crystal city called Telos inside the mountain, emerging occasionally in white robes.",
       lore: "The legend began with an 1880s teenager's novel and an 1930s mining engineer who said a Lemurian invited him inside. The town below now hosts ascension retreats, and believers gather each year to await the 'Telosians.'",
-      truth: "Geologically it's one of the Cascades' most dangerous stratovolcanoes, which erupts every 600-800 years. The 'mysterious lights' on its flanks are usually lenticular clouds — which, to be fair, do look exactly like cloaked motherships."
+      truth: "Geologists' file: one of the Cascades' most dangerous stratovolcanoes, erupting every 600-800 years. The 'mysterious lights' on its flanks are usually logged as lenticular clouds — which, credit where due, do look exactly like cloaked motherships from the right angle."
     } },
   { id: "skinwalker", name: "Skinwalker Ranch", region: "Utah, USA", lat: 40.258, lng: -109.888, zoom: 13.8, tz: "America/Denver", wiki: "Skinwalker_Ranch", category: "mystery",
     blurb: "The ranch the Pentagon actually studied.",
@@ -367,7 +367,7 @@ window.PLACES = [
       file: "CF-015",
       claim: "A patch of Chihuahuan desert where radio signals fail, compasses spin, and meteorites fall with suspicious frequency — Mexico's Bermuda Triangle.",
       lore: "In 1970 a US Athena rocket carrying two small cobalt-57 canisters went off course from Utah and crashed here. The Air Force recovery operation — trucks, aircraft, a purpose-built rail spur in the desert — convinced locals something extraordinary had landed.",
-      truth: "Radios work fine; researchers have tested repeatedly. But the crash was real, the cleanup was real, and the zone sits inside a genuine biosphere reserve full of endemic species — a true anomaly, just a biological one."
+      truth: "Researchers who've tested repeatedly say the radios work fine. But the crash was real, the cleanup was real, and the zone sits inside a genuine biosphere reserve full of endemic species most visitors never hear about — a true anomaly, just measured in different units."
     } },
   { id: "diego-garcia", name: "Diego Garcia", region: "Chagos Archipelago", lat: -7.3195, lng: 72.4229, zoom: 11.8, tz: "Indian/Chagos", wiki: "Diego_Garcia", category: "mystery",
     blurb: "The atoll you cannot visit.",
@@ -383,7 +383,7 @@ window.PLACES = [
       file: "CF-017",
       claim: "Every July, presidents, bankers, and CEOs gather under the redwoods for the 'Cremation of Care' — a robed ritual before a 40-foot stone owl — and, theorists say, to plan the world's next decade.",
       lore: "Real attendees have included every Republican president since Coolidge. The Manhattan Project was reportedly first sketched at a Grove gathering in 1942. Alex Jones infiltrated it with a hidden camera in 2000 and turned the footage into a founding text of modern conspiracism.",
-      truth: "The ritual is real but by all sober accounts is theatre — a Victorian gentlemen's club burning an effigy of 'dull care' before two weeks of drinking. Which is either reassuring or worse, depending on your priors."
+      truth: "The ritual is real, and every account from inside calls it theatre — a Victorian gentlemen's club burning an effigy of 'dull care' before two weeks of drinking and networking. Whether that's the whole story or the cover story is, depending on your priors, still up for debate."
     } },
   { id: "giza", name: "Great Pyramids of Giza", region: "Egypt", lat: 29.9773, lng: 31.1325, zoom: 14.2, tz: "Africa/Cairo", wiki: "Giza_pyramid_complex", category: "mystery",
     blurb: "The last ancient wonder still standing.",
@@ -400,7 +400,7 @@ window.PLACES = [
       file: "CF-021",
       claim: "A five-pointed 'energy node' too intricate for 1593 peat-bog engineering — restored, theorists note, a little too lovingly, as if someone wanted a working example kept on display.",
       lore: "Bourtange guards a sand ridge through an impassable swamp. Star-fort channels claim the water geometry is functional in ways cartography never explains — resonance, power, preservation.",
-      truth: "It's a textbook bastion fort on the only dry road to Germany, besieged, obsolete by 1851, farmed over, then rebuilt to its 1742 drawings in the 1960s as an open-air museum. The restoration blueprints are the anti-mystery: every angle survives on paper."
+      truth: "Historians call it a textbook bastion fort on the only dry road to Germany — besieged, obsolete by 1851, farmed over, then rebuilt to its 1742 drawings in the 1960s as an open-air museum. The restoration blueprints are the official anti-mystery: every angle survives on paper. Go find the originals in the Groningen archive and check for yourself."
     } },
   { id: "neuf-brisach", name: "Neuf-Brisach", region: "Alsace, France", lat: 48.0175, lng: 7.5278, zoom: 14.6, tz: "Europe/Paris", wiki: "Neuf-Brisach", category: "mystery",
     blurb: "Vauban's final masterpiece — a perfect octagonal star city.",
@@ -408,7 +408,7 @@ window.PLACES = [
       file: "CF-022",
       claim: "An eight-fold mandala stamped onto the Rhine plain, allegedly 'found, not founded' — Tartaria lore says towns like this predate the kings who claimed them.",
       lore: "It is uncannily perfect from above: an octagon within a star within a star. Believers ask why a 'primitive' age built with laser symmetry while our era builds cul-de-sacs.",
-      truth: "Louis XIV lost Breisach across the river in 1697 and ordered his engineer Vauban to replace it; the plans, budget fights, and construction letters (1698-1703) all survive. The symmetry is siege mathematics — UNESCO lists it as the swan song of a documented, named, salaried genius."
+      truth: "The official record: Louis XIV lost Breisach across the river in 1697 and ordered his engineer Vauban to replace it, and the plans, budget fights, and construction letters (1698-1703) all survive. UNESCO calls the symmetry siege mathematics — the swan song of a documented, named, salaried genius. Read the letters yourself and decide if that settles it."
     } },
   { id: "naarden", name: "Naarden", region: "Netherlands", lat: 52.2957, lng: 5.1614, zoom: 14.6, tz: "Europe/Amsterdam", wiki: "Naarden", category: "mystery",
     blurb: "A living town inside a double-moated six-pointed star.",
@@ -416,7 +416,7 @@ window.PLACES = [
       file: "CF-023",
       claim: "Twelve perfect points of land and water that theorists say no horse-and-cart society could survey, let alone dig.",
       lore: "Naarden is the internet's favorite 'impossible' aerial: two concentric star moats, still intact, still inhabited. The mudflood crowd points out the fortifications' lower levels sit half-buried — 'excavated, not built.'",
-      truth: "Half-buried is the design: a bastion's earthen mass IS the armor, and Dutch engineers were the world's best at moving mud on purpose. Rebuilt after the Spanish massacre of 1572, it stayed a garrison town into the 1920s — the Dutch army's own archives map every shovelful."
+      truth: "The Dutch army's own explanation: half-buried is the design, a bastion's earthen mass IS the armor, and Dutch engineers were the world's best at moving mud on purpose. Rebuilt after the Spanish massacre of 1572, it stayed a garrison town into the 1920s — their archives map every shovelful, if you want to check the mudflood math yourself."
     } },
   { id: "fort-jefferson", name: "Fort Jefferson", region: "Dry Tortugas, Florida, USA", lat: 24.6285, lng: -82.8732, zoom: 15.3, tz: "America/New_York", wiki: "Fort_Jefferson_(Florida)", category: "mystery",
     blurb: "Sixteen million bricks on a sandbar seventy miles from anywhere.",
@@ -424,7 +424,7 @@ window.PLACES = [
       file: "CF-024",
       claim: "The largest brick building in the Americas, on a waterless island in the open Gulf — theorists ask how, why, and whether anyone actually saw it built.",
       lore: "No fresh water, no stone, no timber, hurricane alley — and somebody stacked 16 million bricks into a perfect hexagon there. Star-fort channels call it the clearest case of 'inherited' architecture in North America.",
-      truth: "Thirty years of construction records, supply-ship manifests, and prisoner-labor rolls say otherwise — Dr. Samuel Mudd, jailed for the Lincoln assassination, did his time here. It was obsolete before it was finished, which is somehow the most 19th-century-government detail of all."
+      truth: "Thirty years of construction records, supply-ship manifests, and prisoner-labor rolls are on file at the National Archives — Dr. Samuel Mudd, jailed for the Lincoln assassination, did his time here while it was still going up. It was obsolete before it was finished, which is somehow the most 19th-century-government detail of all. The manifests are public; nobody's found a gap in them yet."
     } },
   { id: "kastellet", name: "Kastellet", region: "Copenhagen, Denmark", lat: 55.6910, lng: 12.5939, zoom: 15.3, tz: "Europe/Copenhagen", wiki: "Kastellet,_Copenhagen", category: "mystery",
     blurb: "A pentagram citadel hiding in plain sight in a capital city.",
@@ -432,7 +432,7 @@ window.PLACES = [
       file: "CF-025",
       claim: "A five-pointed star at the heart of a European capital — occult geometry, say the theorists, guarding whatever Copenhagen's founders buried beneath it.",
       lore: "It's still a working military site, which keeps the lore warm: manicured, moated, and never explained to tourists beyond a plaque or two.",
-      truth: "Built 1662-64 after Sweden besieged the city; the pentagon is, again, crossfire geometry. The most classified thing inside today is the Danish Defence Intelligence Service's office furniture."
+      truth: "Danish military records date it to 1662-64, built after Sweden besieged the city — the pentagon shape is, again, crossfire geometry, according to the engineers who drew it. The most classified thing inside today is reportedly the Danish Defence Intelligence Service's office furniture. Reportedly."
     } },
   { id: "almeida", name: "Almeida", region: "Portugal", lat: 40.7260, lng: -6.9070, zoom: 14.8, tz: "Europe/Lisbon", wiki: "Almeida,_Portugal", category: "mystery",
     blurb: "A twelve-pointed star village on the Spanish frontier.",
@@ -440,7 +440,7 @@ window.PLACES = [
       file: "CF-026",
       claim: "Twelve points, twelve 'resonant chambers' — Iberian star forts feature heavily in maps of the supposed worldwide energy grid.",
       lore: "In 1810 the fort's cathedral — used as the powder magazine — detonated and erased half the town in one flash. Lore reads the crater as evidence of 'directed energy'; historians read it as 4,000 barrels of gunpowder and one French shell.",
-      truth: "The explosion is among the best-documented disasters of the Peninsular War, witnessed by two armies. The star survives because the frontier moved on and nobody needed the land — Portugal's border bristles with sister forts nobody bothered to demolish."
+      truth: "Historians count the explosion among the best-documented disasters of the Peninsular War, witnessed by two armies — 4,000 barrels of gunpowder and one French shell, per the record. The star survives because the frontier moved on and nobody needed the land; Portugal's border still bristles with sister forts nobody bothered to demolish."
     } },
   { id: "goryokaku", name: "Goryōkaku", region: "Hakodate, Japan", lat: 41.7967, lng: 140.7570, zoom: 15, tz: "Asia/Tokyo", wiki: "Gory%C5%8Dkaku", category: "mystery",
     blurb: "Japan's star fort, drawn in cherry blossoms every spring.",
@@ -448,7 +448,7 @@ window.PLACES = [
       file: "CF-027",
       claim: "The same five-pointed geometry as Europe's forts, on the opposite side of the planet, in a country that was closed to foreigners — Tartaria channels call it the smoking gun of a single global builder.",
       lore: "It even hosted the death of a nation: the breakaway Republic of Ezo made its last stand here in 1869, samurai defending a Renaissance star fort with rifles.",
-      truth: "The 'closed country' hired the design: Japanese scholar Takeda Ayasaburō worked from smuggled Dutch military texts — Vauban's geometry arriving by book, not by empire. Same math, same answer; that's why the shapes rhyme worldwide."
+      truth: "Japanese records credit scholar Takeda Ayasaburō with the design, worked up from smuggled Dutch military texts — Vauban's geometry arriving by book, not by empire, officially. Same math, same answer: offered as the reason the shapes rhyme worldwide."
     } },
   { id: "fort-mchenry", name: "Fort McHenry", region: "Baltimore, USA", lat: 39.2632, lng: -76.5797, zoom: 15.3, tz: "America/New_York", wiki: "Fort_McHenry", category: "mystery",
     blurb: "The star fort inside the American anthem.",
@@ -456,7 +456,7 @@ window.PLACES = [
       file: "CF-028",
       claim: "America's most famous star — and, per the lore, proof the young republic 'found' fortifications it could never have financed.",
       lore: "Its five points watched the 1814 British bombardment that produced The Star-Spangled Banner; theorists enjoy that the anthem literally celebrates a star fort surviving 'the rockets' red glare.'",
-      truth: "Construction ledgers from 1798-1800 name the French engineer (Jean Foncin), the budget ($233,000), and the bricks. The star shape and the flag's stars are a poetic coincidence — the fort was named for a Secretary of War, not a constellation."
+      truth: "Construction ledgers from 1798-1800 name the French engineer (Jean Foncin), the budget ($233,000), and the bricks. Officially, the star shape and the flag's stars are a poetic coincidence — the fort was named for a Secretary of War, not a constellation. Poetic coincidences happen; you be the judge of this one."
     } },
   { id: "seattle-underground", name: "Seattle Underground", region: "Washington, USA", lat: 47.6021, lng: -122.3341, zoom: 15.5, tz: "America/Los_Angeles", wiki: "Seattle_Underground", category: "mystery",
     blurb: "A city walking on the roofs of its former self.",
@@ -464,7 +464,7 @@ window.PLACES = [
       file: "CF-029",
       claim: "Exhibit A of the 'mudflood': entire ground floors buried under feet of soil worldwide, windows peeking from sidewalks — evidence, theorists say, of a cataclysm history forgot.",
       lore: "Under Pioneer Square the old storefronts genuinely exist — doorways, glass, signage — one storey down in the dark. Tours walk it daily. If one city is buried, the lore asks, how many others are?",
-      truth: "Seattle burned in 1889 and the city used the rebuild to fix a sewage-flooding problem by raising street level a full storey; owners kept trading from their old ground floors while the new sidewalks were bridged overhead. Buried first floors elsewhere usually have the same boring parents: regrades, fires, and floods — one city at a time, all on record."
+      truth: "City records say Seattle burned in 1889 and used the rebuild to fix a sewage-flooding problem by raising street level a full storey; owners kept trading from their old ground floors while the new sidewalks were bridged overhead. Buried first floors elsewhere usually trace to the same causes on record — regrades, fires, floods — one city at a time. Worth checking whether every city's paperwork tells the same story."
     } },
   { id: "palace-fine-arts", name: "Palace of Fine Arts", region: "San Francisco, USA", lat: 37.8029, lng: -122.4484, zoom: 15.5, tz: "America/Los_Angeles", wiki: "Palace_of_Fine_Arts", category: "mystery",
     blurb: "The survivor of a vanished white city.",
@@ -472,7 +472,7 @@ window.PLACES = [
       file: "CF-030",
       claim: "World's fairs are the heart of Tartaria theory: entire marble metropolises 'built' in months, photographed, then demolished — because, the claim goes, they were never built at all, only found and then destroyed to hide the evidence.",
       lore: "The 1915 Panama-Pacific Exposition covered 635 acres with domes and colonnades, then erased itself within a year. This rotunda is the lone survivor, and it does look older than the automobile.",
-      truth: "The fairs were built fast because they were fake: plaster and burlap over wood frames, architectural stage sets never meant to survive a winter. This palace melted in the rain for decades until San Francisco recast it in concrete in the 1960s because people loved the ruin too much to lose it."
+      truth: "Records say the fairs were built fast because they were built to be temporary: plaster and burlap over wood frames, architectural stage sets never meant to survive a winter. This palace melted in the rain for decades until San Francisco recast it in concrete in the 1960s because people loved the ruin too much to let it go."
     } },
   { id: "jackson-park", name: "Jackson Park — the White City", region: "Chicago, USA", lat: 41.7827, lng: -87.5806, zoom: 13.8, tz: "America/Chicago", wiki: "World%27s_Columbian_Exposition", category: "mystery",
     blurb: "Six hundred acres where a dream city stood for six months.",
@@ -480,7 +480,7 @@ window.PLACES = [
       file: "CF-031",
       claim: "The 1893 White City: 200 palaces, canals, and golden domes on a swamp in three years — then gone. Tartaria's favorite 'demolition of the old world.'",
       lore: "Fourteen million more people visited it than lived in the entire city hosting it. Photos show an imperial capital; today there's parkland and one building. The lore writes itself.",
-      truth: "Staff plaster again — 'staff' is literally the material's name — sprayed white over timber sheds by 40,000 documented workers. Most of it burned or was scrapped within three years, as planned. The one building made of real stone is still there: it's the Museum of Science and Industry."
+      truth: "City records call the material 'staff' — plaster sprayed white over timber sheds by 40,000 documented workers. Most of it burned or was scrapped within three years, as planned. The one building made of real stone is still there: it's the Museum of Science and Industry — go press your hand against it."
     } },
   { id: "derinkuyu", name: "Derinkuyu", region: "Cappadocia, Türkiye", lat: 38.3735, lng: 34.7351, zoom: 15, tz: "Europe/Istanbul", wiki: "Derinkuyu_underground_city", category: "mystery",
     blurb: "An eighteen-storey city, straight down.",
@@ -488,7 +488,7 @@ window.PLACES = [
       file: "CF-032",
       claim: "A city for 20,000 people carved 85 metres underground — with ventilation, wineries, and half-ton rolling stone doors — by people history says had iron picks and oil lamps. Ancient-astronaut lore says otherwise.",
       lore: "A homeowner found it in 1963 by knocking down a basement wall. Tunnels connect it to other underground cities kilometres away, and nobody knows how many remain unfound.",
-      truth: "The soft volcanic tuff carves like hard cheese and self-hardens in air — locals cut new rooms within living memory. Built up in layers from Phrygian times through Byzantine sieges, it's astonishing, but it's astonishing human patience: the region has 200+ smaller versions, a whole culture of digging."
+      truth: "Geologists note the soft volcanic tuff carves like hard cheese and self-hardens in air — locals have cut new rooms within living memory. Archaeology reads it as built up in layers from Phrygian times through Byzantine sieges: astonishing, but astonishing human patience, and the region has 200+ smaller versions — a whole culture of digging most people never hear about."
     } },
   { id: "sacsayhuaman", name: "Sacsayhuamán", region: "Cusco, Peru", lat: -13.5078, lng: -71.9822, zoom: 15.8, tz: "America/Lima", wiki: "Sacsayhuam%C3%A1n", category: "mystery",
     blurb: "Hundred-ton stones fitted like soft clay.",
@@ -496,7 +496,7 @@ window.PLACES = [
       file: "CF-033",
       claim: "Zigzag walls of 100-tonne boulders interlocked so tightly a credit card won't fit the joints, no mortar, no two stones alike — 'melted into place,' say the theorists, by a technology the Inca inherited.",
       lore: "Even the conquistadors didn't believe it: chronicler Cieza de León wrote that no one who saw the walls would think men had made them. Modern lore proposes geopolymer casting, acid-softening plants, and sound levitation.",
-      truth: "Experimental archaeology has quarried, dragged, and fitted such stones with Inca-era tools — ramps, log rollers, thousands of workers, and patient pecking with harder hammerstones; unfinished blocks still lie on the drag roads with their scars showing. The real wonder is organizational: an empire that could feed 20,000 builders for decades without money or writing."
+      truth: "Experimental archaeologists have quarried, dragged, and fitted stones like these with Inca-era tools alone — ramps, log rollers, thousands of workers, and patient pecking with harder hammerstones; unfinished blocks still lie on the drag roads with their scars showing. That's the official reconstruction. The real wonder either way is organizational: an empire that could feed 20,000 builders for decades without money or writing."
     } },
   { id: "baalbek", name: "Baalbek", region: "Beqaa Valley, Lebanon", lat: 34.0069, lng: 36.2039, zoom: 15.5, tz: "Asia/Beirut", wiki: "Baalbek", category: "mystery",
     blurb: "Home of the heaviest worked stones on the planet.",
@@ -504,7 +504,7 @@ window.PLACES = [
       file: "CF-034",
       claim: "The Trilithon: three ~800-tonne blocks sitting in a wall, with a 1,650-tonne cousin still in the quarry — far beyond, the claim goes, anything Rome could lift, so the temple must stand on a older, greater foundation.",
       lore: "The 'Stone of the Pregnant Woman' has become a pilgrimage site for alternative historians; even mainstream engineers admit moving it today would be a serious project.",
-      truth: "The quarry is 800 metres away and slightly uphill — the Romans moved the blocks a short, engineered slide, and the biggest ones stayed put precisely because even Rome had limits. Roman crane technology and lifting bosses are visible on the stones. Still: standing under the Trilithon, the ancient-alien impulse is at least emotionally understandable."
+      truth: "Archaeologists trace the quarry to 800 metres away and slightly uphill — the Romans moved the blocks by a short, engineered slide, they say, and the biggest ones stayed put precisely because even Rome had limits. Roman crane technology and lifting bosses are visible on the stones, if you know where to look. Still: standing under the Trilithon, the ancient-alien impulse is at least emotionally understandable."
     } },
   { id: "teotihuacan", name: "Teotihuacan", region: "Mexico", lat: 19.6925, lng: -98.8438, zoom: 14.5, tz: "America/Mexico_City", wiki: "Teotihuacan", category: "mystery",
     blurb: "The city whose builders' name is lost.",
@@ -512,7 +512,7 @@ window.PLACES = [
       file: "CF-035",
       claim: "Sheets of mica — an electrical insulator mined 3,000 miles away in Brazil — found layered inside the pyramids: the 'power plant' theory's favorite exhibit.",
       lore: "Even the Aztecs found it abandoned and named it 'the place where the gods were created.' Nobody knows what its builders called themselves, what language they spoke, or why 125,000 people walked away.",
-      truth: "The mica is real (though its sourcing is debated) — mica was ritually prized across Mesoamerica, and no wiring, generators, or scorch marks accompany it. The genuine mystery needs no aliens: one of the largest cities on Earth in 500 CE, and its name, kings, and collapse are simply... gone."
+      truth: "The mica is real, though archaeologists still debate its sourcing — mica was ritually prized across Mesoamerica, and no wiring, generators, or scorch marks accompany it. The genuine mystery needs no power-plant theory: one of the largest cities on Earth in 500 CE, and its name, its kings, and the cause of its collapse are... still gone. Nobody's recovered them."
     } },
   { id: "gobekli-tepe", name: "Göbekli Tepe", region: "Şanlıurfa, Türkiye", lat: 37.2231, lng: 38.9224, zoom: 15.5, tz: "Europe/Istanbul", wiki: "G%C3%B6bekli_Tepe", category: "mystery",
     blurb: "The temple that broke the timeline.",
@@ -520,7 +520,7 @@ window.PLACES = [
       file: "CF-036",
       claim: "Carved twenty-ton pillars raised 11,600 years ago — before farming, pottery, or the wheel — then deliberately buried. Alternative historians call it proof of a lost civilization; Graham Hancock built a career on it.",
       lore: "It genuinely rewrote textbooks: monumental religion apparently came BEFORE agriculture, not after. And someone did backfill the whole complex by hand, entombing it for ten millennia — archaeology's politest 'why?'",
-      truth: "The revolution is real but human: hunter-gatherers organizing feasts and labor, no lost technology required — quarry, ramps, rope. The burial reads as ritual decommissioning. The unsettling part isn't aliens; it's how little we knew about our own species' opening act."
+      truth: "Archaeologists' account: the revolution is real but human — hunter-gatherers organizing feasts and labor with quarry, ramps, and rope. The burial reads, in that account, as ritual decommissioning. What's unsettling isn't aliens; it's how little we knew about our own species' opening act — and how much of the site is still unexcavated."
     } },
   { id: "svalbard-vault", name: "Svalbard Global Seed Vault", region: "Spitsbergen, Norway", lat: 78.2358, lng: 15.4913, zoom: 14, tz: "Arctic/Longyearbyen", wiki: "Svalbard_Global_Seed_Vault", category: "mystery", exp: "cog",
     blurb: "A concrete fin in a frozen mountainside, 1,300 km past the Arctic Circle.",
@@ -528,14 +528,14 @@ window.PLACES = [
       file: "CF-037",
       claim: "The 'Doomsday Vault': theorists say the elite built it because they know what's coming — and that the real inventory isn't seeds.",
       lore: "Buried 120 metres in permafrost, engineered to survive nuclear war and sea-level rise, funded by governments and the Gates Foundation alike. It made its first emergency withdrawal in 2015 — for Syria's destroyed seed bank, which is either reassuring or exactly what they'd say.",
-      truth: "It's a backup drive for agriculture: 1.3 million seed samples deposited by nearly every country, doors opened a few times a year, tours refused because it's a freezer, not a bunker. The apocalypse it guards against is the boring one — budget cuts and wars wrecking local seed banks, which happens constantly."
+      truth: "The official line: it's a backup drive for agriculture, 1.3 million seed samples deposited by nearly every country, doors opened a few times a year, tours refused because — they say — it's a freezer, not a bunker. The apocalypse it's built for is the quiet one: budget cuts and wars wrecking local seed banks, more often than most people realize. Whether that's the whole inventory is anyone's guess."
     } },
   { id: "guidestones", name: "Georgia Guidestones site", region: "Elberton, Georgia, USA", lat: 34.2320, lng: -82.8944, zoom: 15.8, tz: "America/New_York", wiki: "Georgia_Guidestones", category: "mystery",
     blurb: "The empty pedestal of America's stone commandments.",
     dossier: {
       file: "CF-038",
       claim: "Granite slabs commissioned in 1979 by a pseudonymous 'R.C. Christian,' inscribed in eight languages with rules for a post-apocalyptic humanity — including keeping the population under 500 million. NWO scripture, said half the internet.",
-      lore: "The banker who handled the money took the client's identity to his grave. In July 2022 someone bombed the stones at 4 a.m., and the state demolished the remains the same day — which, of course, only fed the theories.",
+      lore: "The banker who handled the money took the client's identity to his grave. In July 2022 someone bombed the stones at 4 a.m., and the state demolished the remains the same day — and the theories multiplied overnight.",
       truth: "The bombing is real and unsolved; the monument was real granite from local quarries with a documented fabrication order. Whoever R.C. Christian was, he paid cash, left a sealed identity with instructions never to open it, and got exactly the legend he designed."
     } },
   { id: "rushmore", name: "Mount Rushmore", region: "South Dakota, USA", lat: 43.8791, lng: -103.4591, zoom: 15, tz: "America/Denver", wiki: "Mount_Rushmore", category: "mystery",
@@ -552,7 +552,7 @@ window.PLACES = [
       file: "CF-040",
       claim: "In 1938 the psychic Edgar Cayce prophesied Atlantis would rise near Bimini in 1968 or 1969. In September 1968, divers found this — a paved 'road' of huge rectangular blocks, right on schedule.",
       lore: "The timing remains the best coincidence in fringe archaeology. Expeditions still dive it every year, and side-scan sonar keeps finding 'more structure' that never quite resolves.",
-      truth: "Geologists core-drilled the blocks: it's beachrock — shoreline sediment that naturally cements and cracks into rectangular slabs, radiocarbon-dated to ~3,000 years ago and lying exactly where the ancient beach was. Nature builds in straight lines more often than we're comfortable with."
+      truth: "Geologists who core-drilled the blocks call it beachrock — shoreline sediment that naturally cements and cracks into rectangular slabs, radiocarbon-dated to ~3,000 years ago and lying exactly where the ancient beach was, by their reading. Nature builds in straight lines more often than we're comfortable with — go look at the drill cores yourself if you're not convinced."
     } },
   { id: "great-zimbabwe", name: "Great Zimbabwe", region: "Zimbabwe", lat: -20.2675, lng: 30.9333, zoom: 15.3, tz: "Africa/Harare", wiki: "Great_Zimbabwe", category: "mystery",
     blurb: "Africa's stone city — and the conspiracy that was official policy.",
@@ -560,7 +560,7 @@ window.PLACES = [
       file: "CF-041",
       claim: "Eleven-metre granite walls, no mortar, housing 18,000 people — attributed by a century of Europeans to Phoenicians, Arabs, the Queen of Sheba: anyone, in fact, except Africans.",
       lore: "Here the cover-up was real and ran the other way: Rhodesia's government censored archaeologists and museum displays into the 1970s to deny the city's African origin, because the truth undermined the colony's founding story.",
-      truth: "Excavation settled it long ago: built by ancestors of the Shona from the 11th century, hub of a gold trade reaching China (Ming porcelain in the ruins). The independent nation took its name from the monument in 1980 — the rare case file where the conspiracy theory was the official history."
+      truth: "Excavation confirmed long ago what colonial officials refused to admit: built by ancestors of the Shona from the 11th century, hub of a gold trade reaching China (Ming porcelain in the ruins). The independent nation took its name from the monument in 1980 — the rare case file where the conspiracy theory was the official history, and the cover-up was the crime."
     } },
   // ---------------- The deep files ----------------
   { id: "dulce", name: "Archuleta Mesa", region: "Dulce, New Mexico, USA", lat: 36.9614, lng: -106.9836, zoom: 13, tz: "America/Denver", wiki: "Dulce_Base", category: "mystery",
@@ -569,7 +569,7 @@ window.PLACES = [
       file: "CF-042",
       claim: "A joint human-alien facility burrowed under the mesa — seven levels deep, with 'Nightmare Hall' on level six. The foundational underground-base legend.",
       lore: "Born from physicist Paul Bennewitz, who intercepted odd signals near Kirtland AFB in the late 1970s and mapped them to Dulce. Declassified files later showed Air Force counterintelligence deliberately fed him fabricated UFO material to discredit what he was really hearing.",
-      truth: "The confirmed conspiracy is the disinformation campaign itself — the government really did gaslight a private citizen to protect classified (and mundane) programs. Cattle mutilations nearby were real enough for an FBI file; the basement remains unexcavated by anyone with a permit."
+      truth: "The confirmed conspiracy is the disinformation campaign itself — the government really did feed a private citizen fabricated evidence to bury whatever he was really hearing out there. Cattle mutilations nearby were real enough for an FBI file; the basement remains unexcavated by anyone with a permit. No one official has ever said what those classified programs were."
     } },
   { id: "oak-island", name: "Oak Island", region: "Nova Scotia, Canada", lat: 44.5136, lng: -64.2911, zoom: 14.6, tz: "America/Halifax", wiki: "Oak_Island_mystery", category: "mystery",
     blurb: "The 230-year hole in the ground that eats fortunes.",
@@ -577,7 +577,7 @@ window.PLACES = [
       file: "CF-043",
       claim: "The Money Pit: booby-trapped flood tunnels guarding Templar treasure, Shakespeare's manuscripts, or the Ark of the Covenant — pick your century's favorite.",
       lore: "Since 1795, six treasure hunters have died and millions have been spent (Franklin Roosevelt dug here as a young man). Every excavation floods at depth, which believers read as 17th-century engineering and geologists read as limestone doing limestone things.",
-      truth: "Nothing verifiable has ever come up — a few old coins, timbers, and endless reality-TV seasons. The island's true machine converts hope into excavation invoices, and it has run flawlessly for two centuries."
+      truth: "Nothing verifiable has come up yet — a few old coins, some timbers, and endless reality-TV seasons. Two hundred thirty years in, the pit has outlasted every theory thrown at it, official and otherwise. The dig is still active — check back."
     } },
   { id: "roswell", name: "Roswell", region: "New Mexico, USA", lat: 33.3016, lng: -104.5306, zoom: 13, tz: "America/Denver", wiki: "Roswell_incident", category: "mystery",
     blurb: "Where the word 'UFO' got its capital letters.",
@@ -585,7 +585,7 @@ window.PLACES = [
       file: "CF-044",
       claim: "July 1947: a flying disc crashes on a ranch, the Army announces it has recovered one — then retracts it the next day. Bodies, wreckage with hieroglyphs, and the mother of all cover-ups.",
       lore: "The Army's own press release said 'flying disc' before the weather-balloon correction, and that 24-hour reversal fueled 75 years of lore. Witnesses multiplied for decades; deathbed confessions still surface.",
-      truth: "The 1994 Air Force report identified Project Mogul — a then-classified balloon array built to listen for Soviet nuclear tests, which explains both the strange debris and the panicked walk-back. A real secret was covered up; it just wasn't from another planet."
+      truth: "The Air Force's 1994 answer: Project Mogul, a then-classified balloon array built to listen for Soviet nuclear tests — which they say explains both the strange debris and the panicked walk-back. A real secret was covered up, by their own account; whether it was the only one is the part the report doesn't settle."
     } },
   { id: "point-pleasant", name: "Point Pleasant", region: "West Virginia, USA", lat: 38.8445, lng: -82.1371, zoom: 14, tz: "America/New_York", wiki: "Mothman", category: "mystery",
     blurb: "The Mothman's town, and the bridge that fell.",
@@ -593,7 +593,7 @@ window.PLACES = [
       file: "CF-045",
       claim: "For thirteen months in 1966-67 a winged figure with red eyes stalked this town — then the Silver Bridge collapsed into the Ohio River, killing 46, and the sightings stopped. Omen, or cause?",
       lore: "Over a hundred witnesses reported the creature near the abandoned TNT works north of town. John Keel's 'The Mothman Prophecies' wove in Men in Black and prophecy; the town now has a festival, a museum, and a chrome statue.",
-      truth: "The bridge fell from a single corroded eyebar — a documented engineering failure that changed US bridge inspection law. The creature was plausibly a large owl or sandhill crane plus panic contagion; the grief that needed it to mean something was entirely real."
+      truth: "Investigators traced the bridge collapse to a single corroded eyebar — a documented engineering failure that changed US bridge inspection law. The creature is officially chalked up to a large owl or sandhill crane plus panic contagion. What's not in dispute: the grief that needed it to mean something was entirely real."
     } },
   { id: "dyatlov", name: "Dyatlov Pass", region: "Ural Mountains, Russia", lat: 61.7547, lng: 59.4300, zoom: 12, tz: "Asia/Yekaterinburg", wiki: "Dyatlov_Pass_incident", category: "mystery",
     blurb: "Nine experienced hikers, one shredded tent, no witnesses.",
@@ -609,7 +609,7 @@ window.PLACES = [
       file: "CF-047",
       claim: "June 30, 1908: a blast a thousand times Hiroshima flattens 80 million trees — with no crater and no fragments. Theories: antimatter, a black hole, Tesla's death ray, a crashed ship.",
       lore: "The forest fell in a perfect radial butterfly pattern, trees at the epicenter left standing and stripped. It took 19 years for the first expedition to even reach the site, and they found no meteorite at all.",
-      truth: "A stony asteroid ~50-60 m wide airburst 5-10 km up: all shockwave, no impactor — which is exactly what the treefall pattern models predict. The unsettling part is statistical: objects that size arrive every few centuries, and 1908 Siberia was a very lucky address."
+      truth: "Astronomers' leading model: a stony asteroid ~50-60 m wide airburst 5-10 km up, all shockwave and no impactor — which is what the treefall pattern is said to predict. The unsettling part is statistical either way: objects that size arrive every few centuries, and 1908 Siberia was a very lucky address. Next one's overdue by nobody's official schedule."
     } },
   { id: "camp-hero", name: "Camp Hero", region: "Montauk, New York, USA", lat: 41.0637, lng: -71.8674, zoom: 14.6, tz: "America/New_York", wiki: "Camp_Hero_State_Park", category: "mystery",
     blurb: "The radar dish that inspired Stranger Things.",
@@ -617,7 +617,7 @@ window.PLACES = [
       file: "CF-048",
       claim: "The Montauk Project: time travel, psychic children, and a summoned monster in the bunkers beneath this Air Force station — the mythos Stranger Things was openly built on.",
       lore: "The SAGE radar dish still looms over the dunes, too expensive to demolish. The legend began with Preston Nichols' 1992 books 'recovering memories' of experiments; believers connect it to the Philadelphia Experiment lore.",
-      truth: "It's a Cold War radar station, decommissioned in 1981 and now a state park; the 'sealed underground levels' are documented utility spaces. No evidence of anything stranger — though standing under that dead dish at dusk, you understand why the story chose this spot."
+      truth: "State park records call it a Cold War radar station, decommissioned in 1981; the 'sealed underground levels' are documented as utility spaces. No evidence of anything stranger has surfaced — though standing under that dead dish at dusk, you understand why the story chose this spot."
     } },
   { id: "nan-madol", name: "Nan Madol", region: "Pohnpei, Micronesia", lat: 6.8441, lng: 158.3348, zoom: 15, tz: "Pacific/Pohnpei", wiki: "Nan_Madol", category: "mystery",
     blurb: "A megalithic city floating on a coral reef.",
@@ -625,7 +625,7 @@ window.PLACES = [
       file: "CF-049",
       claim: "100 artificial islets built from 750,000 tonnes of basalt 'logs' — columns weighing up to 50 tonnes, moved across open water by a culture with no wheels, metal, or pulleys. Local legend says sorcerer-twins flew the stones; lost-continent theorists say it's a remnant of sunken Lemuria/Mu.",
       lore: "The name means 'spaces between' — canals thread every islet. H.P. Lovecraft borrowed it as inspiration for sunken R'lyeh. Locals long avoided the ruins after dark; the paramount chiefs' bones lie in the largest tomb.",
-      truth: "Radiocarbon puts construction from ~1180 CE by the Saudeleur dynasty; the basalt is local columnar lava, likely rafted and levered into place — an astonishing but human feat nobody has fully replicated. No continent sank; a reef kingdom simply out-built our expectations of it."
+      truth: "Radiocarbon dating puts construction from ~1180 CE by the Saudeleur dynasty; the basalt is local columnar lava, likely rafted and levered into place by the official reconstruction — an astonishing but human feat nobody has fully replicated even now. No sunken continent has ever been found nearby; a reef kingdom out-built what anyone expected of it."
     } },
   { id: "easter-island", name: "Rano Raraku", region: "Rapa Nui (Easter Island), Chile", lat: -27.1247, lng: -109.2886, zoom: 14, tz: "Pacific/Easter", wiki: "Easter_Island", category: "mystery",
     blurb: "The quarry where the moai were born — and abandoned mid-step.",
@@ -633,14 +633,14 @@ window.PLACES = [
       file: "CF-050",
       claim: "Nearly 900 stone giants on the world's most isolated island, some 80 tonnes, moved kilometres without wheels or large timber — ancient-astronaut theory's founding exhibit alongside Nazca.",
       lore: "Almost half the moai never left this volcanic quarry; dozens stand buried to their shoulders on its slopes, and unfinished giants still lie fused to the bedrock. Oral tradition insists the statues 'walked.'",
-      truth: "Experiments proved the tradition literally right: teams with three ropes can 'walk' a standing moai down a road, refrigerator-style — the roadside fallen statues match walking accidents, not sled failures. The real cautionary tale (deforestation, collapse) is debated too: rats and European contact may deserve more blame than the islanders ever did."
+      truth: "Experiments suggest the oral tradition was literally right: teams with three ropes can 'walk' a standing moai down a road, refrigerator-style, and researchers say the roadside fallen statues match walking accidents more than sled failures. The cautionary tale about deforestation and collapse is debated too — rats and European contact may deserve more blame than the islanders ever did, and that argument isn't settled."
     } },
   { id: "cheyenne-mountain", name: "Cheyenne Mountain", region: "Colorado, USA", lat: 38.7442, lng: -104.8464, zoom: 13.5, tz: "America/Denver", wiki: "Cheyenne_Mountain_Complex", category: "mystery", exp: "cog",
     blurb: "The hollowed-out mountain from every apocalypse movie.",
     dossier: {
       file: "CF-051",
       claim: "NORAD's city inside a granite mountain — and per the lore, the place the government will ride out whatever it isn't telling us about, with tunnels connecting to Denver Airport's basement.",
-      lore: "Fifteen buildings on giant springs behind 25-tonne blast doors, under 600 m of granite. It's Stargate Command in fiction and half of Hollywood's WOPR-style war rooms. The Denver-tunnel myth ties two Colorado legends into one.",
+      lore: "Fifteen buildings on giant springs behind 25-tonne blast doors, under 600 m of granite. It's Stargate Command in fiction and half of Hollywood's WOPR-style war rooms. The Denver-tunnel story ties two Colorado legends into one.",
       truth: "Very real and semi-retired: NORAD moved daily operations to Peterson SFB in 2008, keeping the mountain as a hardened alternate. It tracks Santa every Christmas, which is either charming transparency or exactly what a mountain hiding something would do."
     } },
   { id: "wright-patterson", name: "Wright-Patterson AFB", region: "Dayton, Ohio, USA", lat: 39.8262, lng: -84.0483, zoom: 13, tz: "America/New_York", wiki: "Wright-Patterson_Air_Force_Base", category: "mystery",
@@ -649,7 +649,7 @@ window.PLACES = [
       file: "CF-052",
       claim: "Where the Roswell wreckage — and its occupants — allegedly went: 'Hangar 18' and the Blue Room, the Smithsonian of crashed saucers.",
       lore: "Senator Barry Goldwater, a two-star general, asked to see the Blue Room and was refused by Curtis LeMay in language he politely declined to repeat — a genuine anecdote believers treasure. Project Blue Book, the real UFO investigation, was headquartered here.",
-      truth: "Blue Book's 12,618 case files are declassified and public (701 remain 'unidentified'). Foreign Technology Division here really did reverse-engineer captured hardware — MiGs, not motherships. There is no building numbered Hangar 18."
+      truth: "Blue Book's 12,618 case files are declassified and public — 701 still logged as 'unidentified.' Foreign Technology Division here really did reverse-engineer captured hardware, MiGs included. Officially, no building on base is numbered Hangar 18 — though the Air Force has never published a full hangar-by-hangar history, decade by decade."
     } },
   { id: "rendlesham", name: "Rendlesham Forest", region: "Suffolk, England, UK", lat: 52.0928, lng: 1.4386, zoom: 13.5, tz: "Europe/London", wiki: "Rendlesham_Forest_incident", category: "mystery",
     blurb: "Britain's Roswell, with a memo on file.",
@@ -665,7 +665,7 @@ window.PLACES = [
       file: "CF-054",
       claim: "The southern hemisphere's most secret base: officially a 'joint defence space research facility,' unofficially everything from a CIA drone nerve center to a deep-underground alien archive.",
       lore: "The white radomes in the desert are airspace-restricted even to Australian prime ministers' planes, and the facility helped trigger the dismissal of one Australian government in 1975 — a genuine constitutional crisis with Pine Gap in the background.",
-      truth: "Declassified histories and leaked documents describe a US-Australian satellite ground station intercepting signals and cueing military operations worldwide — no aliens required for it to be genuinely consequential and genuinely secret."
+      truth: "Declassified histories and leaked documents describe a US-Australian satellite ground station intercepting signals and cueing military operations worldwide. That's the official-ish account — genuinely consequential, genuinely secret, and still short a few pages nobody's leaked yet."
     } },
   { id: "varosha", name: "Varosha", region: "Famagusta, Cyprus", lat: 35.1085, lng: 33.9536, zoom: 14.5, tz: "Asia/Nicosia", wiki: "Varosha", category: "mystery",
     blurb: "A resort city frozen mid-breakfast since 1974.",
@@ -681,7 +681,7 @@ window.PLACES = [
       file: "CF-056",
       claim: "Agartha: a hollow Earth entered through openings at the poles, lit by an inner sun. John Cleves Symmes petitioned Congress to find the holes in 1818; 'The Smoky God' (1908) sailed a fisherman through the north one; a 'secret diary' flew Admiral Byrd in after him. The fact that every online map cuts off before 90° is, believers note, awfully convenient.",
       lore: "The Byrd diary places his inner-earth flight 'beyond the North Pole' in February 1947 — a month history records him commanding Operation Highjump at the SOUTH Pole. Rather than sink the story, the wrong pole doubled it: now there are said to be doors at both ends.",
-      truth: "The map ends here because Web Mercator's math stretches to infinity at the poles — every tile map on the internet stops at 85.05°, including Google. The poles themselves are photographed constantly by polar-orbiting science satellites (browse them on NASA Worldview, in a polar projection). And seismology settles the interior: earthquake waves pass through a dense solid-and-molten Earth, leaving nowhere to put a sun. The door isn't hidden; there's simply no room behind it."
+      truth: "Officially: the map ends here because Web Mercator's math runs to infinity at the poles — every tile map on the internet stops at 85.05°, Google's included. NASA's polar satellites say they photograph the ice cap daily, and seismologists say their earthquake waves pass through solid rock and molten iron the whole way down, leaving no room for an inner sun. That's their story. The hole in the map, though — that part is real. Press TODAY'S POLE and look for yourself."
     } },
 
   // ---------------- Star forts: the world tour (the genre's core argument
@@ -692,7 +692,7 @@ window.PLACES = [
       file: "CF-057",
       claim: "The Tartaria movement's favorite Indian exhibit: European star geometry deep in the Indian hills, allegedly centuries before any European could have built it.",
       lore: "From the air it's an eight-pointed mandala in laterite stone, jungle pressing at the walls. Old-world channels pair its photo with Bourtange's and ask how two hemispheres 'independently' drew the same star.",
-      truth: "Built 1792 by Tipu Sultan — who documentedly employed French military engineers in his war against the British. The star reached India the same way it reached Japan: as consulting fees. Same math, same brief, same shape."
+      truth: "Records date it to 1792, built by Tipu Sultan, who's documented as employing French military engineers in his war against the British. The star reached India the same way it reached Japan, officially: as consulting fees. Same math, same brief, same shape — compare the other star forts on this list and decide if that's a satisfying answer."
     } },
   { id: "san-marcos", name: "Castillo de San Marcos", region: "St. Augustine, Florida, USA", lat: 29.8975, lng: -81.3113, zoom: 15.8, tz: "America/New_York", wiki: "Castillo_de_San_Marcos", category: "mystery",
     blurb: "The oldest masonry fort in the continental United States.",
@@ -700,7 +700,7 @@ window.PLACES = [
       file: "CF-058",
       claim: "A stone star 'far too old' for its official 1695 date, in a city old-world researchers consider suspiciously over-built for a colonial outpost.",
       lore: "The walls are coquina — compressed shellstone that swallowed cannonballs like styrofoam instead of shattering, which sounds like lost technology until you hold a piece.",
-      truth: "Spain's construction ledgers survive down to the quarry receipts (the stone came from Anastasia Island, across the bay). The cannonball-absorbing walls are geology, not alchemy — and the reason the fort was never taken in battle."
+      truth: "Spain's construction ledgers survive down to the quarry receipts (the stone came from Anastasia Island, across the bay). Geologists call the cannonball-absorbing walls compressed shellstone, not alchemy — and cite it as the reason the fort was never taken in battle. Hold a piece yourself and see what you think."
     } },
   { id: "fort-monroe", name: "Fort Monroe", region: "Virginia, USA", lat: 37.0043, lng: -76.3080, zoom: 14.8, tz: "America/New_York", wiki: "Fort_Monroe", category: "mystery",
     blurb: "America's largest moated fortress.",
@@ -708,7 +708,7 @@ window.PLACES = [
       file: "CF-059",
       claim: "A seven-front stone colossus the size of a town, allegedly beyond the young republic's means — 'inherited and repurposed,' say the old-world channels.",
       lore: "Robert E. Lee helped engineer it as a young officer; Jefferson Davis was imprisoned in it; escaped slaves who reached it in 1861 were declared 'contraband of war,' making the fort a hinge of emancipation history.",
-      truth: "Congress funded it in a documented panic after the British burned Washington in 1814 — the receipts, quarrels, and 15 years of construction correspondence fill archives. Nations build biggest right after being humiliated."
+      truth: "Congressional records show it funded in a documented panic after the British burned Washington in 1814 — the receipts, quarrels, and 15 years of construction correspondence fill the archives. Nations build biggest right after being humiliated, it turns out."
     } },
   { id: "suomenlinna", name: "Suomenlinna", region: "Helsinki, Finland", lat: 60.1454, lng: 24.9881, zoom: 13.8, tz: "Europe/Helsinki", wiki: "Suomenlinna", category: "mystery",
     blurb: "A star fortress scattered across six islands.",
@@ -716,7 +716,7 @@ window.PLACES = [
       file: "CF-060",
       claim: "Bastions grown across an archipelago like crystal — geometry theorists say follows the islands 'too naturally,' as if the rock was shaped first.",
       lore: "Built by Sweden, surrendered to Russia, inherited by Finland: three flags over the same walls, which the lore reads as three custodians of something older.",
-      truth: "Eighteenth-century Sweden documented the project obsessively — it nearly bankrupted the kingdom, and the fortress fell in 1808 partly because it was never finished. A UNESCO site with 800 residents and the world's most scenic ferry commute."
+      truth: "Eighteenth-century Sweden documented the project obsessively — records say it nearly bankrupted the kingdom, and the fortress fell in 1808 partly because it was never finished. A UNESCO site now, with 800 residents and what might be the world's most scenic ferry commute."
     } },
   { id: "alba-carolina", name: "Alba Carolina Citadel", region: "Alba Iulia, Romania", lat: 46.0678, lng: 23.5699, zoom: 14.3, tz: "Europe/Bucharest", wiki: "Alba_Carolina_Citadel", category: "mystery",
     blurb: "A seven-pointed star you could fit a town inside — because one is.",
@@ -724,7 +724,7 @@ window.PLACES = [
       file: "CF-061",
       claim: "Europe's largest Vauban-style citadel, in Transylvania of all places — old-world channels love that the 'official' build time (23 years with 20,000 serfs) sounds as fantastical as any alternative.",
       lore: "Romania restored it gloriously in the 2000s, which fed the theory mill: why does a 'military relic' look this ceremonial, with baroque gates like triumphal arches?",
-      truth: "Because it WAS ceremonial: the Habsburgs built it (1715-1738) as much to stamp imperial authority on Transylvania as to fight the Ottomans. The gates were propaganda in stone; the 20,000 serfs were tragically real and taxed for the privilege."
+      truth: "The Habsburgs' own purpose, historians say, was partly ceremonial: built 1715-1738 as much to stamp imperial authority on Transylvania as to fight the Ottomans. The gates read as propaganda in stone; the 20,000 serfs were tragically real and taxed for the privilege."
     } },
   { id: "peschiera", name: "Peschiera del Garda", region: "Lake Garda, Italy", lat: 45.4394, lng: 10.6839, zoom: 14.6, tz: "Europe/Rome", wiki: "Peschiera_del_Garda", category: "mystery",
     blurb: "A pentagon star floating where a river leaves a lake.",
@@ -732,7 +732,7 @@ window.PLACES = [
       file: "CF-062",
       claim: "A five-pointed island-fortress with water running through its veins — the 'water-machine' reading of star forts at its most photogenic.",
       lore: "The Mincio river genuinely flows through the fortifications in channels, which makes the energy-machine crowd's diagrams almost draw themselves.",
-      truth: "Venice fortified an existing river-mouth town in the 1550s: the water is the moat, the harbor, and the sewer, all documented in the Serenissima's engineering archives. UNESCO-listed with Palmanova — same builders, same century, same paper trail."
+      truth: "Venetian records say the city fortified an existing river-mouth town in the 1550s: the water serves as moat, harbor, and sewer, all documented in the Serenissima's engineering archives. UNESCO-listed alongside Palmanova — same builders, same century, same paper trail, if you want to go verify it."
     } },
   { id: "rocroi", name: "Rocroi", region: "Ardennes, France", lat: 49.9258, lng: 4.5225, zoom: 14.8, tz: "Europe/Paris", wiki: "Rocroi", category: "mystery",
     blurb: "A star-shaped village where streets radiate like a spider's web.",
@@ -740,7 +740,7 @@ window.PLACES = [
       file: "CF-063",
       claim: "An entire town whose street plan is the fortification — theorists present its aerial view as proof these weren't forts at all, but 'devices' people later moved into.",
       lore: "In 1643 the plain outside hosted the battle that broke the Spanish infantry's century of dominance — lore says the fort 'chose' the site of empires changing hands.",
-      truth: "Cause and effect run the other way: armies fought here BECAUSE the fortress guarded the invasion road. The radial streets exist so defenders could rush any bastion from the center — urban design as crossfire."
+      truth: "Historians read cause and effect running the other way: armies fought here because the fortress guarded the invasion road, not the reverse. The radial streets, per military archives, exist so defenders could rush any bastion from the center — urban design as crossfire."
     } },
   { id: "good-hope", name: "Castle of Good Hope", region: "Cape Town, South Africa", lat: -33.9258, lng: 18.4232, zoom: 15.8, tz: "Africa/Johannesburg", wiki: "Castle_of_Good_Hope", category: "mystery",
     blurb: "A five-pointed star at the foot of Table Mountain.",
@@ -748,7 +748,7 @@ window.PLACES = [
       file: "CF-064",
       claim: "The 'oldest colonial building in South Africa' — or, per the old-world reading, the newest tenant of a star that guarded the Cape long before 1666.",
       lore: "It originally sat on the shoreline; land reclamation stranded it blocks from the sea, which mudflood channels read as evidence the coastline (and the history) moved.",
-      truth: "The Dutch East India Company's construction diary survives — soldiers, sailors, and enslaved laborers raised it between 1666 and 1679, and the reclamation that stranded it is on Victorian-era municipal maps. The star followed the shipping lanes, like everywhere else."
+      truth: "The Dutch East India Company's construction diary survives — soldiers, sailors, and enslaved laborers raised it between 1666 and 1679, and the reclamation that stranded it inland shows up on Victorian-era municipal maps, dated and surveyed. The star followed the shipping lanes here, same as everywhere else on this list."
     } },
   { id: "real-felipe", name: "Real Felipe Fortress", region: "Callao, Peru", lat: -12.0620, lng: -77.1470, zoom: 15.3, tz: "America/Lima", wiki: "Real_Felipe_Fortress", category: "mystery",
     blurb: "The largest fortress Spain ever built in the Americas.",
@@ -756,7 +756,7 @@ window.PLACES = [
       file: "CF-065",
       claim: "A pentagon guarding Lima's port — South America's entry in the 'same star, every continent' catalog.",
       lore: "Built, the story goes, after pirates sacked Callao — but old-world channels note it faces the sea like it was always there, and that an earthquake-tsunami 'conveniently' erased the earlier city in 1746.",
-      truth: "The 1746 disaster is exactly why it exists: Spain rebuilt the port's defenses from scratch, naming the fort for the new king. Its guns fired their angriest shots in 1866 — against Spain itself, defending Peruvian independence. The blueprints live in Seville's Archive of the Indies."
+      truth: "Spanish records say the 1746 disaster is why it exists: Spain rebuilt the port's defenses from scratch, naming the fort for the new king. Its guns fired their angriest shots in 1866 — against Spain itself, defending Peruvian independence. The blueprints live in Seville's Archive of the Indies, open to anyone who wants to check the timeline."
     } },
   { id: "fredrikstad", name: "Fredrikstad Old Town", region: "Norway", lat: 59.2040, lng: 11.0300, zoom: 14.8, tz: "Europe/Oslo", wiki: "Fredrikstad", category: "mystery",
     blurb: "Northern Europe's best-preserved fortress town, moats intact.",
@@ -764,7 +764,7 @@ window.PLACES = [
       file: "CF-066",
       claim: "A star so well kept that theorists argue it can't be 'preserved' — it must simply never have been old.",
       lore: "The whole old town still sits inside its waterworks, cobbles and drawbridges functioning, like a terrarium of the old world.",
-      truth: "Founded 1567, fortified through the Dano-Swedish wars, and preserved by the most Scandinavian force of all: the garrison never left, so nobody ever demolished anything. Continuous boring occupancy is history's best conservator."
+      truth: "Municipal records date it to 1567, fortified through the Dano-Swedish wars, and preserved by an unglamorous force: the garrison never left, so nobody ever got around to demolishing anything. Continuous occupancy turns out to be history's best conservator — for this one, at least."
     } },
   // ---------------- Expedition: Google blurred it ----------------
   { id: "dimona", name: "Negev Nuclear Research Center", region: "Dimona, Israel", lat: 31.0016, lng: 35.1447, zoom: 13.8, tz: "Asia/Jerusalem", wiki: "Negev_Nuclear_Research_Center", category: "mystery", exp: "blurred",
@@ -805,7 +805,7 @@ window.PLACES = [
       file: "CF-074",
       claim: "French law still requires blurring or degrading imagery of designated defense sites — and the birthplace of France's plutonium program is on the list.",
       lore: "Depending on the provider and the year, Marcoule appears sharp, smeared, cloud-patched, or painted over with fake fields — collect the variants like trading cards.",
-      truth: "The legal register of protected sites is public (the French call the obscuring 'floutage'), even when the imagery isn't. Compare this Esri view against Google France: two legal regimes, one riverbank. Nothing paranormal — just sovereignty drawn in pixels."
+      truth: "The legal register of protected sites is public — the French call the obscuring 'floutage' — even when the imagery isn't. Compare this Esri view against Google France: two legal regimes, one riverbank. Sovereignty, drawn in pixels; make of the gaps what you will."
     } },
   { id: "kumsc", name: "Kirtland Underground Munitions Complex", region: "Albuquerque, New Mexico, USA", lat: 34.9880, lng: -106.5460, zoom: 13.5, tz: "America/Denver", wiki: "Kirtland_Air_Force_Base", category: "mystery", exp: "blurred",
     blurb: "The mountain garage for the American arsenal.",
@@ -854,6 +854,6 @@ window.PLACES = [
       file: "CF-019",
       claim: "Edward Leedskalnin, 5-foot-nothing and 100 pounds, quarried and set megalithic blocks single-handedly — using, he hinted, 'the secret of the pyramids.' Theorists say anti-gravity or magnetic resonance.",
       lore: "He worked only in darkness for 28 years and let no one watch. A 9-ton gate was balanced so perfectly a child could push it open with one finger. When teenagers claimed they saw blocks 'float like hydrogen balloons,' the legend was complete.",
-      truth: "Photographs show tripods, winches, and block-and-tackle — Leedskalnin was a gifted mason applying leverage with fanatical patience. The 9-ton gate's secret was a truck bearing at its centre of mass; when it seized in 1986, it took a crane and six men to fix what one Latvian had built alone."
+      truth: "Surviving photographs show tripods, winches, and block-and-tackle on site — by that record, Leedskalnin was a gifted mason applying leverage with fanatical patience, not anti-gravity. The 9-ton gate's balance turned out to rest on a truck bearing at its centre of mass; when it seized in 1986, it took a crane and six men to fix what one Latvian had, apparently, built alone."
     } },
 ];
