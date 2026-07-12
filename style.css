@@ -954,3 +954,18 @@
 
   .pin-remove:hover { color: var(--danger); }
 }
+
+/* ---------------- Phone hardware: notches & home bars ----------------
+   viewport-fit=cover lets the map run edge-to-edge; the HUD then dodges
+   the sensor housing and home indicator. Zero effect on desktop. */
+@layer hud {
+  #topbar {
+    padding-block-start: calc(env(safe-area-inset-top, 0px) + clamp(0.8rem, 2vw, 1.5rem));
+    padding-inline:
+      calc(env(safe-area-inset-left, 0px) + clamp(0.8rem, 2vw, 1.5rem))
+      calc(env(safe-area-inset-right, 0px) + clamp(0.8rem, 2vw, 1.5rem));
+  }
+  :is(.hud-card, #controls-hint, #touchbar) {
+    inset-block-end: calc(env(safe-area-inset-bottom, 0px) + clamp(2.2rem, 5vh, 3.5rem));
+  }
+}

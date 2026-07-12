@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><style>html,body{margin:0;padding:0}svg{display:block}</style></head>
+<body>
+<!-- DRIFT icon — amber reticle-globe on near-black. ?scale=0.62 renders the
+     maskable variant (content inside the 62% safe zone). -->
+<svg id="icon" width="100vw" height="100vh" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="1024" fill="#0b0e13"/>
+  <g id="art" stroke="#e8c35a" stroke-linecap="round" fill="none">
+    <!-- globe -->
+    <circle cx="512" cy="512" r="330" stroke-width="30"/>
+    <!-- meridian + equator -->
+    <ellipse cx="512" cy="512" rx="145" ry="330" stroke-width="16" opacity="0.9"/>
+    <line x1="182" y1="512" x2="842" y2="512" stroke-width="16" opacity="0.9"/>
+    <!-- reticle ticks -->
+    <line x1="512" y1="96"  x2="512" y2="166" stroke-width="26"/>
+    <line x1="512" y1="858" x2="512" y2="928" stroke-width="26"/>
+    <line x1="96"  y1="512" x2="166" y2="512" stroke-width="26"/>
+    <line x1="858" y1="512" x2="928" y2="512" stroke-width="26"/>
+    <!-- the pole: the one point every map hides -->
+    <circle cx="512" cy="182" r="26" fill="#e8c35a" stroke="none"/>
+  </g>
+</svg>
+<script>
+  const s = parseFloat(new URLSearchParams(location.search).get("scale"));
+  if (s) {
+    const art = document.getElementById("art");
+    art.setAttribute("transform", `translate(${512 * (1 - s)}, ${512 * (1 - s)}) scale(${s})`);
+  }
+</script>
+</body>
+</html>

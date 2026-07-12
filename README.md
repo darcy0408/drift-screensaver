@@ -34,6 +34,10 @@
 | `P` | view the poles (N → S → close) | `F` | fullscreen |
 | `L` | place-name labels | `Esc` | close panel, then exit |
 
+## Install on your phone
+
+DRIFT is an installable web app: open [the live site](https://darcy0408.github.io/drift-screensaver/) on your phone and add it to your home screen (Android Chrome: menu → **Add to Home screen** → Install; iPhone Safari: Share → **Add to Home Screen**). It runs full-screen, keeps the screen awake while touring, and updates itself on every visit. Native Play Store / App Store builds live in [`mobile/`](mobile/README.md).
+
 ## Install as a Windows screensaver
 
 1. Download this repo (green **Code** button → **Download ZIP**) and extract it — keep the `dist` folder together.

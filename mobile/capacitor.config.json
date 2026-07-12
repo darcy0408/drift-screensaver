@@ -1,0 +1,12 @@
+{
+  "appId": "io.github.darcy0408.drift",
+  "appName": "DRIFT",
+  "webDir": "www",
+  "backgroundColor": "#0b0e13",
+  "server": {
+    "androidScheme": "https"
+  },
+  "ios": {
+    "contentInset": "never"
+  }
+}

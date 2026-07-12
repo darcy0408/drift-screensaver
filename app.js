@@ -970,6 +970,26 @@ function scheduleHintFade() {
   hintTimer = setTimeout(() => $("controls-hint").classList.add("faded"), 12000);
 }
 
+/* ---------------- PWA: install + stay awake ---------------- */
+
+// Service worker (installability + shell cache). https only — the .scr's
+// WebView2 host and file:// openings skip it harmlessly.
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
+
+// An ambient atlas is pointless behind a sleeping screen. Best-effort only:
+// browsers that refuse (or battery savers) just fall back to normal timeouts.
+async function keepAwake() {
+  try {
+    if ("wakeLock" in navigator) await navigator.wakeLock.request("screen");
+  } catch { /* denied — fine */ }
+}
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") keepAwake(); // locks release on tab-away
+});
+keepAwake();
+
 // Hide the cursor after a few idle seconds, like a proper screensaver.
 let cursorTimer;
 function wakeCursor() {

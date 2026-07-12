@@ -2,3 +2,9 @@
 dist/debug.flag
 dist/drift-log.txt
 node_modules/
+
+# capacitor: native projects & www are generated (CI runs cap add + sync-www)
+mobile/www/
+mobile/android/
+mobile/ios/
+mobile/dd/

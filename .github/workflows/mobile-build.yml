@@ -1,0 +1,67 @@
+name: mobile-build
+
+# Builds the Android APK/AAB on Linux and the iOS app (unsigned) on macOS.
+# Native projects are generated fresh each run (npx cap add) — nothing
+# platform-specific is committed. Download artifacts from the run page:
+# the debug APK sideloads directly onto an Android phone.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "mobile/**"
+      - ".github/workflows/mobile-build.yml"
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    defaults:
+      run: { working-directory: mobile }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 21 }
+      - run: npm ci
+      - run: node sync-www.mjs
+      - run: npx cap add android
+      - name: Generate icons & splash
+        run: npx --yes @capacitor/assets generate --android --assetPath assets --iconBackgroundColor "#0b0e13" --iconBackgroundColorDark "#0b0e13" --splashBackgroundColor "#0b0e13" --splashBackgroundColorDark "#0b0e13" || echo "asset generation failed — default icons used"
+      - run: npx cap sync android
+      - name: Build debug APK + release AAB (unsigned)
+        run: cd android && chmod +x gradlew && ./gradlew assembleDebug bundleRelease
+      - uses: actions/upload-artifact@v4
+        with:
+          name: drift-android-debug-apk
+          path: mobile/android/app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: drift-android-release-aab-unsigned
+          path: mobile/android/app/build/outputs/bundle/release/app-release.aab
+
+  ios:
+    runs-on: macos-latest
+    defaults:
+      run: { working-directory: mobile }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - run: node sync-www.mjs
+      - run: npx cap add ios
+      - name: Generate icons & splash
+        run: npx --yes @capacitor/assets generate --ios --assetPath assets --iconBackgroundColor "#0b0e13" --splashBackgroundColor "#0b0e13" || echo "asset generation failed — default icons used"
+      - run: npx cap sync ios
+      - name: Build (unsigned — signing happens with your Apple account)
+        run: |
+          xcodebuild -workspace ios/App/App.xcworkspace -scheme App \
+            -configuration Release -sdk iphoneos -derivedDataPath dd \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build
+      - name: Package .app
+        run: cd dd/Build/Products/Release-iphoneos && zip -r DRIFT-ios-unsigned.zip App.app
+      - uses: actions/upload-artifact@v4
+        with:
+          name: drift-ios-app-unsigned
+          path: mobile/dd/Build/Products/Release-iphoneos/DRIFT-ios-unsigned.zip
