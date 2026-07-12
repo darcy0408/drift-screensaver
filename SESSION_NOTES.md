@@ -1,5 +1,25 @@
 ﻿# Session notes
 
+## 2026-07-11 — `P` opens the pole viewer from anywhere; pinning moved to `K`
+**Done:** (commit `ca7711d`, pushed to `main`; GitHub Pages auto-deploys; syntax-verified via `node --check` only, NOT exercised in a live browser — see Risks)
+- Added a global keyboard shortcut: pressing `P`/`p` now opens the "Today's Pole" viewer (NASA GIBS polar-stereographic imagery of the Arctic/Antarctic) from anywhere in the app. Previously this viewer was reachable only by navigating to the "The Polar Opening"/Agartha mystery dossier (case file CF-056) and clicking its on-card `TODAY'S POLE` button. New function `cyclePole()` in `app.js`, placed just after `closePole()`: 1st press opens the North pole (Arctic), 2nd press switches to the South pole (Antarctic), 3rd press closes the overlay. It reuses the existing `openPole()`/`closePole()` and the `#pole` overlay; nothing about the viewer itself changed.
+- Moved the existing "pin current place to Passport" action off `P` onto `K`/`k` (mnemonic: K = "keep") to free up `P`. The pin logic (`pinCurrent()`) is unchanged — only its key binding moved. The Passport panel is still opened with `V`.
+- Updated the on-screen controls hint in `index.html` (now shows `P poles` and `K pin`) and `README.md` (the two pin references changed from `P` to `K`; added a "Poles (`P`)" feature bullet and a `P` / view the poles row in the controls table).
+- Bumped the cache-buster query string on every `<script>` and the stylesheet `<link>` in `index.html` from `?v=38` to `?v=39`. The file's own line-9 comment mandates this whenever `app.js`/`style.css`/`locations.js` change, so browsers and the screensaver's WebView2 do not serve a stale cached copy.
+- Re-copied `app.js` and `index.html` into `dist/web/`. IMPORTANT for future sessions: `dist/web/` is a MANUAL copy that the `DriftSaver.scr` screensaver serves; the repo-root files (`app.js`, `index.html`, `style.css`, `locations.js`, etc.) are the source of truth, and every root web edit must be re-copied into `dist/web/` or the installed screensaver lags the browser version.
+
+**Decisions:**
+- Chose `K` for pinning rather than deleting the pin feature: the Passport panel (`V`) depends on pins existing, so removal was rejected. The user confirmed the "move pin to K" option.
+- `P` cycles North → South → close on repeated presses (one key reaches both poles) instead of always opening the same pole.
+- Committed straight to `main` (no feature branch) because the user explicitly asked to ship on the next push, and pushes to `main` auto-deploy the public GitHub Pages site — the project's established release workflow.
+
+**Next:**
+- Live-verify in a browser once the Claude Chrome extension is connected (it was unavailable this session): press `P` three times and confirm North pole → South pole → overlay closes; press `K` and confirm the `PINNED — n IN PASSPORT` toast appears and the place shows up in the Passport panel (`V`).
+
+**Risks/unverified:**
+- The new binding and `cyclePole()` were verified only by `node --check` (parse-clean) and static inspection (the `k`/`p` switch cases resolve correctly with no leftover `P`→pin binding; the DOM ids `cyclePole` touches — `#pole`, `#pole-arctic`, `#pole-antarctic`, `#pole-img` — all exist in `index.html`). The behavior was NOT observed in the running app because the Chrome automation extension was not connected.
+- During temp-server cleanup this session I ran `taskkill /F /IM python.exe`, which terminated ALL running `python.exe` processes on the machine (11 of them), not just the local test server I had started. If unrelated Python work was running, it was killed — worth a heads-up if something else died unexpectedly.
+
 ## 2026-07-10 — Content explosion (161 places, 83 case files, 10 expeditions, 3 pin catalogues), community layer, NASA pole viewer, phone touch bar
 **Done:** (web features verified by puppeteer-core end-to-end tests; all pushed; live site auto-deploys)
 - README.md with screenshots (docs/), share blurb delivered in chat. Ethos section: no verdicts — claim/lore/record plus verification instruments.
