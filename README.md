@@ -53,7 +53,11 @@ Spotted an oddity, a gorgeous place, or an imagery inconsistency (something that
 
 ## Under the hood
 
-A single static web page (no build step, no API keys, no accounts): [MapLibre GL](https://maplibre.org/) over [Esri World Imagery](https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9), with [Esri Wayback](https://livingatlas.arcgis.com/wayback/) for history, [OpenStreetMap/Nominatim](https://nominatim.org/) for geocoding, [Wikipedia](https://www.wikipedia.org/) & [Wikidata](https://www.wikidata.org/) for knowledge, [Open-Meteo](https://open-meteo.com/) for weather, and [CARTO](https://carto.com/) label tiles. The Windows screensaver is a small C# WebView2 host (`wrapper/Program.cs`) compiled with the `csc.exe` that ships inside Windows — rebuild command in [`SESSION_NOTES.md`](SESSION_NOTES.md).
+A single static web page (no build step, no API keys, no accounts): [MapLibre GL](https://maplibre.org/) over [Esri World Imagery](https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9), with [Esri Wayback](https://livingatlas.arcgis.com/wayback/) for history, [OpenStreetMap/Nominatim](https://nominatim.org/) for geocoding, [Wikipedia](https://www.wikipedia.org/) & [Wikidata](https://www.wikidata.org/) for knowledge, [Open-Meteo](https://open-meteo.com/) for weather, and [CARTO](https://carto.com/) label tiles. The Windows screensaver is a small C# WebView2 host (`wrapper/Program.cs`) compiled with the `csc.exe` that ships inside Windows (no .NET SDK needed; the wrapper stays C# 5 compatible). Rebuild from the repo root with:
+
+```powershell
+& "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /nologo /target:winexe /platform:x64 /optimize+ /out:dist\DriftSaver.scr /r:System.dll /r:System.Core.dll /r:System.Drawing.dll /r:System.Windows.Forms.dll /r:dist\Microsoft.Web.WebView2.Core.dll /r:dist\Microsoft.Web.WebView2.WinForms.dll wrapper\Program.cs
+```
 
 ## The ethos
 

@@ -8,3 +8,6 @@ mobile/www/
 mobile/android/
 mobile/ios/
 mobile/dd/
+
+# Session handoff notes are private; never commit them to this public repo
+SESSION_NOTES.md
