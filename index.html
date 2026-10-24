@@ -13,10 +13,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
   <!-- bump ?v= when style.css/app.js/locations.js change, or caches serve stale copies -->
-  <link rel="stylesheet" href="style.css?v=42">
+  <link rel="stylesheet" href="style.css?v=43">
 </head>
 <body>
   <div id="map"></div>
+  <canvas id="sky" hidden aria-hidden="true"></canvas>
   <div id="vignette" aria-hidden="true"></div>
   <div id="fader" aria-hidden="true"></div>
 
@@ -30,6 +31,11 @@
       <span id="clock-label">LOCAL TIME</span>
     </div>
   </header>
+
+  <div id="sky-hud" hidden role="status">
+    <span id="sky-hud-main">LIVE SKY</span>
+    <span id="sky-hud-sub"></span>
+  </div>
 
   <div id="search" hidden>
     <button id="search-close" aria-label="Close search">×</button>
@@ -124,6 +130,8 @@
     <span><kbd>/</kbd> search</span>
     <span><kbd>H</kbd> hide interface</span>
     <span><kbd>T</kbd> time machine</span>
+    <span><kbd>C</kbd> latest pass</span>
+    <span><kbd>Z</kbd> live sky</span>
     <span>click · what's there?</span>
     <span><kbd>space</kbd> pause</span>
     <span><kbd>I</kbd> intel</span>
@@ -150,6 +158,17 @@
     <button id="wayback-close" aria-label="Exit time machine">×</button>
   </div>
 
+  <div id="recent" hidden>
+    <button class="recent-step" id="recent-older" aria-label="Older pass" title="Older pass (←)">◀</button>
+    <div class="recent-info">
+      <span id="recent-label">LATEST PASS</span>
+      <span id="recent-source"></span>
+    </div>
+    <button class="recent-step" id="recent-newer" aria-label="Newer pass" title="Newer pass (→)">▶</button>
+    <button class="intel-btn" id="recent-compare" title="Show the sharp archive underneath for comparison">ARCHIVE</button>
+    <button id="recent-close" aria-label="Exit latest pass">×</button>
+  </div>
+
   <div id="touchbar" hidden>
     <button id="tb-next">NEXT ▶</button>
     <button id="tb-mode">MODE</button>
@@ -161,11 +180,14 @@
   <div id="toast" role="status" hidden></div>
 
   <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
-  <script src="locations.js?v=42"></script>
-  <script src="starforts.js?v=42"></script>
-  <script src="blurred-sites.js?v=42"></script>
-  <script src="parks.js?v=42"></script>
-  <script src="wayback-releases.js?v=42"></script>
-  <script src="app.js?v=42"></script>
+  <script src="https://unpkg.com/satellite.js@6.0.2/dist/satellite.min.js"></script>
+  <script src="locations.js?v=43"></script>
+  <script src="starforts.js?v=43"></script>
+  <script src="blurred-sites.js?v=43"></script>
+  <script src="parks.js?v=43"></script>
+  <script src="wayback-releases.js?v=43"></script>
+  <script src="app.js?v=43"></script>
+  <script src="recent.js?v=43"></script>
+  <script src="livesky.js?v=43"></script>
 </body>
 </html>

@@ -449,6 +449,7 @@ async function presentPlace(place, gen) {
   console.log("[drift] presenting:", place.name);
   clearMarker();
   closeWayback(); // new stop, back to the present
+  closeRecent(false); // ...and back to the sharp archive (camera just jumped anyway)
   updateHUD(place);
   renderWeather(place);
   renderImagery(place);
@@ -949,6 +950,7 @@ function toggleClean() {
     closePassport();
     closeWayback();
     closePole();
+    closeRecent();
   }
   document.body.classList.toggle("clean");
 }
@@ -1018,11 +1020,13 @@ document.addEventListener("keydown", e => {
     case "ArrowRight": case "d": case "D":
       e.preventDefault();
       if (e.key.startsWith("Arrow") && !$("wayback").hidden) stepWayback(1);
+      else if (e.key.startsWith("Arrow") && !$("recent").hidden) stepRecent(-1); // → newer pass
       else panMap(PAN_STEP, 0);
       break;
     case "ArrowLeft": case "a": case "A":
       e.preventDefault();
       if (e.key.startsWith("Arrow") && !$("wayback").hidden) stepWayback(-1);
+      else if (e.key.startsWith("Arrow") && !$("recent").hidden) stepRecent(1); // ← older pass
       else panMap(-PAN_STEP, 0);
       break;
     case "ArrowUp": case "w": case "W": e.preventDefault(); panMap(0, -PAN_STEP); break;
@@ -1054,6 +1058,8 @@ document.addEventListener("keydown", e => {
     case "-": case "_": glideZoom(e.repeat ? -0.4 : -1); break;
     case "o": case "O": toggleWorldView(); break;
     case "t": case "T": toggleWayback(); break;
+    case "c": case "C": toggleRecent(); break;
+    case "z": case "Z": toggleSky(); break;
     case "Escape":
       // hosted: the .scr wrapper drives Esc via __driftEsc, don't double-fire
       if (!HOSTED) window.__driftEsc();
@@ -1525,6 +1531,7 @@ function openWayback() {
   closeSearch();
   closeIntel();
   closePassport();
+  closeRecent();
   if (state.playing && !state.transitioning) setPlaying(false);
   sliderMap = WB.map((_, i) => i);
   rebuildWaybackSlider();
@@ -1567,7 +1574,7 @@ function stepWayback(dir) {
    (or Esc with nothing open) exits the screensaver. */
 
 function anyPanelOpen() {
-  return !$("search").hidden || !$("wayback").hidden || !$("pole").hidden
+  return !$("search").hidden || !$("wayback").hidden || !$("pole").hidden || !$("recent").hidden
     || $("intel-panel").classList.contains("open")
     || $("passport").classList.contains("open");
 }
@@ -1579,6 +1586,7 @@ window.__driftEsc = () => {
     closePassport();
     closeWayback();
     closePole();
+    closeRecent();
   } else if (HOSTED) {
     window.chrome.webview.postMessage("exit");
   }
@@ -1997,6 +2005,8 @@ map.on("load", () => {
   addFortLayer();
   addBlurLayer();
   addParkLayer();
+  if (typeof addRecentLayers === "function") addRecentLayers(); // recent.js
+  if (PARAMS.get("sky") === "1" && typeof startSky === "function") startSky(); // livesky.js
   const m = PARAMS.get("mode");
   if (["mystery", "random", "golden"].includes(m)) state.mode = m;
   if (PARAMS.get("labels") === "1") {

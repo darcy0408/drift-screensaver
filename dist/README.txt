@@ -32,6 +32,11 @@ CONTROLS (while running)
   T                   time machine - drag the slider to see this exact
                       view as it looked in any year back to 2014
                       (imagery courtesy of Esri World Imagery Wayback)
+  C                   latest pass - what a satellite saw here THIS WEEK
+                      (NASA Landsat / Sentinel-2, 30 m); arrow keys step
+                      through recent passes, ARCHIVE flips back to compare
+  Z                   live sky - every Earth-observation satellite over the
+                      map right now, plus the last 24 hours of earthquakes
 
   ESC closes whatever panel is open first; press ESC again (or with
   nothing open) to exit the screensaver.
