@@ -8,7 +8,7 @@
 
 ## What it does
 
-- **World tour** — drifts cinematically between 161 curated places: natural wonders, human marks, and 83 **mystery case files** (star forts, Tartaria lore, Area 51, phantom islands, megaliths…) each presenting *the claim, the lore, and the official story* side by side.
+- **World tour** — drifts cinematically between 165 curated places: natural wonders, human marks, and 87 **mystery case files** (star forts, Tartaria lore, Area 51, phantom islands, megaliths…) each presenting *the claim, the lore, and the official story* side by side.
 - **Click anywhere** — drops a marker and tells you what's there: streets, stadiums, beaches, landmarks (Wikipedia-aware, so it says "SoFi Stadium," not "footpath").
 - **Search anything** — an address, a city, a country… or **paste a Google Maps URL / raw coordinates** to jump to a spot you found elsewhere and compare it against independent Esri imagery.
 - **Time machine (`T`)** — scrub through Esri's Wayback archive to 2014. The slider only stops where *your view actually changed*, and each stop names the capture date, satellite, and provider.

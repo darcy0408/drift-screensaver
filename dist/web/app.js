@@ -97,7 +97,10 @@ function shuffled(arr) {
 function rebuildPlaylist() {
   if (state.expedition) {
     // expeditions play in curated order, not shuffled
-    state.playlist = PLACES.filter(p => p.exp === state.expedition);
+    const route = EXPEDITION_ROUTES[state.expedition];
+    state.playlist = route
+      ? route.map(id => PLACES.find(p => p.id === id)).filter(Boolean)
+      : PLACES.filter(p => p.exp === state.expedition);
   } else {
     const pool = state.mode === "mystery"
       ? PLACES.filter(p => p.category === "mystery")
@@ -119,7 +122,26 @@ const EXPEDITIONS = [
   ["cog", "CONTINUITY OF GOVERNMENT"],
   ["parks", "THE NATIONAL PARKS"],
   ["golf", "THE PENTAGON'S BACK NINE"],
+  ["oldworld", "THE OLD WORLD"],
 ];
+
+// Expeditions told as a story: an explicit route of place ids, in order,
+// so one case file can sit in several tours without retagging it.
+const EXPEDITION_ROUTES = {
+  oldworld: [
+    // the geometry
+    "bourtange", "naarden", "neuf-brisach", "palmanova", "almeida",
+    // the same shape, everywhere
+    "goryokaku", "manjarabad", "good-hope", "real-felipe", "san-marcos",
+    "fort-jefferson", "fort-pulaski", "valletta",
+    // the erased and the buried
+    "copenhagen-ring", "kastellet", "seattle-underground",
+    // the fairs
+    "jackson-park", "palace-fine-arts", "grand-palais",
+    // old-world architecture and the stones
+    "budapest-parliament", "sacsayhuaman", "baalbek", "derinkuyu",
+  ],
+};
 
 function cycleExpedition() {
   const i = EXPEDITIONS.findIndex(e => e[0] === state.expedition);
