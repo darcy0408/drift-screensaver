@@ -9,7 +9,7 @@ const root = join(here, "..");
 const www = join(here, "www");
 
 const FILES = [
-  "index.html", "style.css", "app.js", "locations.js",
+  "index.html", "style.css", "app.js", "recent.js", "livesky.js", "locations.js",
   "starforts.js", "blurred-sites.js", "parks.js", "wayback-releases.js",
   "manifest.webmanifest", "sw.js",
 ];

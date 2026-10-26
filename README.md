@@ -15,6 +15,8 @@
 - **Imagery vintage** — every card shows when the current photo was taken, how old it is, which satellite took it, and its resolution.
 - **Live conditions** — temperature (°C/°F), sky, and daylight window at every stop, via Open-Meteo.
 - **Golden hour mode (`G`)** — tours only places where the sun is currently rising or setting. **Deep field (`R`)** — random points on Earth. **Mystery files (`M`)** — case files only.
+- **Latest pass (`C`)** — the archive is sharp but can be years old; `C` swaps in what a satellite saw here *this week*. NASA's Harmonized Landsat Sentinel-2 product, picked for the clearest recent day, with the capture date, satellite, and cloud cover on the card. Arrow keys walk back through every pass of the last three weeks; **ARCHIVE** flips to the sharp mosaic for comparison. Thirty metres a pixel, so it's a view of a region, not a rooftop — floods, snow, burn scars, harvests.
+- **Live sky (`Z`)** — every Earth-observation and weather satellite over the map *right now*, propagated in your browser from CelesTrak's orbital elements, with ground tracks for the headline birds (Landsat, Sentinel-2, WorldView, the ISS) and a word when one crosses the spot you're looking at. The last 24 hours of earthquakes from USGS ring the map too, the fresh ones still pulsing.
 - **Poles (`P`)** — the map (like every web map) stops at 85° — so `P` opens NASA's daily polar-stereographic pass of the North pole; press again for the South, again to close.
 - **Passport (`K`/`V`)** — pin places you love and fly back to them.
 - **Share (`COPY LINK`)** — every view has a URL that opens exactly there for anyone.
@@ -26,6 +28,7 @@
 | Key | Action | Key | Action |
 |---|---|---|---|
 | `N` / `B` | next / previous place | `T` | time machine |
+| `C` | latest pass (this week's imagery) | `Z` | live sky (satellites + quakes) |
 | click | what's there? | `/` | search |
 | scroll / arrows / WASD | pan | `O` | world view and back |
 | pinch / `+` `−` | zoom | `H` | hide the interface |
@@ -53,7 +56,7 @@ Spotted an oddity, a gorgeous place, or an imagery inconsistency (something that
 
 ## Under the hood
 
-A single static web page (no build step, no API keys, no accounts): [MapLibre GL](https://maplibre.org/) over [Esri World Imagery](https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9), with [Esri Wayback](https://livingatlas.arcgis.com/wayback/) for history, [OpenStreetMap/Nominatim](https://nominatim.org/) for geocoding, [Wikipedia](https://www.wikipedia.org/) & [Wikidata](https://www.wikidata.org/) for knowledge, [Open-Meteo](https://open-meteo.com/) for weather, and [CARTO](https://carto.com/) label tiles. The Windows screensaver is a small C# WebView2 host (`wrapper/Program.cs`) compiled with the `csc.exe` that ships inside Windows (no .NET SDK needed; the wrapper stays C# 5 compatible). Rebuild from the repo root with:
+A single static web page (no build step, no API keys, no accounts): [MapLibre GL](https://maplibre.org/) over [Esri World Imagery](https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9), with [Esri Wayback](https://livingatlas.arcgis.com/wayback/) for history, [NASA GIBS](https://gibs.earthdata.nasa.gov/) daily tiles and the [CMR](https://cmr.earthdata.nasa.gov/) catalog for the latest pass, [CelesTrak](https://celestrak.org/) orbital elements propagated with [satellite.js](https://github.com/shashwatak/satellite-js) for the live sky, [USGS](https://earthquake.usgs.gov/) for earthquakes, [OpenStreetMap/Nominatim](https://nominatim.org/) for geocoding, [Wikipedia](https://www.wikipedia.org/) & [Wikidata](https://www.wikidata.org/) for knowledge, [Open-Meteo](https://open-meteo.com/) for weather, and [CARTO](https://carto.com/) label tiles. The latest-pass and live-sky layers follow the approach of [God's Eye View](https://github.com/bilawalsidhu/gods-eye-view)'s Recent Imagery, Satellites, and Earthquakes layers (MIT), rebuilt here as keyless browser-direct modules (`recent.js`, `livesky.js`). The Windows screensaver is a small C# WebView2 host (`wrapper/Program.cs`) compiled with the `csc.exe` that ships inside Windows (no .NET SDK needed; the wrapper stays C# 5 compatible). Rebuild from the repo root with:
 
 ```powershell
 & "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /nologo /target:winexe /platform:x64 /optimize+ /out:dist\DriftSaver.scr /r:System.dll /r:System.Core.dll /r:System.Drawing.dll /r:System.Windows.Forms.dll /r:dist\Microsoft.Web.WebView2.Core.dll /r:dist\Microsoft.Web.WebView2.WinForms.dll wrapper\Program.cs
@@ -65,4 +68,4 @@ Every case file opens the same way: three exhibits, side by side — **the claim
 
 Log what you find. Check it against the official story. Bring receipts. That's the whole religion.
 
-Imagery © Esri, Maxar, Earthstar Geographics, and the GIS User Community.
+Imagery © Esri, Maxar, Earthstar Geographics, and the GIS User Community. We acknowledge the use of imagery provided by services from NASA's Global Imagery Browse Services (GIBS), part of NASA's Earth Science Data and Information System (ESDIS). Orbital elements courtesy CelesTrak; earthquake data courtesy the USGS Earthquake Hazards Program.
