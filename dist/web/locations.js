@@ -856,4 +856,36 @@ window.PLACES = [
       lore: "He worked only in darkness for 28 years and let no one watch. A 9-ton gate was balanced so perfectly a child could push it open with one finger. When teenagers claimed they saw blocks 'float like hydrogen balloons,' the legend was complete.",
       truth: "Surviving photographs show tripods, winches, and block-and-tackle on site — by that record, Leedskalnin was a gifted mason applying leverage with fanatical patience, not anti-gravity. The 9-ton gate's balance turned out to rest on a truck bearing at its centre of mass; when it seized in 1986, it took a crane and six men to fix what one Latvian had, apparently, built alone."
     } },
+  { id: "valletta", name: "Valletta", region: "Malta", lat: 35.8989, lng: 14.5146, zoom: 15, tz: "Europe/Malta", wiki: "Valletta", category: "mystery",
+    blurb: "A whole capital wrapped in bastions, cut from the rock it stands on.",
+    dossier: {
+      file: "CF-084",
+      claim: "A fortress-city raised on a bare limestone ridge in about fifteen years — too much cut stone, too fast, say old-world channels, for an island of farmers and fishermen.",
+      lore: "From above, Valletta is one continuous machine: grid streets, star bastions, ditches sliced straight down into bedrock. Walk it and the walls are taller than the buildings they guard.",
+      truth: "The record names the moment and the man: after surviving the Great Siege of 1565, the Knights of St John founded the city in 1566, and the Pope lent his military engineer Francesco Laparelli to design it. The trick is in the ditches. The soft Globigerina limestone was quarried out of the moats themselves, so every block in the walls came from the hole in front of them. Measure the ditches against the walls and check the math yourself."
+    } },
+  { id: "fort-pulaski", name: "Fort Pulaski", region: "Cockspur Island, Georgia, USA", lat: 32.0272, lng: -80.8907, zoom: 16, tz: "America/New_York", wiki: "Fort_Pulaski_National_Monument", category: "mystery",
+    blurb: "Twenty-five million bricks in a salt marsh, and the day they stopped mattering.",
+    dossier: {
+      file: "CF-085",
+      claim: "A moated brick fortress with walls seven feet thick, sitting on mud at the mouth of the Savannah River — star-fort channels call it an inherited structure the young republic simply moved into.",
+      lore: "The scale is the argument: around twenty-five million bricks, vaulted casemates, a drawbridge, a moat, on an island with no stone and no clay pits of its own. Who fired that many bricks, and where?",
+      truth: "The construction paperwork survives: work ran from 1829 to 1847, and one of its first engineers was a newly graduated Lieutenant Robert E. Lee. The bricks came by barge from plantation kilns near Savannah and as far as Baltimore. Then in April 1862, Union rifled cannon on Tybee Island breached the walls in about thirty hours, and the age of masonry forts ended in a day. The shell holes are still in the wall, and the Park Service will show you the receipts."
+    } },
+  { id: "grand-palais", name: "The Grand Palais", region: "Paris, France", lat: 48.8661, lng: 2.3125, zoom: 16, tz: "Europe/Paris", wiki: "Grand_Palais", category: "mystery",
+    blurb: "A world's fair palace that refused to be demolished.",
+    dossier: {
+      file: "CF-086",
+      claim: "If world's fair cities were plaster sets torn down on schedule, why is this one stone, steel, and still standing? Tartaria channels say it's the one the demolition crews couldn't erase.",
+      lore: "The 1900 Exposition Universelle drew tens of millions of visits to a white city along the Seine. Most of it vanished. The Grand Palais, its little sibling across the street, and the gilded Pont Alexandre III did not.",
+      truth: "Paris planned it that way, in writing: the fair was to leave a permanent cultural quarter behind, so these three were built in masonry and iron from 1897 to 1900 while the pavilions around them were plaster on purpose. The Grand Palais even stands on the site of an older fair hall, the 1855 Palais de l'Industrie, which was demolished to make room. Compare the 1900 permits with the pavilion contracts and the difference is right there on paper."
+    } },
+  { id: "budapest-parliament", name: "Hungarian Parliament", region: "Budapest, Hungary", lat: 47.5071, lng: 19.0457, zoom: 16, tz: "Europe/Budapest", wiki: "Hungarian_Parliament_Building", category: "mystery",
+    blurb: "Old-world architecture at its most extravagant, finished in 1904.",
+    dossier: {
+      file: "CF-087",
+      claim: "Spires, domes, gold leaf, and hundreds of statues along the Danube — the kind of building old-world channels insist no modern state could design or afford, so it must be older than the paperwork says.",
+      lore: "Its architect, Imre Steindl, went blind before it was finished and died weeks before the building was inaugurated. To believers, a builder who never saw his own building is a clue that he didn't really build it.",
+      truth: "Steindl won a public design competition in 1883, construction ran from 1885 to 1904, and the drawings, budgets, and quarry contracts are held in Hungarian archives. It was built to celebrate the country's thousand-year anniversary in 1896, and the neo-Gothic look was a deliberate throwback, copied in spirit from London's Houses of Parliament. Old style, new building: that's what 'revival architecture' means. The competition entries are public, so judge the designs yourself."
+    } },
 ];
