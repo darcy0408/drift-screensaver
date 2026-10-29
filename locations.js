@@ -888,4 +888,109 @@ window.PLACES = [
       lore: "Its architect, Imre Steindl, went blind before it was finished and died weeks before the building was inaugurated. To believers, a builder who never saw his own building is a clue that he didn't really build it.",
       truth: "Steindl won a public design competition in 1883, construction ran from 1885 to 1904, and the drawings, budgets, and quarry contracts are held in Hungarian archives. It was built to celebrate the country's thousand-year anniversary in 1896, and the neo-Gothic look was a deliberate throwback, copied in spirit from London's Houses of Parliament. Old style, new building: that's what 'revival architecture' means. The competition entries are public, so judge the designs yourself."
     } },
+  // ---------------- The heartland & melted-city files ----------------
+  { id: "salt-lake-temple", name: "Salt Lake Temple", region: "Salt Lake City, Utah, USA", lat: 40.7706, lng: -111.8919, zoom: 17, tz: "America/Denver", wiki: "Salt_Lake_Temple", category: "mystery",
+    blurb: "Six granite spires on a walled square, forty years in the making.",
+    dossier: {
+      file: "CF-088",
+      claim: "Old-world channels say pioneers who arrived in 1847 with wagons and tents could not have raised a granite temple like this. When the renovation dug several storeys down, they read it as proof of a buried older building.",
+      lore: "The building really was buried once, by its own builders. In 1858 a U.S. Army column marched on Utah, and the settlers covered the foundation with earth so it would look like a ploughed field.",
+      truth: "The cornerstones were laid in 1853 and the temple was dedicated in 1893. When the foundation was uncovered after the Utah War, the sandstone had cracked, so it was torn out and rebuilt in granite. That stone came from Little Cottonwood Canyon, about 20 miles away, hauled by ox teams until a rail line reached the quarry in the 1870s. The deep dig you can see from above since 2019 is a seismic retrofit: the temple is being set on base isolators so it can ride out an earthquake on the Wasatch Fault."
+    } },
+  { id: "petra", name: "Petra", region: "Ma'an, Jordan", lat: 30.3260, lng: 35.4450, zoom: 15, tz: "Asia/Amman", wiki: "Petra", category: "mystery",
+    blurb: "A city whose finest buildings were never built, only uncovered.",
+    dossier: {
+      file: "CF-089",
+      claim: "Melted-city theorists say Petra's facades are not carvings but real buildings, cooked down by some catastrophe until they fused into the cliffs.",
+      lore: "From above, Petra hardly shows. It reads as a rose-red maze of gorges, with a single colonnaded street running across the basin floor. The Treasury hides at the end of a crack in the rock barely three metres wide.",
+      truth: "Petra was the Nabataean capital, and its great tombs were cut into the sandstone around the 1st century BC and AD. The method is still on the site: the Unfinished Tomb shows carving from the top down, with the upper facade finished and the lower part still raw rock. The city faded after trade routes shifted and a 363 AD earthquake hit it. A Swiss traveller, Johann Ludwig Burckhardt, brought it to European attention in 1812."
+    } },
+  { id: "bandelier", name: "Bandelier", region: "Frijoles Canyon, New Mexico, USA", lat: 35.7788, lng: -106.2708, zoom: 16, tz: "America/Denver", wiki: "Bandelier_National_Monument", category: "mystery",
+    blurb: "Rooms in a cliff of volcanic ash, and a stone ring on the canyon floor.",
+    dossier: {
+      file: "CF-090",
+      claim: "Some videos say the cliff rooms are what's left of advanced buildings melted by extreme heat, the same look as Cappadocia, and that the Native American story is a convenient cover.",
+      lore: "From above, the round outline on the canyon floor is Tyuonyi, a village of about 400 rooms. The cliff it sits under is pale and pocked with hollows like a sponge.",
+      truth: "The cliff is Bandelier Tuff, volcanic ash welded into rock by the Valles Caldera eruptions about 1.2 and 1.6 million years ago. It is soft enough to carve with harder stone tools. Ancestral Pueblo people did exactly that from about 1150 to 1550, enlarging the natural gas bubbles into rooms called cavates. Their descendants live in nearby Cochiti and San Ildefonso pueblos today. The \"melted\" look comes from the volcano that made the rock, not from anything that happened to the buildings."
+    } },
+  { id: "windsor-ruins", name: "Windsor Ruins", region: "Claiborne County, Mississippi, USA", lat: 31.9406, lng: -91.1294, zoom: 18, tz: "America/Chicago", wiki: "Windsor_Ruins", category: "mystery",
+    blurb: "Twenty-three columns standing in a Mississippi wood.",
+    dossier: {
+      file: "CF-091",
+      claim: "To old-world channels, Corinthian columns standing alone in cotton country are a smoking gun. They argue a lone planter couldn't have built a house like this in two years, and that the fire story hides an older ruin.",
+      lore: "From above, only a small clearing shows in the trees, with a rectangle of dots that cast long shadows at sunset. The house was so tall that Mark Twain is said to have used its rooftop observatory as a landmark from the river.",
+      truth: "Smith Coffee Daniell II built the mansion from 1859 to 1861 and died within weeks of moving in. It survived the Civil War, then burned on 17 February 1890 after a guest dropped a cigarette in debris. The columns are brick, covered in plaster, and topped with iron capitals. Brick and iron are both easy to source and date, and you can see the brick cores where the plaster has fallen away."
+    } },
+  { id: "chateau-frontenac", name: "Château Frontenac", region: "Québec City, Canada", lat: 46.8105, lng: -71.2060, zoom: 16, tz: "America/Toronto", wiki: "Ch%C3%A2teau_Frontenac", category: "mystery",
+    blurb: "A railway's castle on a cliff, next door to a star fort.",
+    dossier: {
+      file: "CF-092",
+      claim: "A copper-roofed castle on top of a star-fort city, supposedly thrown up in a year by a railway company. Old-world channels call it inherited, not built.",
+      lore: "From above, two pieces of geometry sit side by side on the cliff: the green roofs of the hotel and, just south, the five-pointed Citadelle, which is a working army base to this day.",
+      truth: "The original hotel did open in 1893, but that was one wing. It was designed by the architect Bruce Price for the Canadian Pacific Railway, and the building kept growing for 30 years: wings in 1899 and 1908, then the tall central tower in 1924. Compare old photos by year and you can watch it grow. The British built the Citadelle between 1820 and 1850, on top of older French works."
+    } },
+  { id: "roosevelt-dam", name: "Theodore Roosevelt Dam", region: "Salt River, Arizona, USA", lat: 33.6717, lng: -111.1611, zoom: 15, tz: "America/Phoenix", wiki: "Theodore_Roosevelt_Dam", category: "mystery",
+    blurb: "A stone dam hidden inside a concrete one.",
+    dossier: {
+      file: "CF-093",
+      claim: "Early photos show giant stacked blocks that look like a ruin. Old-world videos call the original dam a pre-existing megalith, later hidden under concrete.",
+      lore: "The blocks in those photos are real, and they are still in there. The dam you see from above is a concrete shell poured around the original stone wall.",
+      truth: "The Reclamation Service built it from 1903 to 1911 out of cyclopean masonry: huge sandstone blocks cut from the canyon walls right on site, set in cement made at a mill built beside the dam for the job. Between 1989 and 1996 it was raised 77 feet and encased in concrete. That's why old and new photos look like two different dams."
+    } },
+  { id: "devils-tower", name: "Devils Tower", region: "Wyoming, USA", lat: 44.5906, lng: -104.7153, zoom: 15, tz: "America/Denver", wiki: "Devils_Tower", category: "mystery",
+    blurb: "A fluted stone column rising out of the pines.",
+    dossier: {
+      file: "CF-094",
+      claim: "The stump of a giant petrified tree, say flat-earth and old-world videos, with the fluted columns as its grain and the rubble at the base as broken-off bark.",
+      lore: "From directly above it is a near-perfect circle, ringed by a skirt of fallen columns. The Lakota name is usually given as Bear Lodge, and their story has bears clawing its sides.",
+      truth: "It is an igneous intrusion. Phonolite porphyry magma cooled underground about 40 million years ago, then the softer sedimentary rock around it eroded away. As the rock cooled it shrank and cracked into polygon columns, the same process behind Giant's Causeway and Devils Postpile. Petrified wood keeps its growth rings and cell structure, and these columns have neither. It became the first U.S. national monument in 1906."
+    } },
+  { id: "iowa-capitol", name: "Iowa State Capitol", region: "Des Moines, Iowa, USA", lat: 41.5912, lng: -93.6038, zoom: 17, tz: "America/Chicago", wiki: "Iowa_State_Capitol", category: "mystery",
+    blurb: "Five domes, one of them gold, on a hill above the cornfields.",
+    dossier: {
+      file: "CF-095",
+      claim: "A gold-domed palace in a farming state, built in 15 years by horse and wagon. To old-world channels, it shows the same builders' hand as Europe's palaces.",
+      lore: "From above, it is a cross with a dome at the centre and a smaller dome on each corner. It's the only U.S. state capitol with five domes.",
+      truth: "The builders really were the same pair. John C. Cochrane and Alfred H. Piquenard designed it and also designed the Illinois State Capitol. It was built from 1871 to 1886 and came in under its $3 million budget. A 1904 fire gutted the House chamber, and a restoration ran from 1983 to 2001. The central dome is covered in 23-carat gold leaf, last regilded in 1999."
+    } },
+  { id: "chaco", name: "Chaco Canyon", region: "New Mexico, USA", lat: 36.0607, lng: -107.9617, zoom: 17, tz: "America/Denver", wiki: "Pueblo_Bonito", category: "mystery",
+    blurb: "A D-shaped great house of 600 rooms in the middle of nowhere.",
+    dossier: {
+      file: "CF-096",
+      claim: "Old-world videos read Chaco as the cooked-down remains of a glorious lost city, whose warped stones still fit too tightly for the people credited with building it.",
+      lore: "From above, Pueblo Bonito is a giant capital D on the canyon floor, packed with round kivas. Its walls line up with the sun and moon, and roads run dead straight across the desert for miles.",
+      truth: "Ancestral Puebloans built the great houses in stages from about 850 to 1150 AD. We know it to the year because the roof beams still survive, and tree rings date the year each tree was cut. More than 200,000 of those trees were carried from mountains 50 miles or more away, with no wheels and no draft animals. The tight-fitting walls are core-and-veneer masonry, a technique you can study at every great house in the canyon."
+    } },
+  { id: "timgad", name: "Timgad", region: "Batna, Algeria", lat: 35.4842, lng: 6.4686, zoom: 16, tz: "Africa/Algiers", wiki: "Timgad", category: "mystery",
+    blurb: "A Roman grid city drawn on the edge of the Sahara.",
+    dossier: {
+      file: "CF-097",
+      claim: "A perfectly surveyed grid, paved streets, and ruts like train tracks. One old-world video reads it as advanced infrastructure wiped clean by a cataclysm.",
+      lore: "From above, it may be the clearest town plan to survive from antiquity: a square chessboard of streets, an arch at the western gate, and a theatre cut into the hill.",
+      truth: "The emperor Trajan founded Thamugadi around 100 AD as a colony for veterans of the Third Legion, which is why it's laid out like an army camp. The \"train tracks\" are wheel ruts that centuries of carts wore into the paving stones. Vandals and Berbers sacked it, the Byzantines briefly rebuilt it, and it was abandoned by the 8th century. Sand buried it, and that sand is what preserved it until French excavations began in 1881."
+    } },
+  { id: "volkerschlachtdenkmal", name: "Battle of the Nations Monument", region: "Leipzig, Germany", lat: 51.3122, lng: 12.4131, zoom: 16, tz: "Europe/Berlin", wiki: "Monument_to_the_Battle_of_the_Nations", category: "mystery",
+    blurb: "A 91-metre stone mountain built for a battle's centenary.",
+    dossier: {
+      file: "CF-098",
+      claim: "Buried levels, block faces that look cast rather than carved, and a timeline that seems too short. Old-world channels doubt it was built for 1913.",
+      lore: "From above, it is a massive square crown at the end of a long reflecting pool, called the Lake of Tears. Inside, giant stone guardians stand around a crypt.",
+      truth: "The \"looks cast\" instinct is half right. The monument has a concrete core faced with granite porphyry quarried at nearby Beucha. The architect Bruno Schmitz began it in 1898 and finished it for the centenary of the 1813 Battle of Leipzig, where Napoleon was defeated. It was paid for largely by public donations and a lottery, and the building records survive."
+    } },
+  { id: "plain-of-jars", name: "Plain of Jars", region: "Xiangkhouang, Laos", lat: 19.4311, lng: 103.1525, zoom: 17, tz: "Asia/Vientiane", wiki: "Plain_of_Jars", category: "mystery",
+    blurb: "Thousands of stone jars scattered across bomb-cratered hills.",
+    dossier: {
+      file: "CF-099",
+      claim: "Giant stone jars from a lost civilisation. One video asks whether the heavy bombing here during the Vietnam War was really an attempt to erase that history.",
+      lore: "Local legend says the jars were brewing vats for a victory feast held by giants. From above, Site 1 shows a grassy hill with small grey dots among the overgrown craters.",
+      truth: "The jars are Iron Age, roughly 500 BC to 500 AD, carved mostly from sandstone, and excavations around them have found human burials. The bombing was real, and aimed at something else. The U.S. dropped more than two million tons of ordnance on Laos from 1964 to 1973 to cut North Vietnamese supply lines. The Plain was a contested battlefield, not an archive. Bomb-clearance teams cleared the paths that visitors walk today, and the site was listed by UNESCO in 2019."
+    } },
+  { id: "jiaohe", name: "Jiaohe Ruins", region: "Turpan, Xinjiang, China", lat: 42.9500, lng: 89.0630, zoom: 15, tz: "Asia/Urumqi", wiki: "Jiaohe_ruins", category: "mystery",
+    blurb: "A city carved downward into a leaf-shaped island of earth.",
+    dossier: {
+      file: "CF-100",
+      claim: "A towering city of melted brick. Old-world videos say it was cooked by intense heat, not worn down by 2,000 years of desert wind.",
+      lore: "From above, it is a long leaf-shaped plateau between two gorges, with one central avenue running down it and a grid of roofless walls on either side.",
+      truth: "Jiaohe was built by digging down, not building up. Most of its walls are the loess plateau itself, carved downward into courtyards and lanes, with rammed earth added on top. It was the capital of the Jushi kingdom and later a Tang dynasty garrison on the Silk Road, and was abandoned after wars in the Mongol era. Rammed earth in the Turpan basin, one of the hottest and driest places in China, slumps and rounds over time. That is what gives it the melted look."
+    } },
 ];

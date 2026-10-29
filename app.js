@@ -123,6 +123,7 @@ const EXPEDITIONS = [
   ["parks", "THE NATIONAL PARKS"],
   ["golf", "THE PENTAGON'S BACK NINE"],
   ["oldworld", "THE OLD WORLD"],
+  ["melted", "THE MELTED CITIES"],
 ];
 
 // Expeditions told as a story: an explicit route of place ids, in order,
@@ -139,7 +140,16 @@ const EXPEDITION_ROUTES = {
     // the fairs
     "jackson-park", "palace-fine-arts", "grand-palais",
     // old-world architecture and the stones
-    "budapest-parliament", "sacsayhuaman", "baalbek", "derinkuyu",
+    "budapest-parliament", "volkerschlachtdenkmal", "chateau-frontenac",
+    // the heartland: built, or found?
+    "salt-lake-temple", "iowa-capitol", "windsor-ruins", "roosevelt-dam",
+    "sacsayhuaman", "baalbek", "derinkuyu",
+  ],
+  melted: [
+    // stone that looks cooked: the volcanic and the carved
+    "cappadocia", "bandelier", "petra", "devils-tower",
+    // cities of earth and rubble
+    "jiaohe", "chaco", "timgad", "plain-of-jars",
   ],
 };
 
